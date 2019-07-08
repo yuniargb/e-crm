@@ -14,3 +14,17 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/dashboard', function () {
+    return view('backend.konten.dashboard');
+});
+
+Route::prefix('pelanggan')->group(function (){
+    Route::get('/','BackController@pelanggan');
+    Route::post('/tambah','BackController@tambahpelanggan');
+    Route::get('/edit/{id}','BackController@editpelanggan');
+    Route::put('/update/{id}','BackController@updatepelanggan');
+    Route::get('/delete/{id}','BackController@deletepelanggan');
+});
+
+
