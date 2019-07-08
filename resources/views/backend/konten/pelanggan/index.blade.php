@@ -15,15 +15,15 @@
 </div>
 <!-- Row end -->
 <div class="bg-cus container-fluid">
+    <a class="btn btn-primary mb-5" href="/pelanggan/tambah">Tambah Pelanggan</a>
+    <hr>
     <table id="example" class="table table-striped table-bordered" style="width:100%">
         <thead>
             <tr>
-                <th>Name</th>
-                <th>Position</th>
-                <th>Office</th>
-                <th>Age</th>
-                <th>Start date</th>
-                <th>Salary</th>
+                <th>Nama Pelanggan</th>
+                <th>Nomor Telepon</th>
+                <th>Email</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -31,25 +31,19 @@
                 <td>Tiger Nixon</td>
                 <td>System Architect</td>
                 <td>Edinburgh</td>
-                <td>61</td>
-                <td>2011/04/25</td>
-                <td>$320,800</td>
+                <td><a class="btn btn-warning mb-5" href="/pelanggan/edit">Edit</a> | <a class="btn btn-danger mb-5" href="/pelanggan/hapus">Hapus</a></td>
             </tr>
             <tr>
                 <td>Donna Snider</td>
                 <td>Customer Support</td>
                 <td>New York</td>
-                <td>27</td>
-                <td>2011/01/25</td>
-                <td>$112,000</td>
+                <td><a class="btn btn-warning mb-5" href="/pelanggan/edit">Edit</a> | <a class="btn btn-danger mb-5" href="/pelanggan/hapus">Hapus</a></td>
             </tr>
             <tr>
                 <td>Donna Snider</td>
                 <td>Customer Support</td>
                 <td>New York</td>
-                <td>27</td>
-                <td>2011/01/25</td>
-                <td>$112,000</td>
+                <td><a class="btn btn-warning mb-5" href="/pelanggan/edit">Edit</a> | <a class="btn btn-danger mb-5" href="/pelanggan/hapus">Hapus</a></td>
             </tr>
         </tbody>
     </table>
