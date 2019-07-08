@@ -1,0 +1,5 @@
+.has-error,
+.has-error>.form-control {
+    border-color: red !important;
+    color: red;
+}

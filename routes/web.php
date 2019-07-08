@@ -25,9 +25,17 @@ Route::get('/dashboard', function () {
 
 Route::prefix('pelanggan')->group(function () {
     Route::get('/', 'BackController@pelanggan');
-    Route::get('/vtambah', 'BackController@vtambahpelanggan');
-    Route::post('/tambah', 'BackController@tambahpelanggan');
+    Route::get('/tambah', 'BackController@tambahpelanggan');
     Route::get('/edit/{id}', 'BackController@editpelanggan');
     Route::put('/update/{id}', 'BackController@updatepelanggan');
     Route::get('/delete/{id}', 'BackController@deletepelanggan');
+});
+
+Route::prefix('kategori')->group(function () {
+    Route::get('/', 'BackController@kategori');
+    Route::get('/tambah', 'BackController@tambahkategori');
+    Route::post('/store', 'BackController@storekategori');
+    Route::get('/edit/{id}', 'BackController@editkategori');
+    Route::put('/update/{id}', 'BackController@updatekategori');
+    Route::get('/delete/{id}', 'BackController@deletekategori');
 });
