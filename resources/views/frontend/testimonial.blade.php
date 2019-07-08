@@ -56,12 +56,14 @@
                                     <textarea class="form-control mb-30" name="message" rows="8" cols="80" placeholder="Message"></textarea>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <div class="text-center">
-                                    <div class="ml-auto mr-auto" id="rateYo"></div>
-                                    <p id="rateText"></p>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <div class="text-center">
+                                        <div class="ml-auto mr-auto" id="rateYo"></div>
+                                        <p id="rateText"></p>
+                                    </div>
+                                    <input type="hidden" id="star" name="rating">
                                 </div>
-                                <input type="hidden" id="star" name="rating">
                             </div>
                             <div class="col-12">
                                 <div class="row justify-content-center">
