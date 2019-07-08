@@ -13,4 +13,7 @@ class Invoice extends Model
     public function testimoni(){
         return $this->hasOne('App\Testimoni', 'invoice_id');
     }
+    public function pelanggan(){
+        return $this->belongsTo('App\Pelanggan','id');
+    }
 }
