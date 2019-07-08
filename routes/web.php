@@ -11,6 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+
+Route::get('/', 'FrontController@index');
+
+Route::prefix('testimonial')->group(function () {
+    Route::get('/', 'FrontController@testimonial');
+    Route::post('/store', 'FrontController@storetestimonial');
 });
