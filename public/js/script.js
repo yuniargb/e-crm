@@ -1,4 +1,5 @@
 $(document).ready(function () {
+
     $("#rateYo").rateYo({
         rating: 0,
         fullStar: true,

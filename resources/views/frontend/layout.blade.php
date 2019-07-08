@@ -16,6 +16,9 @@
     <!-- Core Stylesheet -->
     <link rel="stylesheet" href="/fassets/style.css">
 
+    <!-- My Css -->
+    <link rel="stylesheet" href="/css/style.css">
+
     <!-- RateYo CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
 
@@ -76,7 +79,7 @@
                         <!-- Nav Start -->
                         <div class="classynav">
                             <ul id="nav">
-                                <li class="current-item"><a href="./">Home</a></li>
+                                <li><a href="./">Home</a></li>
                                 <li><a href="./portfolio.html">Tours</a></li>
                                 <li><a href="./portfolio.html">Promo</a></li>
                                 <li><a href="./about.html">About</a></li>
@@ -208,6 +211,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
     <!-- My Script -->
     <script src="/js/script.js"></script>
+    <!-- Laravel Javascript Validation -->
+    <script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
+    {!! JsValidator::formRequest('App\Http\Requests\TestimoniRequest', '#testimoniForm'); !!}
 
 </body>
 

@@ -29,31 +29,22 @@
                     <div class="contact-heading mb-50">
                         <h4>Thank you for your interest. <br>Please fill out the form below to inquire about our work in Digital.</h4>
                     </div>
-                    <form action="#" method="post">
+                    <form action="/testimonal/store" method="post" id="testimoniForm">
+                        @csrf
                         <div class="row">
-                            <div class="col-lg-6">
+                            <div class="col-12">
                                 <div class="form-group">
-                                    <input type="text" class="form-control mb-30" name="full-name" placeholder="Name">
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <input type="email" class="form-control mb-30" name="email" placeholder="Email">
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <input type="text" class="form-control mb-30" name="full-name" placeholder="Phone">
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <input type="text" class="form-control mb-30" name="email" placeholder="Organization">
+                                    <input type="text" class="form-control" name="invoice_id" placeholder="Invoice Number">
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-group">
-                                    <textarea class="form-control mb-30" name="message" rows="8" cols="80" placeholder="Message"></textarea>
+                                    <input type="text" class="form-control" id="namaPelanggan" readonly>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <textarea class="form-control" name="pesan" rows="8" cols="80" placeholder="Message"></textarea>
                                 </div>
                             </div>
                             <div class="col-12">
@@ -67,7 +58,7 @@
                             </div>
                             <div class="col-12">
                                 <div class="row justify-content-center">
-                                    <button class="btn uza-btn btn-3 mt-15">Send</button>
+                                    <button type="submit" class="btn uza-btn btn-3 mt-15">Send</button>
                                 </div>
                             </div>
                         </div>
