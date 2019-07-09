@@ -444,7 +444,9 @@ class BackController extends Controller
 
         $this->validate($request, $rules, $message);
         $kode = Invoice::max('id');
-        $id = (int) $kode + 1;
+        $kdbr = substr($kode, 10);
+        $jml = (int) $kdbr + 1;
+        $id =  "STD01-" . date('d') . date('m') . $jml;
         $ktg = new Invoice;
 
         $ktg->tgl_inv = date('Y-m-d');
