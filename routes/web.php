@@ -59,4 +59,12 @@ Route::prefix('paket')->group(function () {
     Route::get('/edit/{id}', 'BackController@editpaket');
     Route::put('/update/{id}', 'BackController@updatepaket');
     Route::get('/delete/{id}', 'BackController@deletepaket');
+    Route::get('/delfas/{id}', 'BackController@deletepaketfal');
+});
+//  Link Halaman Invoices Admin
+Route::prefix('invoice')->group(function () {
+    Route::get('/', 'BackController@invoice');
+    Route::get('/tambah', 'BackController@tambahinvoice');
+    Route::post('/store', 'BackController@storeinvoice');
+    Route::get('/cetak/{id}', 'BackController@cetakinvoice');
 });

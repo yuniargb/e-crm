@@ -60,6 +60,10 @@
                         <input class="form-control {{ $errors->has('fasilitas') ? 'input-danger' : '' }}" type="text" id="fasilitas" name="fasilitas[]" value="{{ old('fasilitas') }}">
                         <small class="text-danger">{{ $errors->first('fasilitas') }}</small>
                     </div>
+                    <div class="col-sm-8">
+                        <input class="form-control {{ $errors->has('fasilitas') ? 'input-danger' : '' }}" type="text" id="fasilitas" name="fasilitas[]" value="{{ old('fasilitas') }}">
+                        <small class="text-danger">{{ $errors->first('fasilitas') }}</small>
+                    </div>
                     <div class="col-sm-2">
                         <button class="btn btn-warning" id="tmbh" type="button"><i class="icofont icofont-plus-square"></i></button>
                     </div>

@@ -115,6 +115,45 @@
         $(document).on('click', '.krngg', function(e) {
             $(this).parents('.form-group').remove()
         });
+        $(document).on('click', '.krng-peserta', function(e) {
+            $(this).parents('tr').remove();
+            total();
+        });
+        $(document).on('click', '#tmbh_psrt', function() {
+            var peserta = $('#peserta').val();
+            var dokumen = $('#dokumen').val();
+            var idpaket = $('#paket').val();
+            var tanggal = $('#tgl').val();
+            var harga = $('#paket').find(':selected').data("harga");
+            var paket = $('#paket').find(':selected').data("paket");
+            console.log(peserta)
+            $('#invoce').append(`
+            <tr>
+                <th><button class="btn btn-danger krng-peserta" type="button"><i class="icofont icofont-minus-square"></i></button></th>
+                <td>
+                ` + peserta + `
+                <input class="form-control" type="hidden" name="pesertaa[]" value="` + peserta + `" placeholder="Masukan Nama Peserta">
+                </td>
+                <td>
+                ` + paket + `
+                <input class="form-control" type="hidden" name="pakett[]" value="` + idpaket + `" placeholder="Masukan Nama Peserta">
+                </td>
+                <td>
+                ` + dokumen + `
+                <input class="form-control" type="hidden" name="dokumenn[]" value="` + dokumen + `" placeholder="Masukan Nama Peserta">
+                </td>
+                <td>
+                ` + tanggal + `
+                <input class="form-control" type="hidden" name="tgll[]" value="` + tanggal + `" placeholder="Masukan Nama Peserta">
+                </td>
+                <td>
+                ` + harga + `
+                <input class="form-control harga" type="hidden" name="hargaa[]" value="` + harga + `" placeholder="Masukan Nama Peserta">
+                </td>
+            </tr>
+            `);
+            total();
+        })
         $('#tmbh').on('click', function() {
             $('#isi').append(`
             <div class="form-group row">
@@ -130,6 +169,17 @@
             `)
         })
     })
+
+    function total() {
+        var sum = 0;
+
+        $('.harga').each(function() {
+            var harga = +$(this).val();
+            sum += harga;
+        });
+        $('#total').text(sum);
+        $('#hasil').val(sum);
+    }
 </script>
 
 

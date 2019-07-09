@@ -10,6 +10,6 @@ class Kategori extends Model
 
     public function paket()
     {
-        return $this->hasMany('App\Paket', 'kategori_id');
+        return $this->hasMany('App\Paket', 'kategori');
     }
 }
