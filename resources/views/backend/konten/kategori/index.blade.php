@@ -15,6 +15,12 @@
 </div>
 <!-- Row end -->
 <div class="bg-cus container-fluid">
+    @if ($message = Session::get('success'))
+    <div class="alert alert-success alert-block">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        <strong>{{ $message }}</strong>
+    </div>
+    @endif
     <a href="/kategori/tambah" class="btn btn-primary mb-3">Tambah Kategori</a>
     <hr>
     <table id="example" class="table table-striped table-bordered" style="width:100%">

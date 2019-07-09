@@ -28,6 +28,17 @@
     <!-- Echart js -->
     <script src="/assets/plugins/charts/echarts/js/echarts-all.js"></script>
 
+    <!-- Select 2 css -->
+    <link rel="stylesheet" href="/assets/plugins/select2/dist/css/select2.min.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/plugins/select2/css/s2-docs.css">
+
+    <!-- Multi Select css -->
+    <link rel="stylesheet" href="/assets/plugins/bootstrap-multiselect/dist/css/bootstrap-multiselect.css" />
+    <link rel="stylesheet" href="/assets/plugins/multiselect/css/multi-select.css" />
+
+    <!-- Tags css -->
+    <link rel="stylesheet" href="/assets/plugins/bootstrap-tagsinput/dist/bootstrap-tagsinput.css" />
+
     <!-- Style.css -->
     <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
 
