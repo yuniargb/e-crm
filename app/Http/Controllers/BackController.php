@@ -8,8 +8,12 @@ use App\Kategori;
 use App\Staf;
 use App\Paket;
 use App\Fasilitas;
+use App\Invoice;
+use App\Peserta;
+use PDF;
 use Validator;
 use Storage;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 
 class BackController extends Controller
@@ -266,7 +270,7 @@ class BackController extends Controller
     // List Paket
     public function paket()
     {
-        $paket = Paket::all();
+        $paket = Paket::with('categori')->get();
         return view('backend.konten.paket.index', compact('paket'));
     }
     // tampil form tambah
@@ -279,9 +283,9 @@ class BackController extends Controller
     // tampil form edit
     public function editPaket($id)
     {
-        $paket = Paket::with('kategori')->where('id', $id)->first();
+        $ktg = Paket::with('fasilitas')->where('id', $id)->first();
         $kategori = Kategori::all();
-        return view('backend.konten.paket.editpaket', compact('paket', 'kategori'));
+        return view('backend.konten.paket.editpaket', compact('ktg', 'kategori'));
     }
 
     public function updatePaket($id, Request $request)
@@ -289,7 +293,6 @@ class BackController extends Controller
         $rules = [
             'nama_paket' => 'required',
             'harga' => 'required',
-            'gambar' => 'required',
             'kategori' => 'required',
         ];
 
@@ -314,6 +317,28 @@ class BackController extends Controller
         }
         $ktg->kategori = $request->kategori;
         $ktg->save();
+
+        if ($request->fasilitas[0] != null) {
+            for ($i = 0; $i < count($request->fasilitas); $i++) {
+                $ftl = new Fasilitas;
+
+                $ftl->nama_fasilitas = $request->fasilitas[$i];
+                $ftl->paket_id = $id;
+
+                $ftl->save();
+            }
+        }
+
+        if ($request->fasilitass) {
+            for ($i = 0; $i < count($request->fasilitass); $i++) {
+                $fsl = Fasilitas::find($request->idfasilitass[$i]);
+
+                $fsl->nama_fasilitas = $request->fasilitass[$i];
+
+                $fsl->save();
+            }
+        }
+
         Session::flash('success', 'Paket success updated');
         return redirect('/paket');
     }
@@ -364,8 +389,85 @@ class BackController extends Controller
     {
         $ktg = Paket::find($id);
         $ktg->delete();
+        $fal = Fasilitas::where('paket_id', $id);
+        $fal->delete();
         Session::flash('success', 'Paket success deleted');
         return redirect('/paket');
     }
+    // hapus paket fasillatisa
+    public function deletePaketFal($id)
+    {
+        $ktg = Fasilitas::find($id);
+        $ktg->delete();
+        Session::flash('success', 'Fasilitas success deleted');
+        return Redirect::Back();
+    }
     // End Paket
+
+
+    // Invoice
+    // List Invoice
+    public function invoice()
+    {
+        $invoice = Invoice::with('pelanggan')->get();
+        return view('backend.konten.invoice.index', compact('invoice'));
+    }
+    // tampil form tambah
+    public function tambahInvoice()
+    {
+        $paket = Paket::all();
+        $pelanggan = Pelanggan::all();
+        return view('backend.konten.invoice.tambahinvoice', compact('paket', 'pelanggan'));
+    }
+
+    // cetak kwitansi
+    public function cetakInvoice($id)
+    {
+        $invoice = Invoice::with('pelanggan')->where('id', $id)->first();
+        $peserta = Peserta::with('paket')->where('invoice_id', $id)->get();
+        $pdf = PDF::loadView('backend.konten.invoice.cetakinvoice', compact('invoice', 'peserta'));
+        // $pdf = PDF::loadView('backend.konten.invoice.cetakinvoice', compact('invoice', 'peserta'));
+        // return $pdf->download('kwitansi_invoice_' . date('Y-m-d_H-i-s') . '.pdf');
+        return $pdf->stream('kwitansi_invoice_' . date('Y-m-d_H-i-s') . '.pdf');
+    }
+    // tambah invoice
+    public function storeInvoice(Request $request)
+    {
+        $rules = [
+            'pelanggan' => 'required',
+            'pesertaa.*' => 'required'
+        ];
+
+        $message = [
+            'required' => 'Please fill this field',
+        ];
+
+        $this->validate($request, $rules, $message);
+        $kode = Invoice::max('id');
+        $id = (int) $kode + 1;
+        $ktg = new Invoice;
+
+        $ktg->tgl_inv = date('Y-m-d');
+        $ktg->total_hrg = $request->totals;
+        $ktg->user_id = $request->pelanggan;
+        $ktg->id = $id;
+
+        $ktg->save();
+
+        for ($i = 0; $i < count($request->pesertaa); $i++) {
+            $ftl = new Peserta;
+
+            $ftl->invoice_id = $id;
+            $ftl->paket_id = $request->pakett[$i];
+            $ftl->no_dukumen = $request->dokumenn[$i];
+            $ftl->tgl_berangkat = $request->tgll[$i];
+            $ftl->nama_peserta = $request->pesertaa[$i];
+
+            $ftl->save();
+        }
+
+        Session::flash('success', 'New Invoice success added');
+        return redirect('/invoice')->with(['success' => 'New Category success added']);;
+    }
+    // End Invoice
 }

@@ -18,8 +18,12 @@ class Paket extends Model
         return $this->hasMany('App\Promo', 'paket_id');
     }
 
-    public function kategori()
+    public function categori()
     {
-        return $this->belongsTo('App\Kategori', 'id');
+        return $this->belongsTo('App\Kategori', 'kategori');
+    }
+    public function peserta()
+    {
+        return $this->hasMany('App\Peserta', 'paket_id');
     }
 }
