@@ -29,12 +29,12 @@
                     <div class="contact-heading mb-50">
                         <h4>Thank you for your interest. <br>Please fill out the form below to inquire about our work in Digital.</h4>
                     </div>
-                    <form action="/testimonal/store" method="post" id="testimoniForm">
+                    <form action="/testimonial/store" method="post" id="testimoniForm">
                         @csrf
                         <div class="row">
                             <div class="col-12">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" name="invoice_id" placeholder="Invoice Number">
+                                    <input type="text" class="form-control" name="invoice_id" id="invoiceId" placeholder="Invoice Number">
                                 </div>
                             </div>
                             <div class="col-12">

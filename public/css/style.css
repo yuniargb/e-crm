@@ -4,6 +4,21 @@
     color: red;
 }
 
+.tour-image-box {
+    height: 270px;
+    width: 100% !important;
+}
+
+.tour-image {
+    height: 100% !important;
+    width: 100% !important;
+    object-fit: cover;
+}
+
+.has-success>.form-control {
+    border-color: green !important;
+}
+
 .landscape {
     height: 438px;
     width: 100% !important;

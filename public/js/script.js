@@ -1,5 +1,20 @@
 $(document).ready(function () {
 
+    // Form Testimoni
+    // Get Invoice
+    $('#invoiceId').on('keyup', function () {
+        let invoiceId = $(this).val();
+        console.log(invoiceId);
+        $.ajax({
+            type: 'get',
+            url: '/testimonial/get/invoiceId/' + invoiceId,
+            success: function (data) {
+                let obj = JSON.parse(data);
+                $('#namaPelanggan').val(obj.name);
+            }
+        })
+    });
+    // Star rating
     $("#rateYo").rateYo({
         rating: 0,
         fullStar: true,
@@ -27,4 +42,5 @@ $(document).ready(function () {
         $('#rateText').html(word);
         $('#star').val(rating);
     });
+    // End Testimoni
 })

@@ -18,6 +18,7 @@ Route::get('/', 'FrontController@index');
 Route::prefix('testimonial')->group(function () {
     Route::get('/', 'FrontController@testimonial');
     Route::post('/store', 'FrontController@storetestimonial');
+    Route::get('/get/invoiceId/{invoiceId}', 'FrontController@invoiceid');
 });
 
 // Tours

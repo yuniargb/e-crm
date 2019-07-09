@@ -210,7 +210,7 @@
     <!-- RateYo -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
     <!-- My Script -->
-    <script src="/js/script.js"></script>
+    <script src="/js/script.js?v=1.0"></script>
     <!-- Laravel Javascript Validation -->
     <script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
     {!! JsValidator::formRequest('App\Http\Requests\TestimoniRequest', '#testimoniForm'); !!}

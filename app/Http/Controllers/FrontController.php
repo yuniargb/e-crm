@@ -7,6 +7,7 @@ use App\Testimoni;
 use App\Http\Requests\TestimoniRequest;
 use Illuminate\Support\Facades\Session;
 use App\Paket;
+use App\Invoice;
 
 class FrontController extends Controller
 {
@@ -34,6 +35,17 @@ class FrontController extends Controller
         return view('frontend.testimonial');
     }
 
+    public function invoiceId($invoiceId)
+    {
+        $inv = Invoice::with('pelanggan')->where('id', $invoiceId)->first();
+        if ($inv) {
+            $data = [
+                'name' => $inv->pelanggan['nama_pelanggan']
+            ];
+            return json_encode($data);
+        }
+    }
+
     public function storeTestimonial(TestimoniRequest $request)
     {
         $testi = new Testimoni;
@@ -42,7 +54,7 @@ class FrontController extends Controller
         $testi->rating = $request->rating;
 
         $testi->save();
-        Session::flash('success', 'WO successfully deleted');
-        return view('/testimonial');
+        Session::flash('success', 'Your testimonial will make us better');
+        return redirect('/testimonial');
     }
 }

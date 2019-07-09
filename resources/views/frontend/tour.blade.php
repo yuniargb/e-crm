@@ -6,13 +6,7 @@
         <div class="row h-100 align-items-end">
             <div class="col-12">
                 <div class="breadcumb--con">
-                    <h2 class="title">Portfolio</h2>
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="#"><i class="fa fa-home"></i> Home</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Portfolio</li>
-                        </ol>
-                    </nav>
+                    <h2 class="title text-center">Tours Package</h2>
                 </div>
             </div>
         </div>
@@ -34,7 +28,9 @@
             <!-- Single Portfolio Item -->
             <div class="col-12 col-sm-6 col-lg-4 col-xl-3 single-portfolio-item ux-ui-design">
                 <div class="single-portfolio-slide">
-                    <img class="gambar-tour" src="/images/paket/{{ $tr->gambar }}" alt="">
+                    <div class="tour-image-box">
+                        <img class="tour-image" src="/images/paket/{{ $tr->gambar }}" alt="">
+                    </div>
                     <!-- Overlay Effect -->
                     <div class="overlay-effect text-center">
                         <h4>{{ $tr->nama_paket }}</h4>
