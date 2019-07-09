@@ -3,3 +3,14 @@
     border-color: red !important;
     color: red;
 }
+
+.landscape {
+    height: 438px;
+    width: 100% !important;
+}
+
+.gambar-tour {
+    height: 100% !important;
+    width: 100% !important;
+    object-fit: cover;
+}

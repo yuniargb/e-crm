@@ -39,9 +39,13 @@
                 <div class="form-group row">
                     <label for="username" class="col-xs-2 col-form-label form-control-label">Kategori</label>
                     <div class="col-sm-10">
-                        <select class="js-example-theme-single select2-hidden-accessible form-control" tabindex="-1" aria-hidden="true" name="kategori">
+                        <select class="form-control" tabindex="-1" aria-hidden="true" name="kategori">
                             @foreach($kategori as $kat)
-                            <option value="{{ $kat->id }}" {{ old('kategori') == $kat->id ? 'selected' : '' }}>{{ $kat->nama_kategori }}</option>
+                            @if(old('kategori') == $kat->id)
+                            <option value="{{ $kat->id }}" selected>{{ $kat->nama_kategori }}</option>
+                            @else
+                            <option value="{{ $kat->id }}">{{ $kat->nama_kategori }}</option>
+                            @endif
                             @endforeach
                         </select>
                         <small class="text-danger">{{ $errors->first('kategori') }}</small>

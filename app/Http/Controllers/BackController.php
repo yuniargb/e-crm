@@ -279,9 +279,9 @@ class BackController extends Controller
     // tampil form edit
     public function editPaket($id)
     {
-        $ktg = Paket::find($id);
+        $paket = Paket::with('kategori')->where('id', $id)->first();
         $kategori = Kategori::all();
-        return view('backend.konten.paket.editpaket', compact('ktg,kategori'));
+        return view('backend.konten.paket.editpaket', compact('paket', 'kategori'));
     }
 
     public function updatePaket($id, Request $request)

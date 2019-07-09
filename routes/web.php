@@ -14,9 +14,16 @@
 
 Route::get('/', 'FrontController@index');
 
+// Testimoni
 Route::prefix('testimonial')->group(function () {
     Route::get('/', 'FrontController@testimonial');
     Route::post('/store', 'FrontController@storetestimonial');
+});
+
+// Tours
+Route::prefix('tours')->group(function () {
+    Route::get('/', 'FrontController@tours');
+    Route::get('/detil/{id}', 'FrontController@detiltours');
 });
 
 // Link Halaman Dashboard Admin
