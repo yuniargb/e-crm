@@ -16,6 +16,7 @@ class CreateKomplainsTable extends Migration
         Schema::create('komplains', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('staf_id');
+            $table->string('invoice_id');
             $table->boolean('solved')->default(false);
             $table->timestamps();
         });

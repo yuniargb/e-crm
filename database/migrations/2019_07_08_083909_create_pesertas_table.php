@@ -15,9 +15,9 @@ class CreatePesertasTable extends Migration
     {
         Schema::create('pesertas', function (Blueprint $table) {
             $table->unsignedBigInteger('paket_id');
-            $table->unsignedBigInteger('invoice_id');
-            $table->string('no_dukumen',30);
-            $table->string('nama_peserta',50);
+            $table->string('invoice_id');
+            $table->string('no_dukumen', 30);
+            $table->string('nama_peserta', 50);
             $table->date('tgl_berangkat');
             $table->timestamps();
         });

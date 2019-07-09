@@ -15,6 +15,6 @@ class Peserta extends Model
 
     public function paket()
     {
-        return $this->belongsToMany('App\Paket', 'paket_id');
+        return $this->belongsTo('App\Paket', 'paket_id');
     }
 }

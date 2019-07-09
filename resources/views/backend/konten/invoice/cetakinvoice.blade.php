@@ -9,8 +9,6 @@
         padding-bottom: 10px;
         background-color: white;
         color: black;
-        padding-left: 15px;
-        border-bottom: 3px solid black;
         line-height: 10px;
         position: relative;
     }
@@ -49,6 +47,8 @@
 
     .table-custom {
         border: 1px solid black;
+        font-size: 10px;
+        vertical-align: top;
     }
 
     /*.both {
@@ -77,7 +77,12 @@
 
     .ttdttd {
         text-align: center;
-        height: 100px;
+        font-size: 10px;
+        height: 90px;
+        min-height: 90px;
+        max-height: 90px;
+        border-bottom: 1px solid black;
+        vertical-align: top;
     }
 
     .ttdttds {
@@ -102,6 +107,19 @@
     .table-header span {
         padding-left: 15px;
     }
+
+    .namapelanggan {
+        border: 1px solid #000;
+        padding: 10px;
+    }
+
+    .namapelanggan table td {
+        vertical-align: top;
+    }
+
+    .peserta thead {
+        border-bottom: 1px solid black;
+    }
 </style>
 
 <body>
@@ -122,92 +140,84 @@
                     </td>
                 </tr>
             </table>
-        </div>
-
-        <!-- <div class="container">
-            <div class="kpd">
-                <p>Kepada Yth.</p>
-                <table>
+            <div class="namapelanggan">
+                <table width="520">
                     <tr>
-                        <th width="100">Nama</th>
-                        <td width="350"></td>
-                        <th width="100">Kode Faktur</th>
-                        <td width="150"></td>
+                        <td rowspan="3">Customer</td>
+                        <td rowspan="3" width="150">: {{ $invoice->pelanggan['nama_pelanggan'] }}</td>
+                        <td>Invoice No</td>
+                        <td>: {{ $invoice->id }}</td>
                     </tr>
                     <tr>
-                        <th width="100">No Telp</th>
-                        <td width="350"></td>
-                        <th width="100">Kode Invoice</th>
-                        <td width="150"></td>
+                        <td>Invoice Date</td>
+                        <td>: {{ date('d-M-Y', strtotime($invoice->tgl_inv))}}</td>
                     </tr>
                     <tr>
-                        <th width="100">Kurir</th>
-                        <td width="350"></td>
-                        <th width="100">Paket</th>
-                        <td width="150"></td>
-                    </tr>
-                    <tr>
-                        <th width="100">Alamat</th>
-                        <td width="350"></td>
-                        <th width="150">Tanggal</th>
-                        <td width="100"></td>
+                        <td>Due Date</td>
+                        <td>: {{ date('d-M-Y') }}</td>
                     </tr>
                 </table>
-                <p>Dengan surat ini kami mengirimkan barang-barang kepada saudara, dengan rincian sebagai berikut :</p>
             </div>
-            <table align="center" class="table-custom">
-                <thead>
-                    <tr>
-                        <th align="center">NO</th>
-                        <th align="center">SKU</th>
-                        <th align="center">Nama</th>
-                        <th align="center">Warna</th>
-                        <th align="center">Size</th>
-                        <th align="center">Qty</th>
-                        <th align="center">Berat</th>
-                    </tr>
-                </thead>
-                <tbody>
-                            <tr>
-                                <td align="center"></td>
-                                <td align="center"></td>
-                                <td align="center"></td>
-                                <td align="center"></td>
-                                <td align="center"></td>
-                                <td align="center"></td>
-                                <td align="center"></td>
-                            </tr>
-                </tbody>
-            </table>
-            <div class="kpd">
-                <p>Mohon diperiksa kembali keadaan barang dan diterima.</p>
-            </div>
-            <table align="center">
+        </div>
+        <table width="545" class="peserta">
+            <thead>
                 <tr>
-                    <td width="150">
-                        <div class="isi" style="margin-right: 20px;">
-                            <div class="ttdttds">
-                                Penerima
-                            </div>
-                            <div class="petugas">
-
-                            </div>
+                    <th>NO.</th>
+                    <th>DOCUMENT NO.</th>
+                    <th>PAX'S NAME</th>
+                    <th>DESCRIPTIONS</th>
+                    <th>AMOUNT(IDR)</th>
+                </tr>
+            </thead>
+            <tbody>
+                @php
+                $no = 1;
+                $total = 0;
+                @endphp
+                @foreach($peserta as $p)
+                <tr>
+                    <td>{{ $no }}</td>
+                    <td>{{ $p->no_dukumen }}</td>
+                    <td>{{ $p->nama_peserta }}</td>
+                    <td>{{ $p->paket['id'].'/'.date('d-M-Y', strtotime($p->tgl_berangkat)) }}</td>
+                    <td>{{$p->paket['harga']}}</td>
+                </tr>
+                @php
+                $no++;
+                @endphp
+                @endforeach
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th align="center" colspan="4">TOTAL</th>
+                    <th>{{ $invoice->total_hrg }}</th>
+                </tr>
+            </tfoot>
+        </table>
+        <table width="545" class="table-custom">
+            <tbody>
+                <tr>
+                    <td width="300">
+                        Note
+                        <ul>
+                            <li>Payment in Rupiah is based on the currency exchange rate, valid on the day payment</li>
+                            <li>Payment by cheque should be made payable to PT.Usaha Wisata Mandiri and valid upon clearance.</li>
+                            <li>Bank transfer should be addressed to PT. Usaha Wisata Mandiri account alt</li>
+                        </ul>
+                    </td>
+                    <td align="center">
+                        <div class="ttdttd">
+                            Received by:
                         </div>
                     </td>
-                    <td width="150">
-                        <div class="isi" style="margin-left: 20px;">
-                            <div class="ttdttd">
-                                Karyawan
-                            </div>
-                            <div class="petugas">
-                            </div>
-                            <div class="nip">
-                            </div>
+                    <td align="center">
+                        <div class="ttdttd">
+                            Issued<br>PT.Usaha Wisata Mandiri
                         </div>
                     </td>
                 </tr>
-            </table>
-        </div> -->
+            </tbody>
+        </table>
     </div>
 </body>
 

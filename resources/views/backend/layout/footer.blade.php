@@ -159,7 +159,7 @@
             <div class="form-group row">
                     <label for="fasilitas" class="col-xs-2 col-form-label form-control-label"></label>
                     <div class="col-sm-8">
-                        <input class="form-control {{ $errors->has('fasilitas') ? 'input-danger' : '' }}" type="text" id="fasilitas" name="fasilitas[]" value="{{ old('fasilitas') }}">
+                        <input class="form-control {{ $errors->has('fasilitas') ? 'input-danger' : '' }}" type="text" name="fasilitas[]" value="{{ old('fasilitas') }}"  required>
                         <small class="text-danger">{{ $errors->first('fasilitas') }}</small>
                     </div>
                     <div class="col-sm-2">
