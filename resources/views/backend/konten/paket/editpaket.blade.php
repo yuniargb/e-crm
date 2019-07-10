@@ -3,11 +3,11 @@
 <div class="row">
     <div class="col-sm-12 p-0">
         <div class="main-header">
-            <!-- <h4>Kategori</h4> -->
+            <!-- <h4>paket</h4> -->
             <!-- <ol class="breadcrumb breadcrumb-title breadcrumb-arrow">
                 <li class="breadcrumb-item"><a href="/"><i class="icofont icofont-home"></i></a>
                 </li>
-                <li class="breadcrumb-item"><a href="/kategori">Kategori</a>
+                <li class="breadcrumb-item"><a href="/paket">paket</a>
                 </li>
             </ol> -->
         </div>

@@ -46,6 +46,16 @@ return [
             'provider' => 'users',
             'hash' => false,
         ],
+
+        'pelanggan' => [
+            'driver' => 'session',
+            'provider' => 'pelanggans',
+        ],
+
+        'stafs' => [
+            'driver' => 'session',
+            'provider' => 'stafs',
+        ],
     ],
 
     /*
@@ -69,6 +79,16 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\User::class,
+        ],
+
+        'pelanggans' => [
+            'driver' => 'eloquent',
+            'model' => App\Pelanggan::class,
+        ],
+
+        'stafs' => [
+            'driver' => 'eloquent',
+            'model' => App\Staf::class,
         ],
 
         // 'users' => [
@@ -97,6 +117,17 @@ return [
             'provider' => 'users',
             'table' => 'password_resets',
             'expire' => 60,
+        ],
+        'pelanggans' => [
+            'provider' => 'pelanggans',
+            'table' => 'password_resets',
+            'expire' => 60,
+        ],
+
+        'stafs' => [
+            'provider' => 'stafs',
+            'table' => 'password_resets',
+            'expire' => 15,
         ],
     ],
 

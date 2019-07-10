@@ -14,9 +14,35 @@
 
 Route::get('/', 'FrontController@index');
 
+// Testimoni
 Route::prefix('testimonial')->group(function () {
     Route::get('/', 'FrontController@testimonial');
     Route::post('/store', 'FrontController@storetestimonial');
+    Route::get('/get/invoiceId/{invoiceId}', 'FrontController@invoiceid');
+});
+
+// Tours
+Route::prefix('tours')->group(function () {
+    Route::get('/', 'FrontController@tours');
+    Route::get('/detil/{id}', 'FrontController@detiltours');
+});
+
+// Sign in pelanggan
+// Sign page
+Route::prefix('signin')->group(function () {
+    Route::get('/', 'Auth\LoginPelangganController@showLoginForm')->name('pelanggan.login');
+    Route::post('/', 'Auth\LoginPelangganController@login')->name('pelanggan.login.submit');
+});
+
+// Login google
+Route::get('sign/google', 'Auth\LoginPelangganController@redirectToProvider');
+Route::get('sign/google/callback', 'Auth\LoginPelangganController@handleProviderCallback');
+// End login google
+
+// User Frontend
+Route::prefix('customer')->group(function () {
+    Route::get('/', 'PelangganController@index')->name('pelanggan.dashboard');
+    Route::get('/logout', 'Auth\LoginPelangganController@logout')->name('pelanggan.logout');
 });
 
 // Link Halaman Dashboard Admin

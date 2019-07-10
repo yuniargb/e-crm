@@ -35,8 +35,8 @@ class TestimoniRequest extends FormRequest
         return [
             'required' => 'Please fill this field',
             'min' => 'Message is too short, please give us some details',
-            'exists' => 'Sorry your spk number is invalid',
-            'unique' => 'This Spk number has used',
+            'exists' => 'Sorry your Invoice number is invalid',
+            'unique' => 'This Invoice number has used',
         ];
     }
 }
