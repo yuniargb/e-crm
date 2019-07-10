@@ -1,5 +1,6 @@
 @extends('frontend.layout')
 @section('content')
+<div class="flash-message" data-title="Thank You" data-flashmessage="{{ Session::get('success') }}"></div>
 <!-- ***** Breadcrumb Area Start ***** -->
 <div class="breadcrumb-area">
     <div class="container h-100">

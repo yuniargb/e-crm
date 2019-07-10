@@ -84,10 +84,16 @@
                                 <li><a href="./portfolio.html">Promo</a></li>
                                 <li><a href="./about.html">About</a></li>
                                 <li><a href="/testimonial">Testimonial</a></li>
-                                <li><a href="#">Blog</a>
+                                <li><a href="#"><i class="fa fa-user"></i></a>
                                     <ul class="dropdown">
-                                        <li><a href="./blog.html">- Blog</a></li>
-                                        <li><a href="./single-blog.html">- Blog Details</a></li>
+                                        @if (Route::has('login'))
+                                        @auth('pelanggan')
+                                        <li><a href="/customer">My Account</a></li>
+                                        <li><a href="/customer/logout">Logout</a></li>
+                                        @else
+                                        <li><a href="/sign">Login</a></li>
+                                        @endauth
+                                        @endif
                                     </ul>
                                 </li>
                                 <li><a href="./contact.html">Contact</a></li>
@@ -207,6 +213,8 @@
     <script src="/fassets/js/uza.bundle.js"></script>
     <!-- Active js -->
     <script src="/fassets/js/default-assets/active.js"></script>
+    <!-- Sweet Alert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
     <!-- RateYo -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
     <!-- My Script -->

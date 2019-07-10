@@ -8,7 +8,7 @@ class Invoice extends Model
 {
     protected $primaryKey   = 'id';
     public $incrementing   = false;
-    protected $fillable     = ['id', 'tgl_inv', 'total_hrg', 'user_id'];
+    protected $fillable     = ['id', 'tgl_inv', 'total_hrg', 'pelanggan_id'];
 
     public function testimoni()
     {
@@ -16,7 +16,7 @@ class Invoice extends Model
     }
     public function pelanggan()
     {
-        return $this->belongsTo('App\Pelanggan', 'id');
+        return $this->belongsTo('App\Pelanggan', 'pelanggan_id');
     }
     public function peserta()
     {

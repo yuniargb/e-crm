@@ -17,7 +17,7 @@ class CreateInvoicesTable extends Migration
             $table->string('id')->primary();
             $table->date('tgl_inv');
             $table->unsignedInteger('total_hrg');
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('pelanggan_id');
             $table->timestamps();
         });
     }

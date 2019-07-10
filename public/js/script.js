@@ -1,5 +1,33 @@
 $(document).ready(function () {
 
+    // Swal
+    const flashMessage = $('.flash-message').data('flashmessage');
+    if (flashMessage) {
+        const title = $('.flash-message').data('title');
+        Swal.fire(
+            title,
+            flashMessage,
+            'success'
+        )
+    }
+
+    // Login and register
+    $('#SignUpForm').hide();
+    $('#SignUp').click(function (e) {
+        e.preventDefault();
+        $('#LoginForm').hide();
+        $('#SignUpForm').slideToggle('slow');
+        $('#LoginHeader').text('Sign-Up')
+    })
+
+    $('#LogIn').click(function (e) {
+        e.preventDefault();
+        $('#SignUpForm').hide();
+        $('#LoginForm').slideToggle('slow');
+        $('#LoginHeader').text('Sign-In')
+    });
+    // End login and register
+
     // Form Testimoni
     // Get Invoice
     $('#invoiceId').on('keyup', function () {

@@ -27,6 +27,24 @@ Route::prefix('tours')->group(function () {
     Route::get('/detil/{id}', 'FrontController@detiltours');
 });
 
+// Sign in pelanggan
+// Sign page
+Route::prefix('signin')->group(function () {
+    Route::get('/', 'Auth\LoginPelangganController@showLoginForm')->name('pelanggan.login');
+    Route::post('/', 'Auth\LoginPelangganController@login')->name('pelanggan.login.submit');
+});
+
+// Login google
+Route::get('sign/google', 'Auth\LoginPelangganController@redirectToProvider');
+Route::get('sign/google/callback', 'Auth\LoginPelangganController@handleProviderCallback');
+// End login google
+
+// User Frontend
+Route::prefix('customer')->group(function () {
+    Route::get('/', 'PelangganController@index')->name('pelanggan.dashboard');
+    Route::get('/logout', 'Auth\LoginPelangganController@logout')->name('pelanggan.logout');
+});
+
 // Link Halaman Dashboard Admin
 Route::get('/dashboard', function () {
     return view('backend.konten.dashboard');
@@ -76,3 +94,7 @@ Route::prefix('invoice')->group(function () {
     Route::post('/store', 'BackController@storeinvoice');
     Route::get('/cetak/{id}', 'BackController@cetakinvoice');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
