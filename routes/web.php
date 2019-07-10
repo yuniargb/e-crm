@@ -68,3 +68,14 @@ Route::prefix('invoice')->group(function () {
     Route::post('/store', 'BackController@storeinvoice');
     Route::get('/cetak/{id}', 'BackController@cetakinvoice');
 });
+//  Link Halaman Promosi Admin
+Route::prefix('promo')->group(function () {
+    Route::get('/', 'BackController@promosi');
+    Route::get('/tambah', 'BackController@tambahpromosi');
+    Route::post('/store', 'BackController@storepromosi');
+    Route::get('/hapus/{id}', 'BackController@deletepromosi');
+});
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

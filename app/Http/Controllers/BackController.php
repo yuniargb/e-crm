@@ -8,13 +8,17 @@ use App\Kategori;
 use App\Staf;
 use App\Paket;
 use App\Fasilitas;
+use App\Promo;
 use App\Invoice;
 use App\Peserta;
 use PDF;
+use Illuminate\Support\Facades\Mail;
 use Validator;
 use Storage;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Carbon;
 
 class BackController extends Controller
 {
@@ -315,7 +319,7 @@ class BackController extends Controller
         if ($request->hasFile('gambar')) {
             $ktg->gambar = $request->gambar;
         }
-        $ktg->kategori = $request->kategori;
+        $ktg->kategori_id = $request->kategori;
         $ktg->save();
 
         if ($request->fasilitas[0] != null) {
@@ -369,7 +373,7 @@ class BackController extends Controller
         $ktg->nama_paket = $request->nama_paket;
         $ktg->harga = $request->harga;
         $ktg->gambar = $newName;
-        $ktg->kategori = $request->kategori;
+        $ktg->kategori_id = $request->kategori;
         $ktg->save();
 
         $ftls = Paket::max('id');
@@ -472,4 +476,71 @@ class BackController extends Controller
         return redirect('/invoice')->with(['success' => 'New Category success added']);;
     }
     // End Invoice
+
+    // Promosi Admin
+    // List Promosi
+    public function promosi()
+    {
+        $promosi = Promo::with('paket')->get();
+        return view('backend.konten.promosi.index', compact('promosi'));
+    }
+
+    // tampil form tambah
+    public function tambahPromosi()
+    {
+        $paket = DB::table('pakets')
+            ->leftJoin('promos', 'promos.paket_id', '=', 'pakets.id')
+            ->where('promos.id', '=', null)
+            ->groupBy()
+            ->select('pakets.id', 'pakets.nama_paket', 'pakets.harga')
+            ->get();
+        return view('backend.konten.promosi.tambahpromosi', compact('paket'));
+    }
+
+    // tambah promosi
+    public function storePromosi(Request $request)
+    {
+        $rules = [
+            'mulai' => 'required',
+            'akhir' => 'required',
+            'paket' => 'required',
+            'diskon' => 'required',
+        ];
+
+        $message = [
+            'required' => 'Please fill this field',
+        ];
+
+        $this->validate($request, $rules, $message);
+
+        $ktg = new Promo;
+
+        $ktg->diskon = $request->diskon;
+        $ktg->tgl_mulai = $request->mulai;
+        $ktg->tgl_selesai = $request->akhir;
+        $ktg->paket_id = $request->paket;
+
+        $ktg->save();
+
+        $plg = Pelanggan::all();
+        foreach ($plg as $p) {
+            Mail::send('backend.konten.promosi.email', ['p' => $p], function ($mail) use ($p) {
+                $mail->to($p->email)
+                    ->from('dodirestiadi97@gmail.com', 'Mika Travel Indonesia')
+                    ->subject('New Promo');
+            });
+        }
+
+        Session::flash('success', 'New Promo success added');
+        return redirect('/promo')->with(['success' => 'New Promo success added']);;
+    }
+    // hapus promosi
+    public function deletePromosi($id)
+    {
+        $ktg = Promo::find($id);
+        $ktg->delete();
+        Session::flash('success', 'Promo success deleted');
+        return redirect('/promo');
+    }
+    // End Promosi Admin
 }

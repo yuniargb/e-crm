@@ -20,7 +20,7 @@ class Paket extends Model
 
     public function categori()
     {
-        return $this->belongsTo('App\Kategori', 'kategori');
+        return $this->belongsTo('App\Kategori', 'kategori_id');
     }
     public function peserta()
     {

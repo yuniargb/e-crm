@@ -16,7 +16,7 @@ class Invoice extends Model
     }
     public function pelanggan()
     {
-        return $this->belongsTo('App\Pelanggan', 'id');
+        return $this->belongsTo('App\Pelanggan', 'user_id');
     }
     public function peserta()
     {

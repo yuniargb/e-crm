@@ -168,6 +168,19 @@
                 </div>
             `)
         })
+        $('#diskon').on('keyup', function() {
+            var diskon = $(this).val();
+            if (diskon == "") {
+                var hasil = 0;
+            } else {
+                var harga = +$('#paket').find(':selected').data("harga");
+
+                var hasil = (harga * diskon) / 100;
+                var total = harga - hasil;
+            }
+
+            $('#hrg_diskon').val(total);
+        })
     })
 
     function total() {
