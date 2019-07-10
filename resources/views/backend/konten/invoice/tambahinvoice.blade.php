@@ -5,7 +5,7 @@
         <!-- <h4>Add kategori</h4> -->
     </div>
 </div>
-<div class="col-md-8">
+<div class="col-md-12">
     <div class="card">
         <div class="card-header">
             <div class="row">
@@ -26,6 +26,7 @@
                     <label for="namakategori" class="col-xs-2 col-form-label form-control-label">Pelanggan</label>
                     <div class="col-sm-10">
                         <select class="js-example-theme-single select2-hidden-accessible form-control" tabindex="-1" aria-hidden="true" name="pelanggan">
+                            <option value="">PILIH PELANGGAN</option>
                             @foreach($pelanggan as $kat)
                             <option value="{{ $kat->id }}" {{ old('pelanggan') == $kat->id ? 'selected' : '' }}>{{ $kat->nama_pelanggan }}</option>
                             @endforeach
@@ -47,9 +48,19 @@
                 <div class="form-group row">
                     <label for="namakategori" class="col-xs-2 col-form-label form-control-label">Paket</label>
                     <div class="col-sm-5">
-                        <select class="js-example-theme-single select2-hidden-accessible form-control mb-3" tabindex="-1" aria-hidden="true" id="paket" name="paket">
+                        <select class="js-example-theme-single select2-hidden-accessible form-control" tabindex="-1" aria-hidden="true" id="paket" name="paket">
                             @foreach($paket as $kat)
-                            <option data-harga="{{ $kat->harga }}" data-paket="{{ $kat->nama_paket }}" value="{{ $kat->id }}" {{ old('paket') == $kat->id ? 'selected' : '' }}>{{ $kat->nama_paket }}</option>
+                            @php
+                            if($kat->diskon != null){
+                            $hasil = ($kat->harga * $kat->diskon) / 100;
+                            $harga = $kat->harga - $hasil;
+                            $paket = $kat->nama_paket ." (". $kat->diskon ."%)";
+                            }else{
+                            $harga = $kat->harga;
+                            $paket = $kat->nama_paket;
+                            }
+                            @endphp
+                            <option data-harga="{{ $harga }}" data-paket="{{ $paket }}" value="{{ $kat->id }}" {{ old('paket') == $kat->id ? 'selected' : '' }}>{{ $paket }}</option>
                             @endforeach
                         </select>
                         <small class="text-danger">{{ $errors->first('paket') }}</small>

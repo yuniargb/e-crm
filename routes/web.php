@@ -101,6 +101,12 @@ Route::prefix('promo')->group(function () {
     Route::post('/store', 'BackController@storepromosi');
     Route::get('/hapus/{id}', 'BackController@deletepromosi');
 });
+//  Link Halaman Testimoni Admin
+Route::prefix('testimoni')->group(function () {
+    Route::get('/', 'BackController@testimoni');
+    Route::get('/publish/{id}', 'BackController@publish');
+    Route::get('/unpublish/{id}', 'BackController@unpublish');
+});
 
 Auth::routes();
 

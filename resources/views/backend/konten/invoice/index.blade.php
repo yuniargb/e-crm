@@ -27,6 +27,7 @@
         <thead>
             <tr>
                 <th>No</th>
+                <th>Kode Invoice</th>
                 <th>Tanggal Pesan</th>
                 <th>Total Harga</th>
                 <th>Pelanggan</th>
@@ -38,6 +39,7 @@
             @foreach($invoice as $ktg)
             <tr>
                 <td>{{ $no++ }}</td>
+                <td>{{ $ktg->id }}</td>
                 <td>{{ date('d-m-Y', strtotime($ktg->tgl_inv)) }}</td>
                 <td>{{ $ktg->total_hrg }}</td>
                 <td>{{ $ktg->pelanggan['nama_pelanggan'] }}</td>

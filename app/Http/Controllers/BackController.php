@@ -12,13 +12,14 @@ use App\Promo;
 use App\Invoice;
 use App\Peserta;
 use PDF;
-use Illuminate\Support\Facades\Mail;
 use Validator;
 use Storage;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Carbon;
+use App\Testimoni;
 
 class BackController extends Controller
 {
@@ -419,7 +420,8 @@ class BackController extends Controller
     // tampil form tambah
     public function tambahInvoice()
     {
-        $paket = Paket::all();
+        $tgl = date('Y-m-d');
+        $paket = DB::select("select p.harga,p.nama_paket,p.id,ps.diskon from pakets p left join (select * from promos where tgl_selesai >= '" . $tgl . "' and tgl_mulai <= '" . $tgl . "') ps ON p.id=ps.paket_id ");
         $pelanggan = Pelanggan::all();
         return view('backend.konten.invoice.tambahinvoice', compact('paket', 'pelanggan'));
     }
@@ -428,7 +430,8 @@ class BackController extends Controller
     public function cetakInvoice($id)
     {
         $invoice = Invoice::with('pelanggan')->where('id', $id)->first();
-        $peserta = Peserta::with('paket')->where('invoice_id', $id)->get();
+        $tgl = Invoice::find($id);
+        $peserta = DB::select("select r.no_dukumen,r.nama_peserta,r.tgl_berangkat,p.harga,p.nama_paket,p.id,ps.diskon from pesertas r inner join pakets p on r.paket_id=p.id left join (select * from promos where tgl_selesai >= '" . $tgl->tgl_inv . "' and tgl_mulai <= '" . $tgl->tgl_inv . "') ps ON p.id=ps.paket_id ");
         $pdf = PDF::loadView('backend.konten.invoice.cetakinvoice', compact('invoice', 'peserta'));
         // $pdf = PDF::loadView('backend.konten.invoice.cetakinvoice', compact('invoice', 'peserta'));
         // return $pdf->download('kwitansi_invoice_' . date('Y-m-d_H-i-s') . '.pdf');
@@ -455,7 +458,7 @@ class BackController extends Controller
 
         $ktg->tgl_inv = date('Y-m-d');
         $ktg->total_hrg = $request->totals;
-        $ktg->user_id = $request->pelanggan;
+        $ktg->pelanggan_id = $request->pelanggan;
         $ktg->id = $id;
 
         $ktg->save();
@@ -491,6 +494,7 @@ class BackController extends Controller
         $paket = DB::table('pakets')
             ->leftJoin('promos', 'promos.paket_id', '=', 'pakets.id')
             ->where('promos.id', '=', null)
+            ->orWhere('promos.tgl_selesai', '<=', date('Y-m-d'))
             ->groupBy()
             ->select('pakets.id', 'pakets.nama_paket', 'pakets.harga')
             ->get();
@@ -522,11 +526,17 @@ class BackController extends Controller
 
         $ktg->save();
 
+        $ket = Paket::find($request->paket);
+        $dis = array(
+            'diskon' => $request->diskon,
+            'akhir' => $request->akhir,
+            'paket' => $ket->nama_paket
+        );
         $plg = Pelanggan::all();
         foreach ($plg as $p) {
-            Mail::send('backend.konten.promosi.email', ['p' => $p], function ($mail) use ($p) {
+            Mail::send('backend.konten.promosi.email', $dis, function ($mail) use ($p) {
                 $mail->to($p->email)
-                    ->from('dodirestiadi97@gmail.com', 'Mika Travel Indonesia')
+                    ->from('drs.co.store@gmail.com', 'Mika Travel Indonesia')
                     ->subject('New Promo');
             });
         }
@@ -543,4 +553,32 @@ class BackController extends Controller
         return redirect('/promo');
     }
     // End Promosi Admin
+
+
+
+    // Testimoni
+    // List Testimoni
+    public function testimoni()
+    {
+        $testimoni = Testimoni::all();
+        return view('backend.konten.testimoni.index', compact('testimoni'));
+    }
+    // Publish Testimoni
+    public function publish($id)
+    {
+        $ktg = Testimoni::find($id);
+        $ktg->publish = 1;
+        $ktg->save();
+        Session::flash('success', 'Testimoni success publish');
+        return redirect('/testimoni');
+    }
+    public function unpublish($id)
+    {
+        $ktg = Testimoni::find($id);
+        $ktg->publish = 0;
+        $ktg->save();
+        Session::flash('success', 'Testimoni success unpublish');
+        return redirect('/testimoni');
+    }
+    // End Testimoni Admin
 }
