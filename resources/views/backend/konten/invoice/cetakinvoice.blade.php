@@ -174,13 +174,23 @@
                 $no = 1;
                 $total = 0;
                 @endphp
-                @foreach($peserta as $p)
+                @foreach ($peserta as $p)
+                @php
+                if ($p->diskon != null) {
+                $hasil = ($p->harga * $p->diskon) / 100;
+                $harga = $p->harga - $hasil;
+                $paket = "/" . $p->diskon . "%";
+                } else {
+                $harga = $p->harga;
+                $paket = "";
+                }
+                @endphp
                 <tr>
                     <td>{{ $no }}</td>
                     <td>{{ $p->no_dukumen }}</td>
                     <td>{{ $p->nama_peserta }}</td>
-                    <td>{{ $p->paket['id'].'/'.date('d-M-Y', strtotime($p->tgl_berangkat)) }}</td>
-                    <td>{{$p->paket['harga']}}</td>
+                    <td>{{ $p->id }}/{{ date('d-M-Y', strtotime($p->tgl_berangkat)) }}{{ $paket }}</td>
+                    <td>{{ number_format($harga,0,",",".") }}</td>
                 </tr>
                 @php
                 $no++;
@@ -190,7 +200,7 @@
             <tfoot>
                 <tr>
                     <th align="center" colspan="4">TOTAL</th>
-                    <th>{{ $invoice->total_hrg }}</th>
+                    <th>{{ number_format($invoice->total_hrg,0,",",".") }}</th>
                 </tr>
             </tfoot>
         </table>
