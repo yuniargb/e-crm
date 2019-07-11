@@ -15,19 +15,14 @@
 </div>
 <!-- Row end -->
 <div class="bg-cus container-fluid">
-    @if ($message = Session::get('success'))
-    <div class="alert alert-success alert-block">
-        <button type="button" class="close" data-dismiss="alert">×</button>
-        <strong>{{ $message }}</strong>
-    </div>
-    @endif
+    <div class="flash-message" data-title="Thank You" data-flashmessage="{{ Session::get('success') }}"></div>
     <a href="/invoice/tambah" class="btn btn-primary mb-3">Tambah Invoice</a>
     <hr>
     <table id="example" class="table table-striped table-bordered" style="width:100%">
         <thead>
             <tr>
                 <th>No</th>
-                <th>Kode Invoice</th>
+                <th>No Invoice</th>
                 <th>Tanggal Pesan</th>
                 <th>Total Harga</th>
                 <th>Pelanggan</th>
@@ -44,7 +39,7 @@
                 <td>{{ number_format($ktg->total_hrg,0,",",".") }}</td>
                 <td>{{ $ktg->pelanggan['nama_pelanggan'] }}</td>
                 <td>
-                    <a href="/invoice/cetak/{{ $ktg->id }}" target="_blank" class="btn btn-primary waves-effect" data-toggle="tooltip" data-placement="top" title="edit"><i class="icofont icofont-print"></i>
+                    <a href="/invoice/cetak/{{ $ktg->id }}" target="_blank" class="btn btn-primary waves-effect" data-toggle="tooltip" data-placement="top" title="print"><i class="icofont icofont-print"></i>
                     </a>
                 </td>
             </tr>

@@ -15,12 +15,7 @@
 </div>
 <!-- Row end -->
 <div class="bg-cus container-fluid">
-    @if ($message = Session::get('success'))
-    <div class="alert alert-success alert-block">
-        <button type="button" class="close" data-dismiss="alert">×</button>
-        <strong>{{ $message }}</strong>
-    </div>
-    @endif
+    <div class="flash-message" data-title="Thank You" data-flashmessage="{{ Session::get('success') }}"></div>
     <a href="/pelanggan/tambah" class="btn btn-primary mb-3">Tambah Pelanggan</a>
     <hr>
     <table id="example" class="table table-striped table-bordered" style="width:100%">

@@ -7,8 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Invoice extends Model
 {
     protected $primaryKey   = 'id';
-    public $incrementing   = false;
+    protected $keyType      = 'string';
     protected $fillable     = ['id', 'tgl_inv', 'total_hrg', 'pelanggan_id'];
+    public $incrementing    = false;
 
     public function testimoni()
     {

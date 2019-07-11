@@ -3,9 +3,8 @@ $(document).ready(function () {
     // Swal
     const flashMessage = $('.flash-message').data('flashmessage');
     if (flashMessage) {
-        const title = $('.flash-message').data('title');
         Swal.fire(
-            title,
+            'success',
             flashMessage,
             'success'
         )

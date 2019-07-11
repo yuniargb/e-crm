@@ -28,7 +28,11 @@
                         <select class="js-example-theme-single select2-hidden-accessible form-control" tabindex="-1" aria-hidden="true" name="pelanggan">
                             <option value="">PILIH PELANGGAN</option>
                             @foreach($pelanggan as $kat)
-                            <option value="{{ $kat->id }}" {{ old('pelanggan') == $kat->id ? 'selected' : '' }}>{{ $kat->nama_pelanggan }}</option>
+                            @if(old('pelanggan') == $kat->id)
+                            <option value="{{ $kat->id }}" selected>{{ $kat->nama_pelanggan }}</option>
+                            @else
+                            <option value="{{ $kat->id }}">{{ $kat->nama_pelanggan }}</option>
+                            @endif
                             @endforeach
                         </select>
                         <small class="text-danger">{{ $errors->first('pelanggan') }}</small>

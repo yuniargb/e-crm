@@ -2,9 +2,9 @@
     <section class="sidebar" id="sidebar-scroll">
 
         <div class="user-panel">
-            <div class="f-left image"><img src="assets/images/avatar-1.png" alt="User Image" class="img-circle"></div>
+            <div class="f-left image"><img src="/assets/images/avatar-1.png" alt="User Image" class="img-circle"></div>
             <div class="f-left info">
-                <p>John Doe</p>
+                <p>{{ Auth::user()->nama_staf }}</p>
                 <p class="designation">UX Designer <i class="icofont icofont-caret-down m-l-5"></i></p>
             </div>
         </div>
@@ -48,33 +48,33 @@
                 </a>
             </li>
             <li class="treeview">
-                <a class="waves-effect waves-dark" href="/staf">
-                    <i class="icofont icofont-user-male"></i><span> Staf</span>
-                </a>
-            </li>
-            <li class="treeview">
                 <a class="waves-effect waves-dark" href="/kategori">
-                    <i class="icofont icofont-layers"></i><span> Kategori</span>
+                    <i class="icofont icofont-navigation-menu"></i><span> Kategori</span>
                 </a>
             </li>
             <li class="treeview">
                 <a class="waves-effect waves-dark" href="/paket">
-                    <i class="icon-list"></i><span> Paket</span>
+                    <i class="icofont icofont-ticket"></i><span> Tours Package</span>
                 </a>
             </li>
             <li class="treeview">
                 <a class="waves-effect waves-dark" href="/invoice">
-                    <i class="icon-list"></i><span> Invoice</span>
+                    <i class="icofont icofont-papers"></i><span> Invoice</span>
                 </a>
             </li>
             <li class="treeview">
                 <a class="waves-effect waves-dark" href="/testimoni">
-                    <i class="icon-list"></i><span> Testimoni</span>
+                    <i class="icofont icofont-star"></i><span> Testimoni</span>
                 </a>
             </li>
             <li class="treeview">
                 <a class="waves-effect waves-dark" href="/promo">
-                    <i class="icon-list"></i><span> Promo</span>
+                    <i class="icofont icofont-megaphone-alt"></i><span> Promo</span>
+                </a>
+            </li>
+            <li class="treeview">
+                <a class="waves-effect waves-dark" href="/staf">
+                    <i class="icofont icofont-user-male"></i><span> Staf</span>
                 </a>
             </li>
         </ul>

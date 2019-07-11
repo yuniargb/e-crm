@@ -15,12 +15,7 @@
 </div>
 <!-- Row end -->
 <div class="bg-cus container-fluid">
-    @if ($message = Session::get('success'))
-    <div class="alert alert-success alert-block">
-        <button type="button" class="close" data-dismiss="alert">×</button>
-        <strong>{{ $message }}</strong>
-    </div>
-    @endif
+    <div class="flash-message" data-title="Thank You" data-flashmessage="{{ Session::get('success') }}"></div>
     <a href="/promo/tambah" class="btn btn-primary mb-3">Tambah Promo</a>
     <hr>
     <table id="example" class="table table-striped table-bordered" style="width:100%">
@@ -44,7 +39,7 @@
                 <td>{{ date('d-m-Y', strtotime($ktg->tgl_selesai)) }}</td>
                 <td>{{ $ktg->paket['nama_paket'] }}</td>
                 <td>
-                    <a href="/promo/hapus/{{ $ktg->id }}" class="btn btn-danger waves-effect" data-toggle="tooltip" data-placement="top" title="edit"><i class="icofont icofont-trash"></i>
+                    <a href="/promo/hapus/{{ $ktg->id }}" class="btn btn-danger waves-effect btn-del" data-toggle="tooltip" data-placement="top" title="delete"><i class="icofont icofont-trash"></i>
                     </a>
                 </td>
             </tr>
