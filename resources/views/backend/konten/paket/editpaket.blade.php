@@ -49,7 +49,7 @@
                     <div class="form-group row">
                         <label for="username" class="col-xs-2 col-form-label form-control-label">Kategori</label>
                         <div class="col-sm-10">
-                            <select class="js-example-theme-single select2-hidden-accessible form-control" tabindex="-1" aria-hidden="true" name="kategori">
+                            <select class="js-example-basic-single form-control" name="kategori">
                                 @foreach($kategori as $kat)
                                 <option value="{{ $kat->id }}" {{ $ktg->kategori == $kat->id ? 'selected' : '' }}>{{ $kat->nama_kategori }}</option>
                                 @endforeach
@@ -80,7 +80,7 @@
                             <div class="col-sm-2"></div>
                             <div class="col-sm-8">
                                 <input class="form-control" type="hidden" name="idfasilitass[]" value="{{ $kt->id }}">
-                                <input class="form-control {{ $errors->has('fasilitass') ? 'input-danger' : '' }}" type="text" id="fasilitas" name="fasilitass[]" value="{{ $kt->nama_fasilitas }}">
+                                <input class="form-control {{ $errors->has('fasilitass') ? 'input-danger' : '' }}" type="text" id="fasilitas" name="fasilitass[]" value="{{ $kt->nama_fasilitas }}" required>
                                 <small class="text-danger">{{ $errors->first('fasilitass') }}</small>
                             </div>
                             <div class="col-sm-2">

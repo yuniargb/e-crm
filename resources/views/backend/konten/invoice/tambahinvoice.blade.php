@@ -25,7 +25,7 @@
                 <div class="form-group row">
                     <label for="namakategori" class="col-xs-2 col-form-label form-control-label">Pelanggan</label>
                     <div class="col-sm-10">
-                        <select class="js-example-theme-single select2-hidden-accessible form-control" tabindex="-1" aria-hidden="true" name="pelanggan">
+                        <select class="js-example-basic-single form-control" name="pelanggan">
                             <option value="">PILIH PELANGGAN</option>
                             @foreach($pelanggan as $kat)
                             @if(old('pelanggan') == $kat->id)
@@ -52,7 +52,7 @@
                 <div class="form-group row">
                     <label for="namakategori" class="col-xs-2 col-form-label form-control-label">Paket</label>
                     <div class="col-sm-5">
-                        <select class="js-example-theme-single select2-hidden-accessible form-control" tabindex="-1" aria-hidden="true" id="paket" name="paket">
+                        <select class="js-example-basic-single form-control" id="paket" name="paket">
                             @foreach($paket as $kat)
                             @php
                             if($kat->diskon != null){

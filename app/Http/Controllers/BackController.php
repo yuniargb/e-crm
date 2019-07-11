@@ -20,9 +20,11 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Carbon;
 use App\Testimoni;
+use Illuminate\Support\Facades\Auth;
 
 class BackController extends Controller
 {
+    private $chat;
     public function __construct()
     {
         $this->middleware('auth:staf');
@@ -600,4 +602,27 @@ class BackController extends Controller
         Session::flash('success', 'Testimoni success deleted');
         return redirect('/testimoni');
     }
+    // end testimoni
+
+
+    // komplain
+    // get notif dan nama
+    public function komplain()
+    {
+        $id = auth()->user()->id;
+        // $komplain = DB::Select("SELECT * from komplains k INNER JOIN detail_komplains dk ON k.id=dk.komplain_id LEFT JOIN stafs s ON k.staf_id=s.id WHERE k.solved=0 AND k.staf_id = null OR k.staf_id='" . $id . "'");
+        $komplain = DB::Select("SELECT * from komplains k INNER JOIN invoices i ON k.invoice_id=i.id INNER JOIN pelanggans p ON i.pelanggan_id=p.id LEFT JOIN stafs s ON k.staf_id=s.id WHERE k.solved=0 AND k.staf_id = null OR k.staf_id='1'");
+        // $komplain = DB::Select("SELECT * from komplains k INNER JOIN invoices i ON k.invoice_id=i.id INNER JOIN pelanggans p ON i.pelanggan_id=p.id LEFT JOIN stafs s ON k.staf_id=s.id WHERE k.solved=0 AND k.staf_id = null OR k.staf_id='" . $id . "'");
+
+        return json_encode($komplain);
+    }
+    public function pesan($id)
+    {
+        $pesan = DB::Select("SELECT * from komplains k INNER JOIN detail_komplains dk ON k.id=dk.komplain_id INNER JOIN stafs s ON k.staf_id=s.id INNER JOIN invoices i ON k.invoice_id=i.id WHERE i.id='" . $id . "'");
+        // $komplain = DB::Select("SELECT * from komplains k INNER JOIN invoices i ON k.invoice_id=i.id INNER JOIN pelanggans p ON i.pelanggan_id=p.id LEFT JOIN stafs s ON k.staf_id=s.id WHERE k.solved=0 AND k.staf_id = null OR k.staf_id= '  1'");
+        // $komplain = DB::Select("SELECT * from komplains k INNER JOIN invoices i ON k.invoice_id=i.id INNER JOIN pelanggans p ON i.pelanggan_id=p.id LEFT JOIN stafs s ON k.staf_id=s.id WHERE k.solved=0 AND k.staf_id = null OR k.staf_id=  '" . $id . "'");
+
+        return json_encode($pesan);
+    }
+    // end complain
 }

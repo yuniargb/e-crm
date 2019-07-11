@@ -39,7 +39,7 @@
                 <div class="form-group row">
                     <label for="namakategori" class="col-xs-2 col-form-label form-control-label">Paket</label>
                     <div class="col-sm-10">
-                        <select class="js-example-theme-single select2-hidden-accessible form-control mb-3" tabindex="-1" aria-hidden="true" id="paket" name="paket">
+                        <select class="js-example-basic-single form-control" id="paket" name="paket">
                             @foreach($paket as $kat)
                             <option data-harga="{{ $kat->harga }}" data-paket="{{ $kat->nama_paket }}" value="{{ $kat->id }}" {{ old('paket') == $kat->id ? 'selected' : '' }}>{{ $kat->nama_paket }}</option>
                             @endforeach

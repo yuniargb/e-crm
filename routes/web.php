@@ -116,6 +116,12 @@ Route::prefix('testimoni')->group(function () {
     Route::get('/unpublish/{id}', 'BackController@unpublishtestimoni');
     Route::get('/delete/{id}', 'BackController@deletetestimoni');
 });
+Route::prefix('komplain')->group(function () {
+    Route::get('/', 'BackController@komplain');
+    Route::get('/pesan/{id}', 'BackController@pesan');
+    Route::get('/unpublish/{id}', 'BackController@unpublishtestimoni');
+    Route::get('/delete/{id}', 'BackController@deletetestimoni');
+});
 
 Auth::routes();
 

@@ -68,7 +68,7 @@ $(document).ready(function () {
     });
 
     // search
-    $("#search-friends").on("keyup", function () {
+    $(document).on("keyup", "#search-friends", function () {
 
         var g = $(this).val().toLowerCase();
         $(".friendlist-box .media-body .friend-header").each(function () {
@@ -79,7 +79,7 @@ $(document).ready(function () {
     });
 
     // open chat box
-    $('.displayChatbox').on('click', function () {
+    $(document).on('click', '.displayChatbox', function () {
 
         var options = {
             direction: 'right'
@@ -87,16 +87,61 @@ $(document).ready(function () {
         $('.showChat').toggle('slide', options, 500);
     });
     //open friend chat
-    $('.friendlist-box').on('click', function () {
+    $(document).on('click', '.friendlist-box', function () {
 
+        var invoice = $(this).data('invoice');
 
         var options = {
             direction: 'right'
         };
         $('.showChat_inner').toggle('slide', options, 500);
+
+        $.getJSON('/komplain/pesan/' + invoice, function (data) {
+            var html = "";
+            $.each(data, function (index, e) {
+                if (e.sender.substr(0, 6) == "STD01-") {
+                    html += `
+                    <div class="media chat-messages">
+                        <a class="media-left photo-table" href="#!">
+                            <img class="media-object img-circle m-t-5" src="assets/images/avatar-1.png" alt="Generic placeholder image">
+                            <div class="live-status bg-success"></div>
+                        </a>
+                        <div class="media-body chat-menu-content">
+                            <div class="">
+                                <p class="chat-cont">` + e.pesan + `</p>
+                                <p class="chat-time">8:20 a.m.</p>
+                            </div>
+                        </div>
+                    </div>
+                    `;
+                    console.log('pelanggan')
+                } else {
+                    html += `
+                    <div class="media chat-messages">
+                        <div class="media-body chat-menu-reply">
+                            <div class="">
+                                <p class="chat-cont">` + e.pesan + `</p>
+                                <p class="chat-time">8:20 a.m.</p>
+                            </div>
+                        </div>
+                        <div class="media-right photo-table">
+                            <a href="#!">
+                                <img class="media-object img-circle m-t-5" src="assets/images/avatar-2.png" alt="Generic placeholder image">
+                                <div class="live-status bg-success"></div>
+                            </a>
+                        </div>
+                    </div>
+                    `;
+                    console.log('admin')
+                }
+            })
+            $('#kotakChat').html(html);
+
+        })
+
     });
     //back to main chatbar
-    $('.back_chatBox').on('click', function () {
+    $(document).on('click', '.back_chatBox', function () {
         var options = {
             direction: 'right'
         };
