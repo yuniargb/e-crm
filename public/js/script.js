@@ -1,4 +1,9 @@
 $(document).ready(function () {
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
 
     // Swal
     const flashMessage = $('.flash-message').data('flashmessage');
@@ -9,6 +14,47 @@ $(document).ready(function () {
             'success'
         )
     }
+
+
+    // chat
+    $('#btnChat').on('click', function () {
+        let btnVal = $(this);
+        $('#chatDiv').slideToggle('slow', function () {
+            const chatSesi = $('#sesi-chat').data('sesichat');
+            if (chatSesi) {
+                $('#valid').slideToggle('slow');
+            } else {
+                $('#invalid').show();
+                $('#idInvoice').on('keyup', function (e) {
+                    if (e.which == 13) {
+                        var invId = $(this).val();
+                        $.ajax({
+                            type: 'get',
+                            url: '/chat/getinvoice/' + invId,
+                            success: function (data) {
+                                if (data) {
+                                    $('#invalid').hide();
+                                    $('#valid').slideToggle();
+                                    var objId = JSON.parse(data);
+                                    $('#sesi-chat').data('sesichat', objId.id);
+                                    chat();
+                                } else {
+                                    $('#idInvoice').addClass('invalid-chat');
+                                }
+                            }
+                        })
+                    }
+                })
+            }
+        });
+        if ($(this).is(':visible')) {
+            $("i", btnVal).toggleClass("fa-headphones fa-times");
+        } else {
+            $("i", btnVal).toggleClass("fa-times fa-headphones");
+        }
+    })
+
+    chat();
 
     // Login and register
     $('#SignUpForm').hide();
@@ -71,3 +117,43 @@ $(document).ready(function () {
     });
     // End Testimoni
 })
+
+function chat() {
+    const sesiChat = $('#sesi-chat').data('sesichat');
+
+    if (sesiChat) {
+        // load chat
+        $.get('/chat/' + sesiChat, function (data) {
+            $('#viewChat').html(data);
+        });
+        $('#chatIdInvoice').val(sesiChat);
+        $('#chatMessage').focus();
+
+        // sending chat
+        $('#formChat').on('submit', function (e) {
+            e.preventDefault();
+            let id = $('#chatIdInvoice').val();
+            let chat = $('#chatMessage').val();
+            let url = $(this).attr('action');
+            if (chat === "") {
+                $('#chatMessage').addClass('invalid-chat');
+            } else {
+                $('#chatMessage').removeClass('invalid-chat');
+                $.ajax({
+                    type: 'post',
+                    url: url,
+                    data: {
+                        invoiceId: id,
+                        message: chat
+                    },
+                    success: function () {
+                        $('#chatMessage').val('');
+                        $.get('/chat/' + sesiChat, function (data) {
+                            $('#viewChat').html(data);
+                        });
+                    }
+                });
+            }
+        });
+    }
+}

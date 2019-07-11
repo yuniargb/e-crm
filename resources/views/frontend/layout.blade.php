@@ -6,6 +6,7 @@
     <meta name="description" content="uza - Model Agency HTML5 Template">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
 
     <!-- Title -->
     <title>Mika Tour</title>
@@ -21,6 +22,7 @@
 
     <!-- RateYo CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
+
 
 </head>
 
@@ -91,7 +93,7 @@
                                         <li><a href="/customer">My Account</a></li>
                                         <li><a href="/customer/logout">Logout</a></li>
                                         @else
-                                        <li><a href="/sign">Login</a></li>
+                                        <li><a href="/signin">Login</a></li>
                                         @endauth
                                         @endif
                                     </ul>
@@ -200,6 +202,29 @@
             </div>
         </div>
     </footer>
+
+    <div id="chatDiv" class="card">
+        <div class="card-body">
+            @php $sesi = session()->get('chat') @endphp
+            <div id="sesi-chat" data-sesichat="{{ Session::get('chat') }}"></div>
+            <h3 class="text-center">Mika Tour Support</h3>
+            <hr>
+            <div id="valid">
+                <div id="viewChat">
+                </div>
+                <form action="/chat/send" id="formChat" method="post">
+                    @csrf
+                    <input type="text" id="chatIdInvoice">
+                    <input type="text" name="chat" id="chatMessage" class="form-control" placeholder="Write a message..">
+                    <button type="submit">send</button>
+                </form>
+            </div>
+            <div id="invalid">
+                <input type="text" id="idInvoice" class="form-control" placeholder="Invoice Number">
+            </div>
+        </div>
+    </div>
+    <button class="btn btn-primary btn-round" id="btnChat"><i class="fa fa-headphones fa-10x"></i></button>
     <!-- ***** Footer Area End ***** -->
 
     <!-- ******* All JS Files ******* -->
@@ -218,7 +243,7 @@
     <!-- RateYo -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
     <!-- My Script -->
-    <script src="/js/script.js?v=1.0"></script>
+    <script src="/js/script.js?v=1.1"></script>
     <!-- Laravel Javascript Validation -->
     <script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
     {!! JsValidator::formRequest('App\Http\Requests\TestimoniRequest', '#testimoniForm'); !!}

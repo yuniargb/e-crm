@@ -27,6 +27,13 @@ Route::prefix('tours')->group(function () {
     Route::get('/detil/{id}', 'FrontController@detiltours');
 });
 
+// Chat
+Route::prefix('chat')->group(function () {
+    Route::get('/{id}', 'FrontController@chat');
+    Route::get('/getinvoice/{id}', 'FrontController@getinv');
+    Route::post('/send', 'FrontController@chatsend');
+});
+
 // Sign in pelanggan
 // Sign page
 Route::prefix('signin')->group(function () {
@@ -52,11 +59,6 @@ Route::prefix('admin')->group(function () {
     Route::get('/', 'BackController@index')->name('staf.dashboard');
     Route::get('/logout', 'Auth\LoginStafController@stafLogout')->name('staf.logout');
 });
-
-// Link Halaman Dashboard Admin
-// Route::get('/dashboard', function () {
-//     return view('backend.konten.dashboard');
-// });
 
 // link Halaman Pelanggan Admin
 Route::prefix('pelanggan')->group(function () {

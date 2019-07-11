@@ -15,7 +15,8 @@ class CreateDetailKomplainsTable extends Migration
     {
         Schema::create('detail_komplains', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('sender',50);
+            $table->unsignedBigInteger('keluhan_id');
+            $table->string('sender', 50);
             $table->boolean('read')->default(false);
             $table->text('pesan');
             $table->timestamps();
