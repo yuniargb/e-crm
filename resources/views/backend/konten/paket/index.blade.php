@@ -40,7 +40,7 @@
             <tr>
                 <td>{{ $no++ }}</td>
                 <td>{{ $ktg->nama_paket }}</td>
-                <td>{{ $ktg->harga }}</td>
+                <td>{{ number_format($ktg->harga,0,",",".") }}</td>
                 <td>{{ $ktg->categori['nama_kategori'] }}</td>
                 <td><img src="/images/paket/{{ $ktg->gambar }}" alt="" class="img-fluid" width="100"></td>
                 <td>

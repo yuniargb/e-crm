@@ -63,8 +63,7 @@
 <script src="/assets/plugins/datepicker/js/moment-with-locales.min.js"></script>
 <script src="/assets/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
 
-<!-- Select 2 js -->
-<script src="/assets/plugins/select2/dist/js/select2.full.min.js"></script>
+
 
 <!-- Max-Length js -->
 <script src="/assets/plugins/bootstrap-maxlength/src/bootstrap-maxlength.js"></script>
@@ -74,8 +73,6 @@
 <script src="/assets/plugins/multiselect/js/jquery.multi-select.js"></script>
 <script type="text/javascript" src="/assets/plugins/multi-select/js/jquery.quicksearch.js"></script>
 
-<!-- Tags js -->
-<script src="/assets/plugins/bootstrap-tagsinput/dist/bootstrap-tagsinput.js"></script>
 
 <!-- Bootstrap Datepicker js -->
 <script type="text/javascript" src="/assets/plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
@@ -84,22 +81,13 @@
 <!-- bootstrap range picker -->
 <script type="text/javascript" src="/assets/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
 
-<!-- color picker -->
-<script type="text/javascript" src="/assets/plugins/spectrum/spectrum.js"></script>
-<script type="text/javascript" src="/assets/plugins/jscolor/jscolor.js"></script>
 
-<!-- highlite js -->
-<script type="text/javascript" src="/assets/plugins/syntaxhighlighter/scripts/shCore.js"></script>
-<script type="text/javascript" src="/assets/plugins/syntaxhighlighter/scripts/shBrushJScript.js"></script>
-<script type="text/javascript" src="/assets/plugins/syntaxhighlighter/scripts/shBrushXml.js"></script>
-<script type="text/javascript">
-    SyntaxHighlighter.all();
-</script>
 
 <!-- custom js -->
 <script type="text/javascript" src="/assets/js/main.min.js"></script>
+<script type="text/javascript" src="/assets/pages/elements.js"></script>
 <script type="text/javascript" src="/assets/pages/advance-form.js"></script>
-<script src="/assets/js/menu.min.js"></script>
+<script type="text/javascript" src="/assets/js/menu.min.js"></script>
 
 
 <!-- My Javascript -->
@@ -180,7 +168,7 @@
                 var harga = +$('#paket').find(':selected').data("harga");
 
                 var hasil = (harga * diskon) / 100;
-                var total = harga - hasil;
+                var total = angka(harga - hasil);
             }
 
             $('#hrg_diskon').val(total);

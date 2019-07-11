@@ -1,209 +1,767 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Neopolitan Invitation Email</title>
-    <!-- Designed by https://github.com/kaytcat -->
-    <!-- Robot header image designed by Freepik.com -->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width">
+<meta name="HandheldFriendly" content="true" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<!--[if gte IE 7]><html class="ie8plus" xmlns="http://www.w3.org/1999/xhtml"><![endif]-->
+<!--[if IEMobile]><html class="ie8plus" xmlns="http://www.w3.org/1999/xhtml"><![endif]-->
+<meta name="format-detection" content="telephone=no">
+<meta name="generator" content="EDMdesigner, www.edmdesigner.com">
+<title>mika</title>
 
-    <style type="text/css">
-        @import url(http://fonts.googleapis.com/css?family=Droid+Sans);
+<link href="https://fonts.googleapis.com/css?family=Avenir" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
 
-        /* Take care of image borders and formatting */
+<style type="text/css" media="screen">
+* {line-height: inherit;}
+.ExternalClass * { line-height: 100%; }
+body, p{margin:0; padding:0; margin-bottom:0; -webkit-text-size-adjust:none; -ms-text-size-adjust:none;} img{line-height:100%; outline:none; text-decoration:none; -ms-interpolation-mode: bicubic;} a img{border: none;} a, a:link, .no-detect-local a, .appleLinks a{color:#5555ff !important; text-decoration: underline;} .ExternalClass {display: block !important; width:100%;} .ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div { line-height: inherit; } table td {border-collapse:collapse;mso-table-lspace: 0pt; mso-table-rspace: 0pt;} .mobile_link a[href^="tel"], .mobile_link a[href^="sms"] {text-decoration: default; color: #5555ff !important; pointer-events: auto; cursor: default;} .no-detect a{text-decoration: none; color: #5555ff;
+pointer-events: auto; cursor: default;} {color: #5555ff;} span {color: inherit; border-bottom: none;} span:hover { background-color: transparent; }
+a[x-apple-data-detectors] {color: inherit !important; text-decoration: none !important; font-size: inherit !important; font-family: inherit !important; font-weight: inherit !important; line-height: inherit !important; }
 
-        img {
-            max-width: 600px;
-            outline: none;
-            text-decoration: none;
-            -ms-interpolation-mode: bicubic;
-        }
+.nounderline {text-decoration: none !important;}
+h1, h2, h3 { margin:0; padding:0; }
+p {Margin: 0px !important; }
 
-        a {
-            text-decoration: none;
-            border: 0;
-            outline: none;
-            color: #bbbbbb;
-        }
+table[class="email-root-wrapper"] { width: 600px !important; }
 
-        a img {
-            border: none;
-        }
+body {
+background-color: #ffffff;
+background: #ffffff;
+}
+body { min-width: 280px; width: 100%;}
+td[class="pattern"] .c199p33r { width: 33.33333333333333%;}
+td[class="pattern"] .c200p33r { width: 33.333333333333336%;}
 
-        /* General styling */
+</style>
+<style>
+@media only screen and (max-width: 599px),
+only screen and (max-device-width: 599px),
+only screen and (max-width: 400px),
+only screen and (max-device-width: 400px) {
+ .email-root-wrapper { width: 100% !important; }
+ .full-width { width: 100% !important; height: auto !important; text-align:center;}
+ .fullwidthhalfleft {width:100% !important;}
+ .fullwidthhalfright {width:100% !important;}
+ .fullwidthhalfinner {width:100% !important; margin: 0 auto !important; float: none !important; margin-left: auto !important; margin-right: auto !important; clear:both !important; }
+ .hide { display:none !important; width:0px !important;height:0px !important; overflow:hidden; }
+	.c199p33r { width: 100% !important; float:none;}
+.c200p33r { width: 100% !important; float:none;}
 
-        td,
-        h1,
-        h2,
-        h3 {
-            font-family: Helvetica, Arial, sans-serif;
-            font-weight: 400;
-        }
+}
+</style>
+<style>
+@media only screen and (min-width: 600px) {
+  td[class="pattern"] .c199p33r { width: 199px !important;}
+td[class="pattern"] .c200p33r { width: 200px !important;}
 
-        td {
-            text-align: center;
-        }
+}
+@media only screen and (max-width: 599px),
+only screen and (max-device-width: 599px),
+only screen and (max-width: 400px),
+only screen and (max-device-width: 400px) {
+  table[class="email-root-wrapper"] { width: 100% !important; }
+  td[class="wrap"] .full-width { width: 100% !important; height: auto !important;}
 
-        body {
-            -webkit-font-smoothing: antialiased;
-            -webkit-text-size-adjust: none;
-            width: 100%;
-            height: 100%;
-            color: #37302d;
-            background: #ffffff;
-            font-size: 16px;
-        }
+  td[class="wrap"] .fullwidthhalfleft {width:100% !important;}
+  td[class="wrap"] .fullwidthhalfright {width:100% !important;}
+  td[class="wrap"] .fullwidthhalfinner {width:100% !important; margin: 0 auto !important; float: none !important; margin-left: auto !important; margin-right: auto !important; clear:both !important; }
+  td[class="wrap"] .hide { display:none !important; width:0px;height:0px; overflow:hidden; }
 
-        table {
-            border-collapse: collapse !important;
-        }
+  .edm-social {width: 100% !important;}
 
-        .headline {
-            color: #ffffff;
-            font-size: 36px;
-        }
+  td[class="pattern"] .c199p33r { width: 100% !important; }
+td[class="pattern"] .c200p33r { width: 100% !important; }
 
-        .force-full-width {
-            width: 100% !important;
-        }
-    </style>
+}
+</style>
 
-    <style type="text/css" media="screen">
-        @media screen {
+<style>
+	@media screen and (min-width: 600px) {
+		.dh{
+			display: none;
+		}
+	}
+</style>
+<!--[if (gte mso 9)|(IE)]>
+	<style>
+		.dh {
+			display: none;
+		}
 
-            /*Thanks Outlook 2013! http://goo.gl/XLxpyl*/
-            td,
-            h1,
-            h2,
-            h3 {
-                font-family: 'Droid Sans', 'Helvetica Neue', 'Arial', 'sans-serif' !important;
-            }
-        }
-    </style>
+		.dh table {
+			mso-hide: all;
+		}
+	</style>
+<![endif]-->
 
-    <style type="text/css" media="only screen and (max-width: 480px)">
-        /* Mobile styles */
-        @media only screen and (max-width: 480px) {
+<!--[if (gte IE 7) & (vml)]>
+<style type="text/css">
+html, body {margin:0 !important; padding:0px !important;}
+img.full-width { position: relative !important; }
 
-            table[class="w320"] {
-                width: 320px !important;
-            }
+.img45x45 { width: 45px !important; height: 45px !important;}
 
+</style>
+<![endif]-->
 
-        }
-    </style>
+<!--[if gte mso 9]>
+<style type="text/css">
+.mso-font-fix-arial { font-family: Arial, sans-serif;}
+.mso-font-fix-georgia { font-family: Georgia, sans-serif;}
+.mso-font-fix-tahoma { font-family: Tahoma, sans-serif;}
+.mso-font-fix-times_new_roman { font-family: 'Times New Roman', sans-serif;}
+.mso-font-fix-trebuchet_ms { font-family: 'Trebuchet MS', sans-serif;}
+.mso-font-fix-verdana { font-family: Verdana, sans-serif;}
+</style>
+<![endif]-->
+
+<!--[if gte mso 9]>
+<style type="text/css">
+table, td {
+border-collapse: collapse !important;
+mso-table-lspace: 0px !important;
+mso-table-rspace: 0px !important;
+}
+
+.email-root-wrapper { width 600px !important;}
+.imglink { font-size: 0px; }
+.edm_button { font-size: 0px; }
+</style>
+<![endif]-->
+
+<!--[if gte mso 15]>
+<style type="text/css">
+table {
+font-size:0px;
+mso-margin-top-alt:0px;
+}
+
+.fullwidthhalfleft {
+width: 49% !important;
+float:left !important;
+}
+
+.fullwidthhalfright {
+width: 50% !important;
+float:right !important;
+}
+</style>
+<![endif]-->
+<STYLE type="text/css" media="(pointer) and (min-color-index:0)">
+html, body {background-image: none !important; background-color: transparent !important; margin:0 !important; padding:0 !important;}
+</STYLE>
+
 </head>
+<body leftmargin="0" marginwidth="0" topmargin="0" marginheight="0" offset="0" style="font-family:Arial, sans-serif; font-size:0px;margin:0;padding:0;background: #ffffff !important;" bgcolor="#ffffff">
+<span style='display:none;font-size:0px;line-height:0px;max-height:0px;max-width:0px;opacity:0;overflow:hidden'>promo</span>
+<style>
+  @media screen yahoo and (max-width: 600px){
+    .hide{
+      display: none;
+      overflow: hidden;
+    }
+  }   
+</style>
+<!--[if t]><![endif]--><!--[if t]><![endif]--><!--[if t]><![endif]--><!--[if t]><![endif]--><!--[if t]><![endif]--><!--[if t]><![endif]-->
+  <table align="center" border="0" cellpadding="0" cellspacing="0" height="100%" width="100%"  bgcolor="#ffffff" style="margin:0; padding:0; width:100% !important;table-layout: fixed; background: #ffffff !important;">
+    <tr>
+        <td class="wrap" align="center" valign="top" width="100%">
+          <center>
+<!-- content -->
+<div  style="padding:0px">
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
+<tr>
+<td valign="top"  style="padding:0px">
+<table cellpadding="0" cellspacing="0" width="600" align="center"  style="max-width:600px;min-width:240px;margin:0 auto" class="email-root-wrapper">
+<tr>
+<td valign="top"  style="padding:0px">
+<table cellpadding="0" cellspacing="0" border="0" width="100%"  style="border:0px none">
+<tr>
 
-<body class="body" style="padding:0; margin:0; display:block; background:#ffffff; -webkit-text-size-adjust:none" bgcolor="#ffffff">
-    <table align="center" cellpadding="0" cellspacing="0" width="100%" height="100%">
-        <tr>
-            <td align="center" valign="top" bgcolor="#ffffff" width="100%">
-                <center>
-                    <table style="margin: 0 auto;" cellpadding="0" cellspacing="0" width="600" class="w320">
-                        <tr>
-                            <td align="center" valign="top">
+<td valign="top"  style="padding:0px">
+<table cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<td  style="padding:0px">
+<table cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<td align="center"  style="padding:0px">
+<table cellpadding="0" cellspacing="0" border="0" align="center">
+<tr>
+<td valign="top" align="center"  style="padding:5px">
+<table cellpadding="0" cellspacing="0" border="0" width="45" height="45"  style="border:0px none;height:auto">
+<tr>
+<td valign="top"  style="padding:0px"><img 
+src="https://images.chamaileon.io/5d1f475b49fc87001210e578/WhatsApp%20Image%202019-07-09%20at%2022.17.02.jpeg" width="45" height="45" alt="" border="0"  style="display:block" class="img45x45"  /></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
 
-                                <table style="margin: 0 auto;" cellpadding="0" cellspacing="0" width="100%" style="margin:0 auto;">
-                                    <tr>
-                                        <td style="font-size: 30px; text-align:center;">
-                                            <br>
-                                            Mika Travel Indonesia
-                                            <br>
-                                            <br>
-                                        </td>
-                                    </tr>
-                                </table>
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
+<tr>
 
-                                <table style="margin: 0 auto;" cellpadding="0" cellspacing="0" width="100%" bgcolor="#4dbfbf">
-                                    <tr>
-                                        <td>
-                                            <br>
-                                            <img src="{{ public_path() }}/images/logo.jpeg" width="224" height="240" alt="robot picture">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="headline">
-                                            Come check it out!
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
+<td valign="top"  style="padding:10px">
+<table cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<td  style="padding:0px">
+<table cellpadding="0" cellspacing="0" border="0" width="100%"  style="border-top:2px solid #34679C">
+<tr>
 
-                                            <center>
-                                                <table style="margin: 0 auto;" cellpadding="0" cellspacing="0" width="60%">
-                                                    <tr>
-                                                        <td style="color:#187272;">
-                                                            <br>
-                                                            Kami punya paket diskon terbaru!
-                                                            <br>
-                                                            <br>
-                                                            <br>
-                                                        </td>
-                                                    </tr>
-                                                </table>
-                                            </center>
+<td valign="top">
+<table cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<td  style="padding:0px"></td>
+</tr>
+</table>
 
-                                        </td>
-                                    </tr>
-                                </table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
 
-                                <table style="margin: 0 auto;" cellpadding="0" cellspacing="0" width="100%" bgcolor="#f5774e">
-                                    <tr>
-                                        <td style="color:#933f24; font-size:12px;">
-                                            <br>
-                                            <br>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
 
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
 
-                                            <center>
-                                                <table style="margin: 0 auto;" cellpadding="0" cellspacing="0" width="60%">
-                                                    <tr>
-                                                        <td style="color:#933f24;">
-                                                            <br>
-                                                            kita punya diskon pada paket <span style="color:#77260c; font-weight:bold;"> {{ $paket }} </span> loh, diskonnya <span style="color:#77260c; font-weight:bold;"> {{ $diskon }}% </span>buruan... sebelum promo ini hilang sampai tanggal <span style="color:#77260c; font-weight:bold;"> {{ date('d-m-Y',strtotime($akhir)) }} </span>
-                                                            <br><br>
-                                                        </td>
-                                                    </tr>
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
+<tr>
+<td valign="top"  style="padding:0px">
+<table cellpadding="0" cellspacing="0" width="600" align="center"  style="max-width:600px;min-width:240px;margin:0 auto" class="email-root-wrapper">
+<tr>
+<td valign="top"  style="padding:0px">
+<table cellpadding="0" cellspacing="0" border="0" width="100%"  style="border:0px none">
+<tr>
 
-                                                </table>
-                                            </center>
+<td valign="top"  style="padding:0px">
+<table cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<td  style="padding:0px">
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
+<tr>
+<td valign="top"  style="padding:10px"><div  style="text-align:left;font-family:Raleway, Trebuchet MS, Avenir, Segoe UI, sans-serif;font-size:16px;color:#000000;line-height:24px;mso-line-height:exactly;mso-text-raise:4px"><h1 style="font-family:Raleway, Trebuchet MS, Avenir, Segoe UI, sans-serif; font-size: 36px; color: #000000; line-height: 52px; mso-line-height: exactly; mso-text-raise: 8px; padding: 0; margin: 0;text-align: center;"><span class="mso-font-fix-arial">Come check it out!</span></h1></div></td>
+</tr>
+</table>
 
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div>
-                                                <!--[if mso]>
-                        <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="http://" style="height:50px;v-text-anchor:middle;width:200px;" arcsize="8%" stroke="f" fillcolor="#ac4d2f">
-                          <w:anchorlock/>
-                          <center>
-                        <![endif]-->
-                                                <!--[if mso]>
-                          </center>
-                        </v:roundrect>
-                      <![endif]-->
-                                            </div>
-                                            <br>
-                                            <br>
-                                        </td>
-                                    </tr>
-                                </table>
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
+<tr>
 
+<td valign="top"  style="padding-top:10px;padding-right:120px;padding-bottom:10px;padding-left:120px">
+<table cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<td  style="padding:0px">
+<table cellpadding="0" cellspacing="0" border="0" width="100%"  style="border-top:2px solid #34679C">
+<tr>
 
+<td valign="top">
+<table cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<td  style="padding:0px"></td>
+</tr>
+</table>
 
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
 
+</td>
+</tr>
+</table>
 
-                            </td>
-                        </tr>
-                    </table>
-                </center>
-            </td>
-        </tr>
-    </table>
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
+<tr>
+<td valign="top"  style="padding:10px"><div  style="text-align:left;font-family:Raleway, Trebuchet MS, Avenir, Segoe UI, sans-serif;font-size:16px;color:#000000;line-height:24px;mso-line-height:exactly;mso-text-raise:4px"><p style="padding: 0; margin: 0;text-align: center;">kita punya diskon pada paket <span style="color:#77260c; font-weight:bold;"> {{ $paket }} </span> loh, diskonnya <span style="color:#77260c; font-weight:bold;"> {{ $diskon }}% </span>buruan... sebelum promo ini hilang sampai tanggal <span style="color:#77260c; font-weight:bold;"> {{ date('d-m-Y',strtotime($akhir)) }} </span></p></div></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
+<tr>
+<td valign="top"  style="padding:0px">
+<table cellpadding="0" cellspacing="0" width="600" align="center"  style="max-width:600px;min-width:240px;margin:0 auto" class="email-root-wrapper">
+<tr>
+<td valign="top"  style="padding:0px">
+<table cellpadding="0" cellspacing="0" border="0" width="100%"  style="border:0px none">
+<tr>
+
+<td valign="top"  style="padding:0px">
+<table cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<td  style="padding:0px">
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
+<tr>
+
+<td valign="top"  style="padding-top:10px;padding-bottom:10px">
+<table cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<td  style="padding:0px">
+<table cellpadding="0" cellspacing="0" border="0" width="100%"  style="border-top:1px solid #34679C">
+<tr>
+
+<td valign="top">
+<table cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<td  style="padding:0px"></td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
+<tr>
+
+<td valign="top"  style="padding-top:10px;padding-bottom:10px">
+<table cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<td  style="padding:0px">
+<table cellpadding="0" cellspacing="0" border="0" width="100%"  style="border-top:1px solid #34679C">
+<tr>
+
+<td valign="top">
+<table cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<td  style="padding:0px"></td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
+<tr>
+<td valign="top"  style="padding:0px">
+<table cellpadding="0" cellspacing="0" width="600" align="center"  style="max-width:600px;min-width:240px;margin:0 auto" class="email-root-wrapper">
+<tr>
+<td valign="top"  style="padding:0px">
+<table cellpadding="0" cellspacing="0" border="0" width="100%"  style="border:0px none">
+<tr>
+
+<td valign="top"  style="padding:0px">
+<table cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<td  style="padding:0px">
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
+<tr>
+
+<td valign="top"  style="padding:10px">
+<table cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<td  style="padding:0px">
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
+<tr>
+
+<td valign="top">
+<table cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<td  style="padding:0px"></td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
+<tr>
+<td valign="top"  style="padding:0px">
+<table cellpadding="0" cellspacing="0" width="600" align="center"  style="max-width:600px;min-width:240px;margin:0 auto" class="email-root-wrapper">
+<tr>
+<td valign="top"  style="padding:0px">
+<table cellpadding="0" cellspacing="0" border="0" width="100%"  style="border:0px none">
+<tr>
+
+<td valign="top"  style="padding:0px">
+<table cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<td  style="padding:0px">
+<table cellpadding="0" cellspacing="0" border="0" width="100%"  style="border:0px none">
+<tr>
+
+<td valign="top"  style="padding:0px">
+<table cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<td  style="padding:0px"></td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+
+<table cellpadding="0" cellspacing="0" border="0" width="100%"  style="border:0px none">
+<tr>
+
+<td valign="top"  style="padding:0px">
+<table cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<td  style="padding:0px"></td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+
+<table cellpadding="0" cellspacing="0" border="0" width="100%"  style="border:0px none">
+<tr>
+
+<td valign="top"  style="padding:0px">
+<table cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<td  style="padding:0px"></td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+
+<table cellpadding="0" cellspacing="0" border="0" width="100%"  style="border:0px none">
+<tr>
+
+<td valign="top"  style="padding:0px">
+<table cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<td  style="padding:0px"></td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+
+<table cellpadding="0" cellspacing="0" border="0" width="100%"  style="border:0px none">
+<tr>
+
+<td valign="top"  style="padding:0px">
+<table cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<td  style="padding:0px">
+<table cellpadding="0" cellspacing="0" border="0" width="100%"  style="border:0px none">
+<tr>
+
+<td valign="top"  style="padding:0px">
+<table cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<td  style="padding:0px"></td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+
+<table cellpadding="0" cellspacing="0" border="0" width="100%"  style="border:0px none">
+<tr>
+
+<td valign="top"  style="padding:0px">
+<table cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<td  style="padding:0px"></td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+
+<table cellpadding="0" cellspacing="0" border="0" width="100%"  style="border:0px none">
+<tr>
+
+<td valign="top"  style="padding:0px">
+<table cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<td  style="padding:0px"></td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+
+<table cellpadding="0" cellspacing="0" border="0" width="100%"  style="border:0px none">
+<tr>
+
+<td valign="top"  style="padding:0px">
+<table cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<td  style="padding:0px"></td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
+<tr>
+<td valign="top"  style="padding:0px">
+<table cellpadding="0" cellspacing="0" width="600" align="center"  style="max-width:600px;min-width:240px;margin:0 auto" class="email-root-wrapper">
+<tr>
+<td valign="top"  style="padding:0px">
+<table cellpadding="0" cellspacing="0" border="0" width="100%"  style="border:0px none">
+<tr>
+
+<td valign="top"  style="padding:0px">
+<table cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<td  style="padding:0px"></td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
+<tr>
+<td valign="top"  style="padding:0px">
+<table cellpadding="0" cellspacing="0" width="600" align="center"  style="max-width:600px;min-width:240px;margin:0 auto" class="email-root-wrapper">
+<tr>
+<td valign="top"  style="padding:0px">
+<table cellpadding="0" cellspacing="0" border="0" width="100%"  style="border:0px none">
+<tr>
+
+<td valign="top"  style="padding:0px">
+<table cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<td  style="padding:0px" class="pattern">
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
+<tr>
+<td valign="top"  style="padding:0;mso-cellspacing:0in">
+<table cellpadding="0" cellspacing="0" border="0" align="left" width="199" id="c199p33r"  style="float:left" class="c199p33r">
+<tr>
+<td valign="top"  style="padding:0px">
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
+<tr>
+
+<td valign="top"  style="padding:10px">
+<table cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<td  style="padding:0px">
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
+<tr>
+
+<td valign="top">
+<table cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<td  style="padding:0px"></td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<!--[if gte mso 9]></td><td valign="top" style="padding:0;"><![endif]-->
+
+<table cellpadding="0" cellspacing="0" border="0" align="left" width="199" id="c199p33r"  style="float:left" class="c199p33r">
+<tr>
+<td valign="top"  style="padding:0px">
+<table cellpadding="0" cellspacing="0" border="0" width="100%"  style="border:0px none">
+<tr>
+
+<td valign="top"  style="padding:0px">
+<table cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<td  style="padding:0px">
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
+<tr>
+<td valign="top" width="66"  style="padding:0px"></td>
+
+<td valign="top" width="66"  style="padding:0px"></td>
+
+<td valign="top" width="66"  style="padding:0px"></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<!--[if gte mso 9]></td><td valign="top" style="padding:0;"><![endif]-->
+
+<table cellpadding="0" cellspacing="0" border="0" align="left" width="200" id="c200p33r"  style="float:left" class="c200p33r">
+<tr>
+<td valign="top"  style="padding:0px">
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
+<tr>
+
+<td valign="top"  style="padding:10px">
+<table cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<td  style="padding:0px">
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
+<tr>
+
+<td valign="top">
+<table cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<td  style="padding:0px"></td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</div>
+<!-- content end -->
+          </center>
+        </td>
+    </tr>
+  </table>
 </body>
-
 </html>
+

@@ -41,7 +41,7 @@
                 <td>{{ $no++ }}</td>
                 <td>{{ $ktg->id }}</td>
                 <td>{{ date('d-m-Y', strtotime($ktg->tgl_inv)) }}</td>
-                <td>{{ $ktg->total_hrg }}</td>
+                <td>{{ number_format($ktg->total_hrg,0,",",".") }}</td>
                 <td>{{ $ktg->pelanggan['nama_pelanggan'] }}</td>
                 <td>
                     <a href="/invoice/cetak/{{ $ktg->id }}" target="_blank" class="btn btn-primary waves-effect" data-toggle="tooltip" data-placement="top" title="edit"><i class="icofont icofont-print"></i>
