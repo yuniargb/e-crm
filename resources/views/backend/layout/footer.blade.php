@@ -35,30 +35,6 @@
 <!-- datatables -->
 <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!-- Date picker.js -->
 <script src="/assets/plugins/datepicker/js/moment-with-locales.min.js"></script>
 <script src="/assets/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
@@ -96,6 +72,9 @@
     SyntaxHighlighter.all();
 </script>
 
+<!-- Sweet Alert -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+
 <!-- custom js -->
 <script type="text/javascript" src="/assets/js/main.min.js"></script>
 <script type="text/javascript" src="/assets/pages/advance-form.js"></script>
@@ -105,6 +84,35 @@
 <!-- My Javascript -->
 <script>
     $(document).ready(function() {
+        // swal
+        const flashMessage = $('.flash-message').data('flashmessage');
+        if (flashMessage) {
+            Swal.fire(
+                'success',
+                flashMessage,
+                'success'
+            )
+        }
+
+        $('.btn-del').on('click', function(e) {
+            e.preventDefault();
+            const href = $(this).attr('href');
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.value) {
+                    document.location.href = href;
+                }
+            });
+        });
+        // end swal
+
         $('#fasilitas').keydown(function(e) {
             if (e.Which == 13) {
                 console.log('berhasil');

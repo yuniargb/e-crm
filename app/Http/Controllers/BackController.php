@@ -19,9 +19,21 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Carbon;
+use App\Testimoni;
 
 class BackController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:staf');
+    }
+
+    // Dasboard
+    public function index()
+    {
+        return view('backend.konten.dashboard');
+    }
+
     // pelanggan
     // List Pelanggan
     public function pelanggan()
@@ -430,8 +442,6 @@ class BackController extends Controller
         $invoice = Invoice::with('pelanggan')->where('id', $id)->first();
         $peserta = Peserta::with('paket')->where('invoice_id', $id)->get();
         $pdf = PDF::loadView('backend.konten.invoice.cetakinvoice', compact('invoice', 'peserta'));
-        // $pdf = PDF::loadView('backend.konten.invoice.cetakinvoice', compact('invoice', 'peserta'));
-        // return $pdf->download('kwitansi_invoice_' . date('Y-m-d_H-i-s') . '.pdf');
         return $pdf->stream('kwitansi_invoice_' . date('Y-m-d_H-i-s') . '.pdf');
     }
     // tambah invoice
@@ -455,7 +465,7 @@ class BackController extends Controller
 
         $ktg->tgl_inv = date('Y-m-d');
         $ktg->total_hrg = $request->totals;
-        $ktg->user_id = $request->pelanggan;
+        $ktg->pelanggan_id = $request->pelanggan;
         $ktg->id = $id;
 
         $ktg->save();
@@ -532,7 +542,7 @@ class BackController extends Controller
         }
 
         Session::flash('success', 'New Promo success added');
-        return redirect('/promo')->with(['success' => 'New Promo success added']);;
+        return redirect('/promo');
     }
     // hapus promosi
     public function deletePromosi($id)
@@ -543,4 +553,42 @@ class BackController extends Controller
         return redirect('/promo');
     }
     // End Promosi Admin
+
+    // Testimoni
+    public function testimoni()
+    {
+        $testi = DB::table('testimonis')
+            ->join('invoices', 'testimonis.invoice_id', '=', 'invoices.id')
+            ->join('pelanggans', 'invoices.pelanggan_id', '=', 'pelanggans.id')
+            ->select('pelanggans.nama_pelanggan', 'invoices.id', 'testimonis.*')
+            ->get();
+        return view('backend.konten.testimoni.testimoni', compact('testi'));
+    }
+
+    public function publishTestimoni($id)
+    {
+        $tst = Testimoni::find($id);
+        $tst->publish = 1;
+        $tst->save();
+        Session::flash('success', 'Testimoni success published');
+        return redirect('/testimoni');
+    }
+
+    public function unPublishTestimoni($id)
+    {
+        $tst = Testimoni::find($id);
+        $tst->publish = 0;
+        $tst->save();
+        Session::flash('success', 'Testimoni success unpublished');
+        return redirect('/testimoni');
+    }
+
+    public function deleteTestimoni($id)
+    {
+        $tst = Testimoni::find($id);
+        $tst->publish = 1;
+        $tst->delete();
+        Session::flash('success', 'Testimoni success deleted');
+        return redirect('/testimoni');
+    }
 }

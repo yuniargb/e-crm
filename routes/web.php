@@ -45,10 +45,18 @@ Route::prefix('customer')->group(function () {
     Route::get('/logout', 'Auth\LoginPelangganController@logout')->name('pelanggan.logout');
 });
 
-// Link Halaman Dashboard Admin
-Route::get('/dashboard', function () {
-    return view('backend.konten.dashboard');
+// Admin Login
+Route::prefix('admin')->group(function () {
+    Route::get('/login', 'Auth\LoginStafController@showLoginForm')->name('staf.login');
+    Route::post('/login', 'Auth\LoginStafController@login')->name('staf.login.submit');
+    Route::get('/', 'BackController@index')->name('staf.dashboard');
+    Route::get('/logout', 'Auth\LoginStafController@stafLogout')->name('staf.logout');
 });
+
+// Link Halaman Dashboard Admin
+// Route::get('/dashboard', function () {
+//     return view('backend.konten.dashboard');
+// });
 
 // link Halaman Pelanggan Admin
 Route::prefix('pelanggan')->group(function () {
@@ -100,6 +108,13 @@ Route::prefix('promo')->group(function () {
     Route::get('/tambah', 'BackController@tambahpromosi');
     Route::post('/store', 'BackController@storepromosi');
     Route::get('/hapus/{id}', 'BackController@deletepromosi');
+});
+//  Link Halaman Testimoni
+Route::prefix('testimoni')->group(function () {
+    Route::get('/', 'BackController@testimoni');
+    Route::get('/publish/{id}', 'BackController@publishtestimoni');
+    Route::get('/unpublish/{id}', 'BackController@unpublishtestimoni');
+    Route::get('/delete/{id}', 'BackController@deletetestimoni');
 });
 
 Auth::routes();

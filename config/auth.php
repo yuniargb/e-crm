@@ -52,7 +52,7 @@ return [
             'provider' => 'pelanggans',
         ],
 
-        'stafs' => [
+        'staf' => [
             'driver' => 'session',
             'provider' => 'stafs',
         ],

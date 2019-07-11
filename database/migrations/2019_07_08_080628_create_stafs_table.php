@@ -17,7 +17,7 @@ class CreateStafsTable extends Migration
             $table->bigIncrements('id');
             $table->string('nama_staf', 50);
             $table->string('username', 30);
-            $table->string('password', 50);
+            $table->string('password', 150);
             $table->string('email', 30);
             $table->string('avatar', 50)->default("user_default.png");
             $table->timestamps();

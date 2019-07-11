@@ -2,13 +2,21 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Staf extends Model
+class Staf extends Authenticatable
 {
-    protected $fillable = ['nama_staf', 'username','password','avatar'];
+    use Notifiable;
 
-    public function keluhan(){
-        return $this->hasMany('App\Komplain','staf_id');
+    protected $guard = 'staf';
+
+    protected $fillable = ['nama_staf', 'username', 'avatar'];
+
+    protected $hidden = ['password'];
+
+    public function keluhan()
+    {
+        return $this->hasMany('App\Komplain', 'staf_id');
     }
 }
