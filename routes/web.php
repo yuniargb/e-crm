@@ -111,12 +111,28 @@ Route::prefix('promo')->group(function () {
     Route::post('/store', 'BackController@storepromosi');
     Route::get('/hapus/{id}', 'BackController@deletepromosi');
 });
-//  Link Halaman Testimoni
+//  Link Halaman Testimoni Admin
 Route::prefix('testimoni')->group(function () {
     Route::get('/', 'BackController@testimoni');
     Route::get('/publish/{id}', 'BackController@publishtestimoni');
     Route::get('/unpublish/{id}', 'BackController@unpublishtestimoni');
     Route::get('/delete/{id}', 'BackController@deletetestimoni');
+});
+//  Link Halaman Komplain Admin
+Route::prefix('komplain')->group(function () {
+    Route::get('/', 'BackController@komplain');
+    Route::get('/pesan/{id}', 'BackController@pesan');
+    Route::get('/unpublish/{id}', 'BackController@unpublishtestimoni');
+    Route::get('/delete/{id}', 'BackController@deletetestimoni');
+});
+//  Link Halaman Laporan Admin
+Route::prefix('laporan')->group(function () {
+    Route::get('/periodeinvoice', 'BackController@periodeinvoice');
+    Route::get('/periodepromo', 'BackController@periodepromo');
+    Route::get('/periodetestimoni', 'BackController@periodetestimoni');
+    Route::post('/invoice', 'BackController@lapinvoice');
+    Route::post('/promo', 'BackController@lappromo');
+    Route::post('/testimoni', 'BackController@laptestimoni');
 });
 
 Auth::routes();

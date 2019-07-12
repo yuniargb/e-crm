@@ -1,10 +1,14 @@
-<!-- Required Jqurey -->
-<script src="/assets/plugins/jquery/dist/jquery.min.js"></script>
-<script src="/assets/plugins/jquery-ui/jquery-ui.min.js"></script>
-<script src="/assets/plugins/tether/dist/js/tether.min.js"></script>
-
 <!-- Required Fremwork -->
 <script src="/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+<!-- Required Jqurey -->
+<script src="/assets/plugins/jquery/dist/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="/assets/plugins/jquery-ui/jquery-ui.min.js"></script>
+<script src="/assets/plugins/tether/dist/js/tether.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/js/select2.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+
 
 <!-- waves effects.js -->
 <script src="/assets/plugins/Waves/waves.min.js"></script>
@@ -19,59 +23,24 @@
 <!-- notification -->
 <script src="/assets/plugins/notification/js/bootstrap-growl.min.js"></script>
 
-<!-- Select 2 js -->
-<script src="/assets/plugins/select2/dist/js/select2.full.min.js"></script>
-
-
-<!-- Tags js -->
-<script src="/assets/plugins/bootstrap-tagsinput/dist/bootstrap-tagsinput.js"></script>
-
 <!-- custom js -->
-<script type="text/javascript" src="/assets/js/main.min.js"></script>
-<script type="text/javascript" src="/assets/pages/advance-form.js"></script>
+<script type="text/javascript" src="/assets/js/main.js"></script>
 <script type="text/javascript" src="/assets/pages/elements.js"></script>
 <script type="text/javascript" src="/assets/js/menu.min.js"></script>
 
-<!-- datatables -->
-<script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 
-<!-- Date picker.js -->
-<script src="/assets/plugins/datepicker/js/moment-with-locales.min.js"></script>
-<script src="/assets/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/bootstrap-select.min.js"></script>
 
-
-
-<!-- Max-Length js -->
-<script src="/assets/plugins/bootstrap-maxlength/src/bootstrap-maxlength.js"></script>
-
-<!-- Multi Select js -->
-<script src="/assets/plugins/bootstrap-multiselect/dist/js/bootstrap-multiselect.js"></script>
-<script src="/assets/plugins/multiselect/js/jquery.multi-select.js"></script>
-<script type="text/javascript" src="/assets/plugins/multi-select/js/jquery.quicksearch.js"></script>
-
-
-<!-- Bootstrap Datepicker js -->
-<script type="text/javascript" src="/assets/plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
-<script src="/assets/plugins/bootstrap-datepicker/js/bootstrap-datetimepicker.min.js"></script>
-
-<!-- bootstrap range picker -->
-<script type="text/javascript" src="/assets/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
-
-
-
-<!-- Sweet Alert -->
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
-
-<!-- custom js -->
-<script type="text/javascript" src="/assets/js/main.min.js"></script>
-<script type="text/javascript" src="/assets/pages/elements.js"></script>
-<script type="text/javascript" src="/assets/pages/advance-form.js"></script>
-<script type="text/javascript" src="/assets/js/menu.min.js"></script>
+<!-- (Optional) Latest compiled and minified JavaScript translation files -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/i18n/defaults-*.min.js"></script>
 
 
 <!-- My Javascript -->
 <script>
     $(document).ready(function() {
+
+        $('.js-example-basic-single').select2();
         // swal
         const flashMessage = $('.flash-message').data('flashmessage');
         if (flashMessage) {
@@ -181,6 +150,52 @@
 
             $('#hrg_diskon').val(total);
         })
+        setInterval(function() {
+            $.getJSON('/komplain', function(data) {
+                console.log(data.length);
+                $('#totalPesan').html(data.length);
+                // $.each(data, function(index, e) {
+                //     console.log(e.nama_staf);
+                // })
+            })
+        }, 1000);
+        $('#notifPesan').on('click', function() {
+            $.getJSON('/komplain', function(data) {
+                console.log(data.length);
+                var html = "";
+                $.each(data, function(index, e) {
+
+
+                    html += `
+                    <div class="media friendlist-box" data-id="1" data-status="online" data-username="` + e.nama_pelanggan + `" data-invoice="` + e.invoice_id + `" data-toggle="tooltip" data-placement="left" title="` + e.nama_pelanggan + `">
+
+                        <a class="media-left" href="#!">
+                            <img class="media-object img-circle" src="assets/images/avatar-1.png" alt="Generic placeholder image">
+                            <div class="live-status bg-success"></div>
+                        </a>
+                        <div class="media-body">
+                            <div class="friend-header">` + e.nama_pelanggan + `</div>
+                            <span>20min ago</span>
+                        </div>
+                    </div>
+                    `;
+                })
+
+                $('#customerList').html(html);
+
+            })
+        })
+        // $(document).on('click', '.media', function(e) {
+        //     $(".showChat_inner.chatInner").show('slow');
+        //     e.preventDefault();
+        //     return false;
+        // });
+        // $('#chatPesan').on('click', function(e) {
+        //     $(".showChat_inner.chatInner").hide();
+        //     e.preventDefault();
+        //     return true;
+        // });
+        // $(".showChat_inner.chatInner").hide();
     })
 
     function total() {
