@@ -29,45 +29,23 @@
 <div class="showChat_inner chatInner" id="chatInner">
     <div class="media chat-inner-header" id="chatPesan">
         <a class="back_chatBox">
-            <i class="icofont icofont-rounded-left"></i> Josephin Doe
+            <i class="icofont icofont-rounded-left"></i> <span id="nama_pelg"></span>
         </a>
     </div>
-    <div id="kotakChat">
-        <div class="media chat-messages">
-            <a class="media-left photo-table" href="#!">
-                <img class="media-object img-circle m-t-5" src="assets/images/avatar-1.png" alt="Generic placeholder image">
-                <div class="live-status bg-success"></div>
-            </a>
-            <div class="media-body chat-menu-content">
-                <div class="">
-                    <p class="chat-cont">I'm just looking around. Will you tell me something about yourself?</p>
-                    <p class="chat-time">8:20 a.m.</p>
-                </div>
-            </div>
-        </div>
-        <div class="media chat-messages">
-            <div class="media-body chat-menu-reply">
-                <div class="">
-                    <p class="chat-cont">I'm just long around. Will you tell me something about yourself?</p>
-                    <p class="chat-time">8:20 a.m.</p>
-                </div>
-            </div>
-            <div class="media-right photo-table">
-                <a href="#!">
-                    <img class="media-object img-circle m-t-5" src="assets/images/avatar-2.png" alt="Generic placeholder image">
-                    <div class="live-status bg-success"></div>
-                </a>
-            </div>
-        </div>
+    <div id="kotakChat" class="kotakChat">
     </div>
     <div class="media chat-reply-box">
         <div class="md-input-wrapper">
             <input type="text" class="md-form-control" id="inputEmail" name="inputEmail">
-            <label>Share your thoughts</label>
+            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+            <input type="hidden" class="md-form-control" id="komplain_idd" name="komplain_id">
+            <!-- <input type="hidden" class="md-form-control" id="" name="komplain_id"> -->
+            <label>Reply</label>
             <span class="highlight"></span>
             <span class="bar"></span> <button type="button" class="chat-send waves-effect waves-light">
                 <i class="icofont icofont-location-arrow f-20 "></i>
             </button>
+
 
         </div>
 

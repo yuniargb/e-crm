@@ -21,6 +21,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Carbon;
 use App\Testimoni;
 use Illuminate\Support\Facades\Auth;
+use App\DetailKomplain;
+use App\Komplain;
 
 class BackController extends Controller
 {
@@ -265,7 +267,7 @@ class BackController extends Controller
 
         $ktg->nama_staf = $request->nama_staf;
         $ktg->username = $request->username;
-        $ktg->password = sha1($request->password);
+        $ktg->password = Hash::make($request->password);
         $ktg->email = $request->email;
         $ktg->avatar = $newName;
 
@@ -444,7 +446,7 @@ class BackController extends Controller
     {
         $invoice = Invoice::with('pelanggan')->where('id', $id)->first();
         $tgl = Invoice::find($id);
-        $peserta = DB::select("select r.no_dukumen,r.nama_peserta,r.tgl_berangkat,p.harga,p.nama_paket,p.id,ps.diskon from pesertas r inner join pakets p on r.paket_id=p.id left join (select * from promos where tgl_selesai >= '" . $tgl->tgl_inv . "' and tgl_mulai <= '" . $tgl->tgl_inv . "') ps ON p.id=ps.paket_id ");
+        $peserta = DB::select("select r.no_dukumen,r.nama_peserta,r.tgl_berangkat,p.harga,p.nama_paket,p.id,ps.diskon from pesertas r inner join pakets p on r.paket_id=p.id left join (select * from promos where tgl_selesai >= '" . $tgl->tgl_inv . "' and tgl_mulai <= '" . $tgl->tgl_inv . "') ps ON p.id=ps.paket_id where p.invoice_id='" . $id . "'");
         $pdf = PDF::loadView('backend.konten.invoice.cetakinvoice', compact('invoice', 'peserta'));
         return $pdf->stream('kwitansi_invoice_' . date('Y-m-d_H-i-s') . '.pdf');
     }
@@ -547,7 +549,7 @@ class BackController extends Controller
         foreach ($plg as $p) {
             Mail::send('backend.konten.promosi.email', $dis, function ($mail) use ($p) {
                 $mail->to($p->email)
-                    ->from('drs.co.store@gmail.com', 'Mika Travel Indonesia')
+                    ->from('mikatravelindonesia@gmail.com', 'Mika Travel Indonesia')
                     ->subject('New Promo');
             });
         }
@@ -611,18 +613,53 @@ class BackController extends Controller
     {
         $id = auth()->user()->id;
         // $komplain = DB::Select("SELECT * from komplains k INNER JOIN detail_komplains dk ON k.id=dk.komplain_id LEFT JOIN stafs s ON k.staf_id=s.id WHERE k.solved=0 AND k.staf_id = null OR k.staf_id='" . $id . "'");
-        $komplain = DB::Select("SELECT * from komplains k INNER JOIN invoices i ON k.invoice_id=i.id INNER JOIN pelanggans p ON i.pelanggan_id=p.id LEFT JOIN stafs s ON k.staf_id=s.id WHERE k.solved=0 AND k.staf_id = null OR k.staf_id='1'");
+        $komplain = DB::Select("SELECT * from komplains k INNER JOIN invoices i ON k.invoice_id=i.id INNER JOIN pelanggans p ON i.pelanggan_id=p.id LEFT JOIN stafs s ON k.staf_id=s.id WHERE k.solved=0 OR k.staf_id = null OR k.staf_id='" . auth()->user()->id . "'");
         // $komplain = DB::Select("SELECT * from komplains k INNER JOIN invoices i ON k.invoice_id=i.id INNER JOIN pelanggans p ON i.pelanggan_id=p.id LEFT JOIN stafs s ON k.staf_id=s.id WHERE k.solved=0 AND k.staf_id = null OR k.staf_id='" . $id . "'");
 
         return json_encode($komplain);
     }
     public function pesan($id)
     {
-        $pesan = DB::Select("SELECT * from komplains k INNER JOIN detail_komplains dk ON k.id=dk.komplain_id INNER JOIN stafs s ON k.staf_id=s.id INNER JOIN invoices i ON k.invoice_id=i.id WHERE i.id='" . $id . "'");
-        // $komplain = DB::Select("SELECT * from komplains k INNER JOIN invoices i ON k.invoice_id=i.id INNER JOIN pelanggans p ON i.pelanggan_id=p.id LEFT JOIN stafs s ON k.staf_id=s.id WHERE k.solved=0 AND k.staf_id = null OR k.staf_id= '  1'");
-        // $komplain = DB::Select("SELECT * from komplains k INNER JOIN invoices i ON k.invoice_id=i.id INNER JOIN pelanggans p ON i.pelanggan_id=p.id LEFT JOIN stafs s ON k.staf_id=s.id WHERE k.solved=0 AND k.staf_id = null OR k.staf_id=  '" . $id . "'");
+        $pesan = DB::Select("SELECT * from komplains k 
+        INNER JOIN invoices i ON k.invoice_id=i.id 
+        INNER JOIN detail_komplains dk ON k.id=dk.komplain_id 
+        INNER JOIN pelanggans p ON i.pelanggan_id=p.id 
+        LEFT JOIN stafs s ON k.staf_id=s.id 
+        WHERE k.solved=0 OR k.staf_id = null OR k.staf_id='" . auth()->user()->id . "' AND k.invoice_id='" . $id . "'");
 
         return json_encode($pesan);
+    }
+    public function read($id)
+    {
+        $ktg = DetailKomplain::where('komplain_id', $id)->get();
+        foreach ($ktg as $kt) {
+            $kt->read = 1;
+            $kt->save();
+        }
+
+        $data = array(
+            'result' => 'berhasil'
+        );
+        return json_encode($data);
+    }
+    public function balas(Request $request)
+    {
+        // if ($request->ajax()) {
+        $tst = Komplain::find($request->id);
+        $tst->staf_id =  auth()->user()->id;
+        $tst->save();
+
+        $ktg = new DetailKomplain;
+
+        $ktg->komplain_id = $request->id;
+        $ktg->pesan = $request->psn;
+        $ktg->sender = auth()->user()->id;
+
+        $ktg->save();
+
+        return response()->json($ktg);
+        // return $request->all();
+        // }
     }
     // end complain
 }

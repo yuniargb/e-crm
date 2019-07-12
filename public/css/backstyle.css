@@ -2,3 +2,19 @@
     background-color: #fff;
     padding: 15px;
 }
+
+.chatInner {
+    overflow: auto !important;
+    margin-bottom: 9px;
+}
+
+.media.chat-reply-box {
+    position: sticky;
+    bottom: 5px;
+}
+
+.media.chat-inner-header {
+    position: sticky;
+    top: 0px;
+    background: #1B8BF9;
+}

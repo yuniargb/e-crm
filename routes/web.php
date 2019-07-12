@@ -122,8 +122,8 @@ Route::prefix('testimoni')->group(function () {
 Route::prefix('komplain')->group(function () {
     Route::get('/', 'BackController@komplain');
     Route::get('/pesan/{id}', 'BackController@pesan');
-    Route::get('/unpublish/{id}', 'BackController@unpublishtestimoni');
-    Route::get('/delete/{id}', 'BackController@deletetestimoni');
+    Route::get('/read/{id}', 'BackController@read');
+    Route::post('/balas', 'BackController@balas');
 });
 //  Link Halaman Laporan Admin
 Route::prefix('laporan')->group(function () {

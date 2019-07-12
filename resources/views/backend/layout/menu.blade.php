@@ -12,33 +12,28 @@
 						<i class="icon-bubbles"></i>
 						<span class="badge badge-danger header-badge blink" id="totalPesan">0</span>
 					</a>
-
 				</li>
 				<!-- window screen -->
 				<li class="pc-rheader-submenu">
 					<a href="#!" class="drop icon-circle" onclick="javascript:toggleFullScreen()">
 						<i class="icon-size-fullscreen"></i>
 					</a>
-
+				</li>
+				<li class="pc-rheader-submenu">
+					<a href="/admin/logout" class="drop icon-circle">
+						<i class="icon-logout"></i>
+					</a>
 				</li>
 				<!-- User Menu-->
 				<li class="dropdown">
 					<a href="#!" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle drop icon-circle drop-image">
 						<span><img class="img-circle " src="/assets/images/avatar-1.png" style="width:40px;" alt="User Image"></span>
-						<span>{{ Auth::user()->nama_staf}} <i class=" icofont icofont-simple-down"></i></span>
+						<span>{{ Auth::user()->nama_staf}}
 
 					</a>
-					<ul class="dropdown-menu settings-menu">
-						<li><a href="#!"><i class="icon-settings"></i> Settings</a></li>
-						<li><a href="profile.html"><i class="icon-user"></i> Profile</a></li>
-						<li><a href="message.html"><i class="icon-envelope-open"></i> My Messages</a></li>
-						<li class="p-0">
-							<div class="dropdown-divider m-0"></div>
-						</li>
-						<li><a href="lock-screen.html"><i class="icon-lock"></i> Lock Screen</a></li>
+					<!-- <ul class="dropdown-menu settings-menu">
 						<li><a href="/admin/logout"><i class="icon-logout"></i> Logout</a></li>
-
-					</ul>
+					</ul> -->
 				</li>
 			</ul>
 

@@ -185,6 +185,46 @@
 
             })
         })
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token]').attr('content')
+            }
+        });
+        $(document).on('keyup', '#inputEmail', function(e) {
+            var pesan = $(this).val();
+            var komplain_id = $('#komplain_idd').val();
+            if (e.which == 13) {
+                console.log('ok');
+                $.ajax({
+                    type: 'POST',
+                    url: '/komplain/balas',
+                    data: {
+                        '_token': $('input[name=_token]').val(),
+                        'id': komplain_id,
+                        'psn': pesan
+                    },
+                    success: function() {
+                        $('#inputEmail').val("");
+                        $('#kotakChat').append(`
+                        <div class="media chat-messages">
+                            <div class="media-body chat-menu-reply">
+                                <div class="">
+                                    <p class="chat-cont">` + pesan + `</p>
+                                    <p class="chat-time">8:20 a.m.</p>
+                                </div>
+                            </div>
+                            <div class="media-right photo-table">
+                                <a href="#!">
+                                    <img class="media-object img-circle m-t-5" src="assets/images/avatar-2.png" alt="Generic placeholder image">
+                                    <div class="live-status bg-success"></div>
+                                </a>
+                            </div>
+                        </div>
+                        `);
+                    }
+                })
+            }
+        })
         // $(document).on('click', '.media', function(e) {
         //     $(".showChat_inner.chatInner").show('slow');
         //     e.preventDefault();

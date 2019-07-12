@@ -90,15 +90,21 @@ $(document).ready(function () {
     $(document).on('click', '.friendlist-box', function () {
 
         var invoice = $(this).data('invoice');
+        var username = $(this).data('username');
 
         var options = {
             direction: 'right'
         };
         $('.showChat_inner').toggle('slide', options, 500);
 
+        $('#nama_pelg').text(username);
         $.getJSON('/komplain/pesan/' + invoice, function (data) {
             var html = "";
             $.each(data, function (index, e) {
+                $.get('/komplain/read/' + e.komplain_id, function (i) {
+                    console.log(e.komplain_id);
+                })
+                $('#komplain_idd').val(e.komplain_id);
                 if (e.sender.substr(0, 6) == "STD01-") {
                     html += `
                     <div class="media chat-messages">
