@@ -8,6 +8,8 @@ use App\Http\Requests\TestimoniRequest;
 use Illuminate\Support\Facades\Session;
 use App\Paket;
 use App\Invoice;
+use App\Komplain;
+use App\DetailKomplain;
 
 class FrontController extends Controller
 {
@@ -56,5 +58,49 @@ class FrontController extends Controller
         $testi->save();
         Session::flash('success', 'Your testimonial will make us better');
         return redirect('/testimonial');
+    }
+
+    public function getInv($id)
+    {
+        $inv = Invoice::where('id', $id)->first();
+        if ($inv) {
+            $komp = new Komplain;
+            $komp->invoice_id = $id;
+            $komp->save();
+
+            $data = [
+                'id' => $inv->id
+            ];
+
+            $sesi = Session::put('chat', $id);
+            return json_encode($data, $sesi);
+        }
+    }
+
+    public function chat($id)
+    {
+        $komp = Komplain::where('invoice_id', $id)->first();
+        $kelId = $komp->id;
+        $dtl = DetailKomplain::where('komplain_id', $kelId)->get();
+        return view('frontend.chat', compact('dtl'));
+    }
+
+    public function chatSend(Request $request)
+    {
+        // get request data
+        $invId = $request->invoiceId;
+        $pesan = $request->message;
+
+        // get komplain
+        $komp = Komplain::where('invoice_id', $invId)->first();
+        $kel_id = $komp->id;
+        $sender = $komp->invoice_id;
+
+        // Save to detail
+        $dtl = new DetailKomplain;
+        $dtl->keluhan_id = $kel_id;
+        $dtl->sender = $sender;
+        $dtl->pesan = $pesan;
+        $dtl->save();
     }
 }

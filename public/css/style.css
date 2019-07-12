@@ -1,3 +1,58 @@
+/* Desktop */
+@media (min-width: 992px) {
+    #chatDiv {
+        width: 40% !important;
+        position: fixed;
+        left: 20px;
+        bottom: 70px;
+        z-index: 10;
+        border: solid 2px #1683E9;
+    }
+}
+
+/* Mobile and Up */
+
+/* chat style */
+#btnChat {
+    position: fixed;
+    left: 20px;
+    bottom: 20px;
+    z-index: 10;
+}
+
+#chatDiv {
+    width: 70%;
+    position: fixed;
+    left: 20px;
+    bottom: 70px;
+    z-index: 10;
+    border: solid 2px #1683E9;
+    display: none;
+}
+
+#valid,
+#invalid {
+    display: none;
+}
+
+#viewChat {
+    background-color: #FFFFFF;
+    height: 280px;
+    padding: 10px 0px;
+    overflow: auto;
+}
+
+
+.chatMessage {
+    border: 1px solid #eeeeee;
+    width: 50%;
+    border-radius: 20px;
+    padding: 10px;
+    background-color: #eeeeee;
+}
+
+/* end chat style */
+
 .has-error,
 .has-error>.form-control {
     border-color: red !important;

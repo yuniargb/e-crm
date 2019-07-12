@@ -5,7 +5,7 @@
             <div class="f-left image"><img src="/assets/images/avatar-1.png" alt="User Image" class="img-circle"></div>
             <div class="f-left info">
                 <p>{{ Auth::user()->nama_staf }}</p>
-                <p class="designation">UX Designer <i class="icofont icofont-caret-down m-l-5"></i></p>
+                <p class="designation">Staf <i class="icofont icofont-caret-down m-l-5"></i></p>
             </div>
         </div>
         <!-- sidebar profile Menu-->
@@ -75,6 +75,22 @@
             <li class="treeview">
                 <a class="waves-effect waves-dark" href="/staf">
                     <i class="icofont icofont-user-male"></i><span> Staf</span>
+                </a>
+            </li>
+            <li class="nav-level">Laporan</li>
+            <li class="treeview">
+                <a class="waves-effect waves-dark" href="/periodeinvoice">
+                    <i class="icon-speedometer"></i><span> Laporan Invoice</span>
+                </a>
+            </li>
+            <li class="treeview">
+                <a class="waves-effect waves-dark" href="/periodepromo">
+                    <i class="icon-speedometer"></i><span> Laporan Promo</span>
+                </a>
+            </li>
+            <li class="treeview">
+                <a class="waves-effect waves-dark" href="/periodetestimoni">
+                    <i class="icon-speedometer"></i><span> Laporan Testimoni</span>
                 </a>
             </li>
         </ul>
