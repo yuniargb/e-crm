@@ -98,7 +98,7 @@ class FrontController extends Controller
 
         // Save to detail
         $dtl = new DetailKomplain;
-        $dtl->keluhan_id = $kel_id;
+        $dtl->komplain_id = $kel_id;
         $dtl->sender = $sender;
         $dtl->pesan = $pesan;
         $dtl->save();
