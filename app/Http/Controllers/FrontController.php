@@ -64,9 +64,13 @@ class FrontController extends Controller
     {
         $inv = Invoice::where('id', $id)->first();
         if ($inv) {
-            $komp = new Komplain;
-            $komp->invoice_id = $id;
-            $komp->save();
+
+            $komplain = Komplain::where('invoice_id', $id)->first();
+            if ($komplain == null) {
+                $kom = new Komplain;
+                $kom->invoice_id = $id;
+                $kom->save();
+            }
 
             $data = [
                 'id' => $inv->id

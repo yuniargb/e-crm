@@ -28,7 +28,7 @@
             <div class="col-12 col-lg-8">
                 <div class="uza-contact-form mb-80">
                     <div class="contact-heading mb-50">
-                        <h4>Thank you for your interest. <br>Please fill out the form below to inquire about our work in Digital.</h4>
+                        <h4>Thank you for your interest. <br>Please fill out the form below to inquire about our services.</h4>
                     </div>
                     <form action="/testimonial/store" method="post" id="testimoniForm">
                         @csrf

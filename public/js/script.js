@@ -15,6 +15,18 @@ $(document).ready(function () {
         )
     }
 
+    // Show password login form
+    $('#showPassword').on('click', function () {
+        $(this).toggleClass("fa-eye fa-eye-slash");
+        var input = $($(this).attr("toggle"));
+        if (input.attr("type") == "password") {
+            input.attr("type", "text");
+        } else {
+            input.attr("type", "password");
+        }
+    });
+    // End show password
+
 
     // chat
     $('#btnChat').on('click', function () {
@@ -22,9 +34,11 @@ $(document).ready(function () {
         $('#chatDiv').slideToggle('slow', function () {
             const chatSesi = $('#sesi-chat').data('sesichat');
             if (chatSesi) {
+                $('#chatMessage').focus();
                 $('#valid').slideToggle('slow');
             } else {
                 $('#invalid').show();
+                $('#idInvoice').focus()
                 $('#idInvoice').on('keyup', function (e) {
                     if (e.which == 13) {
                         var invId = $(this).val();
@@ -52,7 +66,7 @@ $(document).ready(function () {
         } else {
             $("i", btnVal).toggleClass("fa-times fa-headphones");
         }
-    })
+    });
 
     chat();
 
