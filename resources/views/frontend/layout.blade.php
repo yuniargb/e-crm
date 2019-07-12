@@ -214,9 +214,11 @@
                 </div>
                 <form action="/chat/send" id="formChat" method="post">
                     @csrf
-                    <input type="text" id="chatIdInvoice">
+                    <input type="hidden" id="chatIdInvoice">
                     <input type="text" name="chat" id="chatMessage" class="form-control" placeholder="Write a message..">
-                    <button type="submit">send</button>
+                    <div class="text-right">
+                        <button type="submit" class="btn btn-success mt-2"><i class="fa fa-paper-plane"></i></button>
+                    </div>
                 </form>
             </div>
             <div id="invalid">

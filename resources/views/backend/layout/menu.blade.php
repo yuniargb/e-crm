@@ -12,7 +12,6 @@
 						<i class="icon-bubbles"></i>
 						<span class="badge badge-danger header-badge blink" id="totalPesan">0</span>
 					</a>
-
 				</li>
 				<!-- window screen -->
 				<li class="pc-rheader-submenu">

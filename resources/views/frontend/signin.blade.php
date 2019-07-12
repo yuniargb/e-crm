@@ -19,9 +19,11 @@
                                 <div class="form-group {{ $errors->has('password') ? 'has-error' : '' }} ">
                                     <div class="input-icon">
                                         <input type="password" name="password" id="loginPassword" class="form-control" placeholder="Password">
-                                        <span class="input-icon-addon">
-                                            <i id="showPassword" toggle="#loginPassword" class="fa fa-eye"></i>
-                                        </span>
+                                        <div class="text-right">
+                                            <span class="input-icon-addon">
+                                                <i id="showPassword" toggle="#loginPassword" class="fa fa-eye"></i>
+                                            </span>
+                                        </div>
                                     </div>
                                     <small class="text-danger">{{ $errors->first('password') }}</small>
                                 </div>
