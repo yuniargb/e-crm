@@ -81,7 +81,7 @@ class FrontController extends Controller
     {
         $komp = Komplain::where('invoice_id', $id)->first();
         $kelId = $komp->id;
-        $dtl = DetailKomplain::where('keluhan_id', $kelId)->get();
+        $dtl = DetailKomplain::where('komplain_id', $kelId)->get();
         return view('frontend.chat', compact('dtl'));
     }
 
@@ -98,7 +98,7 @@ class FrontController extends Controller
 
         // Save to detail
         $dtl = new DetailKomplain;
-        $dtl->keluhan_id = $kel_id;
+        $dtl->komplain_id = $kel_id;
         $dtl->sender = $sender;
         $dtl->pesan = $pesan;
         $dtl->save();
