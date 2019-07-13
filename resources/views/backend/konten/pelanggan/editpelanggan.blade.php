@@ -40,13 +40,6 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="namakategori" class="col-xs-2 col-form-label form-control-label">Email</label>
-                        <div class="col-sm-10">
-                            <input class="form-control {{ $errors->has('email') ? 'input-danger' : '' }}" type="email" id="email" name="email" value="{{ $ktg->email }}">
-                            <small class="text-danger">{{ $errors->first('email') }}</small>
-                        </div>
-                    </div>
-                    <div class="form-group row">
                         <label for="namakategori" class="col-xs-2 col-form-label form-control-label">Nomor Telepon</label>
                         <div class="col-sm-10">
                             <input class="form-control {{ $errors->has('no_telepon') ? 'input-danger' : '' }}" type="text" id="no_telepon" name="no_telepon" value="{{ $ktg->no_telp }}">

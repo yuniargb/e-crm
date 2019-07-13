@@ -151,7 +151,7 @@
             $('#hrg_diskon').val(total);
         })
         setInterval(function() {
-            $.getJSON('/komplain', function(data) {
+            $.getJSON('/komplain/notif', function(data) {
                 console.log(data.length);
                 $('#totalPesan').html(data.length);
                 // $.each(data, function(index, e) {
@@ -167,15 +167,13 @@
 
 
                     html += `
-                    <div class="media friendlist-box" data-id="1" data-status="online" data-username="` + e.nama_pelanggan + `" data-invoice="` + e.invoice_id + `" data-toggle="tooltip" data-placement="left" title="` + e.nama_pelanggan + `">
+                    <div class="media friendlist-box" data-id="1" data-status="online" data-username="` + e.nama_pelanggan + `" data-invoice="` + e.invoice_id + `" data-komplain="` + e.kode + `" data-toggle="tooltip" data-placement="left" title="` + e.nama_pelanggan + `">
 
                         <a class="media-left" href="#!">
                             <img class="media-object img-circle" src="assets/images/avatar-1.png" alt="Generic placeholder image">
-                            <div class="live-status bg-success"></div>
                         </a>
                         <div class="media-body">
                             <div class="friend-header">` + e.nama_pelanggan + `</div>
-                            <span>20min ago</span>
                         </div>
                     </div>
                     `;

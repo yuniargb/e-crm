@@ -23,6 +23,7 @@ use App\Testimoni;
 use Illuminate\Support\Facades\Auth;
 use App\DetailKomplain;
 use App\Komplain;
+use Illuminate\Support\Facades\Hash;
 
 class BackController extends Controller
 {
@@ -70,6 +71,7 @@ class BackController extends Controller
         $ktg->nama_pelanggan = $request->nama_pelanggan;
         $ktg->no_telp = $request->no_telepon;
         $ktg->email = $request->email;
+        $ktg->password = Hash::make("mikatour");
 
         $ktg->save();
         Session::flash('success', 'New Pelanggan success added');
@@ -89,7 +91,6 @@ class BackController extends Controller
         $rules = [
             'nama_pelanggan' => 'required',
             'no_telepon' => 'required',
-            'email' => 'required|unique:pelanggans',
         ];
 
         $message = [
@@ -101,7 +102,6 @@ class BackController extends Controller
         $ktg = Pelanggan::find($id);
         $ktg->nama_pelanggan = $request->nama_pelanggan;
         $ktg->no_telp = $request->no_telepon;
-        $ktg->email = $request->email;
         $ktg->save();
         Session::flash('success', 'Pelanggan success updated');
         return redirect('/pelanggan');
@@ -446,7 +446,7 @@ class BackController extends Controller
     {
         $invoice = Invoice::with('pelanggan')->where('id', $id)->first();
         $tgl = Invoice::find($id);
-        $peserta = DB::select("select r.no_dukumen,r.nama_peserta,r.tgl_berangkat,p.harga,p.nama_paket,p.id,ps.diskon from pesertas r inner join pakets p on r.paket_id=p.id left join (select * from promos where tgl_selesai >= '" . $tgl->tgl_inv . "' and tgl_mulai <= '" . $tgl->tgl_inv . "') ps ON p.id=ps.paket_id where p.invoice_id='" . $id . "'");
+        $peserta = DB::select("SELECT r.no_dukumen,r.nama_peserta,r.tgl_berangkat,p.harga,p.nama_paket,p.id,ps.diskon from pesertas r inner join invoices i ON i.id=r.invoice_id inner join pakets p on r.paket_id=p.id left join (select * from promos where tgl_selesai >= '" . $tgl->tgl_inv . "' and tgl_mulai <= '" . $tgl->tgl_inv . "') ps ON p.id=ps.paket_id WHERE r.invoice_id='" . $id . "'");
         $pdf = PDF::loadView('backend.konten.invoice.cetakinvoice', compact('invoice', 'peserta'));
         return $pdf->stream('kwitansi_invoice_' . date('Y-m-d_H-i-s') . '.pdf');
     }
@@ -613,20 +613,43 @@ class BackController extends Controller
     {
         $id = auth()->user()->id;
         // $komplain = DB::Select("SELECT * from komplains k INNER JOIN detail_komplains dk ON k.id=dk.komplain_id LEFT JOIN stafs s ON k.staf_id=s.id WHERE k.solved=0 AND k.staf_id = null OR k.staf_id='" . $id . "'");
-        $komplain = DB::Select("SELECT * from komplains k INNER JOIN invoices i ON k.invoice_id=i.id INNER JOIN pelanggans p ON i.pelanggan_id=p.id LEFT JOIN stafs s ON k.staf_id=s.id WHERE k.solved=0 OR k.staf_id = null OR k.staf_id='" . auth()->user()->id . "'");
+        $komplain = DB::Select("SELECT *,k.id as kode 
+        from komplains k 
+        INNER JOIN invoices i ON k.invoice_id=i.id
+        INNER JOIN pelanggans p ON i.pelanggan_id=p.id 
+        WHERE k.staf_id = null 
+        OR k.staf_id='" . $id . "'
+        AND k.solved=0 ");
         // $komplain = DB::Select("SELECT * from komplains k INNER JOIN invoices i ON k.invoice_id=i.id INNER JOIN pelanggans p ON i.pelanggan_id=p.id LEFT JOIN stafs s ON k.staf_id=s.id WHERE k.solved=0 AND k.staf_id = null OR k.staf_id='" . $id . "'");
+
+        return json_encode($komplain);
+    }
+    public function notif()
+    {
+        $id = auth()->user()->id;
+
+        $komplain = DB::Select("SELECT *,k.id as kode 
+        from komplains k 
+        INNER JOIN detail_komplains dk ON k.id=dk.komplain_id 
+        INNER JOIN invoices i ON k.invoice_id=i.id 
+        INNER JOIN pelanggans p ON i.pelanggan_id=p.id 
+        WHERE k.staf_id = null 
+        OR k.staf_id='" . $id . "'
+        AND dk.read=0
+        AND k.solved=0  
+        ");
 
         return json_encode($komplain);
     }
     public function pesan($id)
     {
-        $pesan = DB::Select("SELECT * from komplains k 
+        $pesan = DB::Select("SELECT *,HOUR(TIMEDIFF(now(),dk.created_at)) as sisa
+        from komplains k 
         INNER JOIN invoices i ON k.invoice_id=i.id 
         INNER JOIN detail_komplains dk ON k.id=dk.komplain_id 
         INNER JOIN pelanggans p ON i.pelanggan_id=p.id 
         LEFT JOIN stafs s ON k.staf_id=s.id 
-        WHERE k.solved=0 OR k.staf_id = null OR k.staf_id='" . auth()->user()->id . "' AND k.invoice_id='" . $id . "'");
-
+        WHERE k.id='" . $id . "' and k.solved=0");
         return json_encode($pesan);
     }
     public function read($id)
@@ -662,4 +685,336 @@ class BackController extends Controller
         // }
     }
     // end complain
+
+    // Laporan
+    // Form Laporan Top Pelanggan
+    public function periodePelanggan()
+    {
+        return view('backend.konten.laporan.periodepelanggan');
+    }
+    // Form Laporan Top Paket
+    public function periodePaket()
+    {
+        return view('backend.konten.laporan.periodepaket');
+    }
+    // Form Laporan Testimonial
+    public function periodeTestimoni()
+    {
+        return view('backend.konten.laporan.periodetestimoni');
+    }
+    // Cetak Laporan Top Pelanggan
+    public function cetakPelanggan(Request $request)
+    {
+        $awal = $request->tgl_awal;
+        $akhir = $request->tgl_akhir;
+        $tgl = date('d-m-Y');
+        $laporan = DB::select("SELECT p.id,p.email,p.nama_pelanggan as nama,count(i.id) as jml_invoice,sum(i.total_hrg) as total FROM pelanggans p INNER JOIN invoices i ON p.id=i.pelanggan_id WHERE i.tgl_inv BETWEEN '" . $awal . "' AND '" . $akhir . "' group by p.id,p.email,p.nama_pelanggan order by jml_invoice DESC limit 5");
+        $pdf = PDF::loadView('backend.konten.laporan.laporanpelanggan', compact('laporan', 'awal', 'tgl', 'akhir'));
+        return $pdf->stream('laporantoppeserta_' . date('Y-m-d_H-i-s') . '.pdf');
+    }
+    // Cetak Laporan Top Paket
+    public function cetakPaket(Request $request)
+    {
+        $awal = $request->tgl_awal;
+        $akhir = $request->tgl_akhir;
+        $tgl = date('d-m-Y');
+        $laporan = DB::select("SELECT p.id,p.harga,p.nama_paket as paket,count(pe.paket_id) as jml,sum(p.harga) as total FROM pakets p INNER JOIN pesertas pe ON p.id=pe.paket_id INNER JOIN invoices i ON pe.invoice_id=i.id WHERE i.tgl_inv BETWEEN '" . $awal . "' AND '" . $akhir . "' group by p.id,p.nama_paket,p.harga order by jml DESC limit 5");
+        $pdf = PDF::loadView('backend.konten.laporan.laporanpaket', compact('laporan', 'awal', 'tgl', 'akhir'));
+        return $pdf->stream('laporantoppaket_' . date('Y-m-d_H-i-s') . '.pdf');
+    }
+    // Cetak Laporan Testimoni
+    public function cetakTestimoni(Request $request)
+    {
+        $awal = $request->tgl_awal;
+        $akhir = $request->tgl_akhir;
+        $tgl = date('d-m-Y');
+        $laporan = DB::select("SELECT * FROM testimonis t INNER JOIN invoices i ON i.id=t.invoice_id INNER JOIN pelanggans p ON p.id=i.pelanggan_id WHERE i.tgl_inv BETWEEN '" . $awal . "' AND '" . $akhir . "'");
+        $pdf = PDF::loadView('backend.konten.laporan.laporantestimoni', compact('laporan', 'awal', 'tgl', 'akhir'));
+        return $pdf->stream('laporantestimoni_' . date('Y-m-d_H-i-s') . '.pdf');
+    }
+    // End Laporan
 }
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3
+// I LOVE YOU <3

@@ -40,6 +40,7 @@
                     <label for="namakategori" class="col-xs-2 col-form-label form-control-label">Paket</label>
                     <div class="col-sm-10">
                         <select class="js-example-basic-single form-control" id="paket" name="paket">
+                            <option value="">PILIH PAKET</option>
                             @foreach($paket as $kat)
                             <option data-harga="{{ $kat->harga }}" data-paket="{{ $kat->nama_paket }}" value="{{ $kat->id }}" {{ old('paket') == $kat->id ? 'selected' : '' }}>{{ $kat->nama_paket }}</option>
                             @endforeach

@@ -53,6 +53,7 @@
                     <label for="namakategori" class="col-xs-2 col-form-label form-control-label">Paket</label>
                     <div class="col-sm-5">
                         <select class="js-example-basic-single form-control" id="paket" name="paket">
+                            <option value="">PILIH PAKET</option>
                             @foreach($paket as $kat)
                             @php
                             if($kat->diskon != null){

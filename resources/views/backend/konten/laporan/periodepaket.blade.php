@@ -10,12 +10,12 @@
         <div class="card-header">
             <div class="row">
                 <div class="col-sm-10">
-                    <h1>Laporan Testimonial</h1>
+                    <h1>Laporan Top Paket</h1>
                 </div>
             </div>
         </div>
         <div class="card-block">
-            <form action="cetaktestimoni" target="_blank" method="post">
+            <form action="cetakpaket" method="post" target="_blank">
                 @csrf
                 <div class="form-group row">
                     <label for="namakategori" class="col-xs-2 col-form-label form-control-label">Tanggal Awal</label>

@@ -5,12 +5,12 @@
             <div class="f-left image"><img src="/assets/images/avatar-1.png" alt="User Image" class="img-circle"></div>
             <div class="f-left info">
                 <p>{{ Auth::user()->nama_staf }}</p>
-                <p class="designation">Staf <i class="icofont icofont-caret-down m-l-5"></i></p>
+                <p class="designation">Staf</p>
             </div>
         </div>
         <!-- sidebar profile Menu-->
         <ul class="nav sidebar-menu extra-profile-list">
-            <li>
+            <!-- <li>
                 <a class="waves-effect waves-dark" href="profile.html">
                     <i class="icon-user"></i>
                     <span class="menu-text">View Profile</span>
@@ -31,7 +31,7 @@
                     <span class="menu-text">Logout</span>
                     <span class="selected"></span>
                 </a>
-            </li>
+            </li> -->
         </ul>
         <!-- Sidebar Menu-->
         <ul class="sidebar-menu">
@@ -79,18 +79,18 @@
             </li>
             <li class="nav-level">Laporan</li>
             <li class="treeview">
-                <a class="waves-effect waves-dark" href="/periodeinvoice">
-                    <i class="icon-speedometer"></i><span> Laporan Invoice</span>
+                <a class="waves-effect waves-dark" href="periodepelanggan">
+                    <i class="icon-speedometer"></i><span> Laporan Top Pelanggan</span>
                 </a>
             </li>
             <li class="treeview">
-                <a class="waves-effect waves-dark" href="/periodepromo">
-                    <i class="icon-speedometer"></i><span> Laporan Promo</span>
+                <a class="waves-effect waves-dark" href="periodepaket">
+                    <i class="icon-speedometer"></i><span> Laporan Top Paket</span>
                 </a>
             </li>
             <li class="treeview">
-                <a class="waves-effect waves-dark" href="/periodetestimoni">
-                    <i class="icon-speedometer"></i><span> Laporan Testimoni</span>
+                <a class="waves-effect waves-dark" href="periodetestimoni">
+                    <i class="icon-speedometer"></i><span> Laporan Testimonial</span>
                 </a>
             </li>
         </ul>

@@ -1,5 +1,6 @@
 <header class="main-header-top hidden-print">
-	<a href="index.html" class="logo"><img class="img-fluid able-logo" src="/assets/images/logo.png" alt="Theme-logo"></a>
+	<a href="index.html" class="logo">Mika Travel Indonesia</a>
+	<!-- <a href="index.html" class="logo"><img class="img-fluid able-logo" src="/images/logo.jpeg" alt="Theme-logo"></a> -->
 	<nav class="navbar navbar-static-top">
 		<!-- Sidebar toggle button--><a href="#!" data-toggle="offcanvas" class="sidebar-toggle"></a>
 		<!-- Navbar Right Menu-->

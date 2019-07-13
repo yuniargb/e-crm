@@ -121,7 +121,7 @@
     <div class="body">
         <div class="head">
             <img src="{{ public_path() }}/images/logo.jpeg" class="img-fluid" alt="" width="100" height="100">
-            <h2>LAPORAN TESTIMONIAL</h2>
+            <h2>LAPORAN TOP PAKET</h2>
             <h2>MIKA TRAVEL INDONESIA</h2>
             <p>Jl. Ciledug Raya, Petukangan Utara, Jakarta Selatan 12260</p>
         </div>
@@ -130,44 +130,24 @@
             <table align="center" class="table-custom" style="width: 100%;">
                 <thead>
                     <tr>
-                        <th align="center" width="10">NO</th>
-                        <th align="center">Kode Invoice</th>
-                        <th align="center" width="100">Pelanggan</th>
-                        <th align="center" width="60">Rating</th>
-                        <th align="center" width="60">Publish</th>
-                        <th align="center" width="100">Testimoni</th>
+                        <th align="center" width="40">NO</th>
+                        <th align="center">Paket</th>
+                        <th align="center" width="60">Harga</th>
+                        <th align="center" width="60">Jumlah Terjual</th>
+                        <th align="center" width="100">Total</th>
                     </tr>
                 </thead>
                 <tbody>
                     @php
                     $no = 1;
                     foreach ($laporan as $p) :
-
-                    if($p->rating == 1){
-                    $rating = "Awful";
-                    }elseif($p->rating == 2){
-                    $rating = "Bad";
-                    }elseif($p->rating == 3){
-                    $rating = "Good";
-                    }elseif($p->rating == 4){
-                    $rating = "Exellent";
-                    }else{
-                    $rating = "Perfect";
-                    }
-
-                    if($p->publish == 1){
-                    $publish = "publish";
-                    }else{
-                    $publish = "not published";
-                    }
                     @endphp
                     <tr>
                         <td align="center">{{ $no }} </td>
-                        <td align="center">{{ $p->invoice_id }}</td>
-                        <td align="center" width="60">{{ $p->nama_pelanggan}} </td>
-                        <td align="center" width="60">{{ $rating }}</td>
-                        <td align="center" width="60">{{ $publish }}</td>
-                        <td align="center" width="60">{{ $p->isi_testimoni }}</td>
+                        <td align="center">{{ $p->paket }}</td>
+                        <td align="center" width="60">{{ number_format($p->harga, 0, ",", ".")}} </td>
+                        <td align="center" width="60">{{ $p->jml }}</td>
+                        <td align="center" width="60">{{ number_format($p->total, 0, ",", ".") }}</td>
                     </tr>
                     @php
                     $no++;

@@ -124,16 +124,15 @@ Route::prefix('komplain')->group(function () {
     Route::get('/pesan/{id}', 'BackController@pesan');
     Route::get('/read/{id}', 'BackController@read');
     Route::post('/balas', 'BackController@balas');
+    Route::get('/notif', 'BackController@notif');
 });
 //  Link Halaman Laporan Admin
-Route::prefix('laporan')->group(function () {
-    Route::get('/periodeinvoice', 'BackController@periodeinvoice');
-    Route::get('/periodepromo', 'BackController@periodepromo');
-    Route::get('/periodetestimoni', 'BackController@periodetestimoni');
-    Route::post('/invoice', 'BackController@lapinvoice');
-    Route::post('/promo', 'BackController@lappromo');
-    Route::post('/testimoni', 'BackController@laptestimoni');
-});
+Route::get('/periodepelanggan', 'BackController@periodepelanggan');
+Route::get('/periodepaket', 'BackController@periodepaket');
+Route::get('/periodetestimoni', 'BackController@periodetestimoni');
+Route::post('/cetakpelanggan', 'BackController@cetakpelanggan');
+Route::post('/cetaktestimoni', 'BackController@cetaktestimoni');
+Route::post('/cetakpaket', 'BackController@cetakpaket');
 
 Auth::routes();
 

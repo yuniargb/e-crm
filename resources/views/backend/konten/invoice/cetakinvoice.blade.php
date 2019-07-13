@@ -184,6 +184,7 @@
                 $harga = $p->harga;
                 $paket = "";
                 }
+                $total += $harga;
                 @endphp
                 <tr>
                     <td>{{ $no }}</td>
@@ -200,7 +201,7 @@
             <tfoot>
                 <tr>
                     <th align="center" colspan="4">TOTAL</th>
-                    <th>{{ number_format($invoice->total_hrg,0,",",".") }}</th>
+                    <th>{{ number_format($total,0,",",".") }}</th>
                 </tr>
             </tfoot>
         </table>

@@ -91,31 +91,39 @@ $(document).ready(function () {
 
         var invoice = $(this).data('invoice');
         var username = $(this).data('username');
+        var komplain = $(this).data('komplain');
+
+        console.log(invoice);
+        $.get('/komplain/read/' + komplain, function (i) {
+            console.log(komplain);
+        })
 
         var options = {
             direction: 'right'
         };
         $('.showChat_inner').toggle('slide', options, 500);
-
+        $('#kotakChat').html("");
         $('#nama_pelg').text(username);
-        $.getJSON('/komplain/pesan/' + invoice, function (data) {
+        $.getJSON('/komplain/pesan/' + komplain, function (data) {
             var html = "";
             $.each(data, function (index, e) {
-                $.get('/komplain/read/' + e.komplain_id, function (i) {
-                    console.log(e.komplain_id);
-                })
+                if (e.read == "1") {
+                    var read = "read";
+                } else {
+                    var read = "";
+                }
+                var waktu = e.sisa + " Jam yang lalu";
                 $('#komplain_idd').val(e.komplain_id);
                 if (e.sender.substr(0, 6) == "STD01-") {
                     html += `
                     <div class="media chat-messages">
                         <a class="media-left photo-table" href="#!">
                             <img class="media-object img-circle m-t-5" src="assets/images/avatar-1.png" alt="Generic placeholder image">
-                            <div class="live-status bg-success"></div>
                         </a>
                         <div class="media-body chat-menu-content">
                             <div class="">
                                 <p class="chat-cont">` + e.pesan + `</p>
-                                <p class="chat-time">8:20 a.m.</p>
+                                <p class="chat-time" style="margin-right:10px;">` + waktu + `  </p>
                             </div>
                         </div>
                     </div>
@@ -127,13 +135,12 @@ $(document).ready(function () {
                         <div class="media-body chat-menu-reply">
                             <div class="">
                                 <p class="chat-cont">` + e.pesan + `</p>
-                                <p class="chat-time">8:20 a.m.</p>
+                                <p class="chat-time text-right" style="margin-right:10px;">` + read + ` | ` + waktu + `  </p>
                             </div>
                         </div>
                         <div class="media-right photo-table">
                             <a href="#!">
                                 <img class="media-object img-circle m-t-5" src="assets/images/avatar-2.png" alt="Generic placeholder image">
-                                <div class="live-status bg-success"></div>
                             </a>
                         </div>
                     </div>
