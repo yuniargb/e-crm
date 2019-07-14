@@ -134,6 +134,9 @@ Route::post('/cetakpelanggan', 'BackController@cetakpelanggan');
 Route::post('/cetaktestimoni', 'BackController@cetaktestimoni');
 Route::post('/cetakpaket', 'BackController@cetakpaket');
 
+// Link Dashboard Admin
+Route::get('/dashboard', 'BackController@index');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

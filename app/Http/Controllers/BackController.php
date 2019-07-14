@@ -36,8 +36,26 @@ class BackController extends Controller
     // Dasboard
     public function index()
     {
-        return view('backend.konten.dashboard');
+        $pelanggan = DB::select("SELECT p.nama_pelanggan as nama,count(i.id) as jml_invoice,sum(i.total_hrg) as total FROM pelanggans p INNER JOIN invoices i ON p.id=i.pelanggan_id group by p.nama_pelanggan order by jml_invoice DESC limit 5");
+        $pel = [];
+        $total = [];
+        foreach ($pelanggan as $p) {
+            $pel[] = $p->nama;
+            $total[] = $p->jml_invoice;
+        }
+
+        $paket = DB::select("SELECT p.id,p.harga,p.nama_paket as paket,count(pe.paket_id) as jml,sum(p.harga) as total FROM pakets p INNER JOIN pesertas pe ON p.id=pe.paket_id INNER JOIN invoices i ON pe.invoice_id=i.id group by p.id,p.nama_paket,p.harga order by jml DESC limit 5");
+
+        $terjual = [];
+        $pakets = [];
+        foreach ($paket as $pk) {
+            $pakets[] = $pk->paket;
+            $terjual[] = $pk->jml;
+        }
+        // dd($pel);
+        return view('backend.konten.dashboard', compact('pel', 'total','terjual','pakets'));
     }
+    // End Dashboard
 
     // pelanggan
     // List Pelanggan
@@ -617,9 +635,10 @@ class BackController extends Controller
         from komplains k 
         INNER JOIN invoices i ON k.invoice_id=i.id
         INNER JOIN pelanggans p ON i.pelanggan_id=p.id 
-        WHERE k.staf_id = null 
+        WHERE k.staf_id IS null 
         OR k.staf_id='" . $id . "'
-        AND k.solved=0 ");
+        AND k.solved = false 
+        order by k.id DESC");
         // $komplain = DB::Select("SELECT * from komplains k INNER JOIN invoices i ON k.invoice_id=i.id INNER JOIN pelanggans p ON i.pelanggan_id=p.id LEFT JOIN stafs s ON k.staf_id=s.id WHERE k.solved=0 AND k.staf_id = null OR k.staf_id='" . $id . "'");
 
         return json_encode($komplain);
@@ -628,15 +647,24 @@ class BackController extends Controller
     {
         $id = auth()->user()->id;
 
+        // $komplain = DB::Select("SELECT *,k.id as kode 
+        // from komplains k 
+        // INNER JOIN detail_komplains dk ON k.id=dk.komplain_id 
+        // INNER JOIN invoices i ON k.invoice_id=i.id 
+        // INNER JOIN pelanggans p ON i.pelanggan_id=p.id 
+        // WHERE k.staf_id = null 
+        // OR k.staf_id='" . $id . "'
+        // AND dk.read=0
+        // AND k.solved=0  
+        // ");
         $komplain = DB::Select("SELECT *,k.id as kode 
-        from komplains k 
-        INNER JOIN detail_komplains dk ON k.id=dk.komplain_id 
-        INNER JOIN invoices i ON k.invoice_id=i.id 
-        INNER JOIN pelanggans p ON i.pelanggan_id=p.id 
-        WHERE k.staf_id = null 
-        OR k.staf_id='" . $id . "'
-        AND dk.read=0
-        AND k.solved=0  
+        from detail_komplains dk 
+        INNER JOIN komplains k ON dk.komplain_id=k.id 
+        INNER JOIN invoices i ON i.id=k.invoice_id 
+        INNER JOIN Pelanggans p ON p.id=i.pelanggan_id 
+        WHERE k.staf_id IS null OR k.staf_id='" . $id . "' 
+        AND dk.read = false 
+        AND dk.sender LIKE '%STD01-%'
         ");
 
         return json_encode($komplain);
@@ -649,7 +677,7 @@ class BackController extends Controller
         INNER JOIN detail_komplains dk ON k.id=dk.komplain_id 
         INNER JOIN pelanggans p ON i.pelanggan_id=p.id 
         LEFT JOIN stafs s ON k.staf_id=s.id 
-        WHERE k.id='" . $id . "' and k.solved=0");
+        WHERE k.id='" . $id . "' and k.solved = false");
         return json_encode($pesan);
     }
     public function read($id)
