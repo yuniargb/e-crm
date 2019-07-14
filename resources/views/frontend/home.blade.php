@@ -18,9 +18,8 @@
                         <!-- Welcome Text -->
                         <div class="col-12 col-md-6">
                             <div class="welcome-text">
-                                <h2 data-animation="fadeInUp" data-delay="100ms">Mika Tour makes your <br> biz <span>greater</span></h2>
-                                <h5 data-animation="fadeInUp" data-delay="400ms">We love to create "cool" things on Digital Platforms</h5>
-                                <a href="#" class="btn uza-btn btn-2" data-animation="fadeInUp" data-delay="700ms">Start Exploring</a>
+                                <h2 data-animation="fadeInUp" data-delay="100ms">Mika Tour have thousands <br> <span>holiday</span> destination</h2>
+                                <a href="/tours" class="btn uza-btn btn-2" data-animation="fadeInUp" data-delay="700ms">Start Exploring</a>
                             </div>
                         </div>
                         <!-- Welcome Thumbnail -->
@@ -48,9 +47,8 @@
                         <!-- Welcome Text -->
                         <div class="col-12 col-md-6">
                             <div class="welcome-text">
-                                <h2 data-animation="fadeInUp" data-delay="100ms">Uza makes your <br> biz <span>greater</span></h2>
-                                <h5 data-animation="fadeInUp" data-delay="400ms">We love to create "cool" things on Digital Platforms</h5>
-                                <a href="#" class="btn uza-btn btn-2" data-animation="fadeInUp" data-delay="700ms">Start Exploring</a>
+                                <h2 data-animation="fadeInUp" data-delay="100ms">Join us<br> to get <span>In Touch</span></h2>
+                                <a href="/signin" class="btn uza-btn btn-2" data-animation="fadeInUp" data-delay="700ms">Start Exploring</a>
                             </div>
                         </div>
                         <!-- Welcome Thumbnail -->
@@ -78,9 +76,8 @@
                         <!-- Welcome Text -->
                         <div class="col-12 col-md-6">
                             <div class="welcome-text">
-                                <h2 data-animation="fadeInUp" data-delay="100ms">Uza makes your <br> biz <span>greater</span></h2>
-                                <h5 data-animation="fadeInUp" data-delay="400ms">We love to create "cool" things on Digital Platforms</h5>
-                                <a href="#" class="btn uza-btn btn-2" data-animation="fadeInUp" data-delay="700ms">Start Exploring</a>
+                                <h2 data-animation="fadeInUp" data-delay="100ms">Already have a trip? <br> <span>Review</span> us to serve you better!</h2>
+                                <a href="/testimonial" class="btn uza-btn btn-2" data-animation="fadeInUp" data-delay="700ms">Start Exploring</a>
                             </div>
                         </div>
                         <!-- Welcome Thumbnail -->
