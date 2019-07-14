@@ -12,6 +12,19 @@
 
 /* Mobile and Up */
 
+/* Home Tour */
+
+.home-tour-wrapper {
+    height: 350px;
+    width: 100% !important;
+}
+
+.home-tour-img {
+    height: 100% !important;
+    width: 100% !important;
+    object-fit: cover;
+}
+
 /* chat style */
 #btnChat {
     position: fixed;

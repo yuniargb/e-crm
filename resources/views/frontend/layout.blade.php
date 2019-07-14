@@ -81,7 +81,7 @@
                         <!-- Nav Start -->
                         <div class="classynav">
                             <ul id="nav">
-                                <li><a href="./">Home</a></li>
+                                <li><a href="/">Home</a></li>
                                 <li><a href="/tours">Tours</a></li>
                                 <li><a href="./portfolio.html">Promo</a></li>
                                 <li><a href="./about.html">About</a></li>

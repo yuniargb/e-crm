@@ -196,8 +196,8 @@
             <!-- Section Heading -->
             <div class="col-12">
                 <div class="section-heading text-center">
-                    <h2>Our Portfolio</h2>
-                    <p>We stay on top of our industry by being experts in yours.</p>
+                    <h2>Our Tour Packages</h2>
+                    <p>We stay on top of our service by being experts in yours.</p>
                 </div>
             </div>
         </div>
@@ -207,92 +207,27 @@
         <div class="row">
             <!-- Portfolio Slides -->
             <div class="portfolio-sildes owl-carousel">
-
+                @foreach($tours as $tr)
                 <!-- Single Portfolio Slide -->
                 <div class="single-portfolio-slide">
-                    <img src="/fassets/img/bg-img/3.jpg" alt="">
+                    <div class="home-tour-wrapper">
+                        <img class="home-tour-img" src="/images/paket/{{ $tr->gambar }}" alt="">
+                    </div>
                     <!-- Overlay Effect -->
                     <div class="overlay-effect">
-                        <h4>Digital Marketing</h4>
-                        <p>At vero eos et accusam et justo duo dolores et ea rebum. Stet gubergren no sea takimata sanctus est</p>
+                        <h4>{{ $tr->nama_paket }}</h4>
+                        <p>Rp {{ number_format($tr->harga, 0, ',', '.') }}</p>
                     </div>
                     <!-- View More -->
                     <div class="view-more-btn">
-                        <a href="#"><i class="arrow_right"></i></a>
+                        <a href="/tours/detil/{{ $tr->id }}"><i class="arrow_right"></i></a>
                     </div>
                 </div>
-
-                <!-- Single Portfolio Slide -->
-                <div class="single-portfolio-slide">
-                    <img src="/fassets/img/bg-img/4.jpg" alt="">
-                    <!-- Overlay Effect -->
-                    <div class="overlay-effect">
-                        <h4>Digital Marketing</h4>
-                        <p>At vero eos et accusam et justo duo dolores et ea rebum. Stet gubergren no sea takimata sanctus est</p>
-                    </div>
-                    <!-- View More -->
-                    <div class="view-more-btn">
-                        <a href="#"><i class="arrow_right"></i></a>
-                    </div>
-                </div>
-
-                <!-- Single Portfolio Slide -->
-                <div class="single-portfolio-slide">
-                    <img src="/fassets/img/bg-img/5.jpg" alt="">
-                    <!-- Overlay Effect -->
-                    <div class="overlay-effect">
-                        <h4>Digital Marketing</h4>
-                        <p>At vero eos et accusam et justo duo dolores et ea rebum. Stet gubergren no sea takimata sanctus est</p>
-                    </div>
-                    <!-- View More -->
-                    <div class="view-more-btn">
-                        <a href="#"><i class="arrow_right"></i></a>
-                    </div>
-                </div>
-
-                <!-- Single Portfolio Slide -->
-                <div class="single-portfolio-slide">
-                    <img src="/fassets/img/bg-img/6.jpg" alt="">
-                    <!-- Overlay Effect -->
-                    <div class="overlay-effect">
-                        <h4>Digital Marketing</h4>
-                        <p>At vero eos et accusam et justo duo dolores et ea rebum. Stet gubergren no sea takimata sanctus est</p>
-                    </div>
-                    <!-- View More -->
-                    <div class="view-more-btn">
-                        <a href="#"><i class="arrow_right"></i></a>
-                    </div>
-                </div>
-
-                <!-- Single Portfolio Slide -->
-                <div class="single-portfolio-slide">
-                    <img src="/fassets/img/bg-img/5.jpg" alt="">
-                    <!-- Overlay Effect -->
-                    <div class="overlay-effect">
-                        <h4>Digital Marketing</h4>
-                        <p>At vero eos et accusam et justo duo dolores et ea rebum. Stet gubergren no sea takimata sanctus est</p>
-                    </div>
-                    <!-- View More -->
-                    <div class="view-more-btn">
-                        <a href="#"><i class="arrow_right"></i></a>
-                    </div>
-                </div>
-
-                <!-- Single Portfolio Slide -->
-                <div class="single-portfolio-slide">
-                    <img src="/fassets/img/bg-img/6.jpg" alt="">
-                    <!-- Overlay Effect -->
-                    <div class="overlay-effect">
-                        <h4>Digital Marketing</h4>
-                        <p>At vero eos et accusam et justo duo dolores et ea rebum. Stet gubergren no sea takimata sanctus est</p>
-                    </div>
-                    <!-- View More -->
-                    <div class="view-more-btn">
-                        <a href="#"><i class="arrow_right"></i></a>
-                    </div>
-                </div>
-
+                @endforeach
             </div>
+        </div>
+        <div class="row justify-content-center">
+            <a href="/tours" class="btn uza-btn btn-2 mt-4">Load More</a>
         </div>
     </div>
 
@@ -303,85 +238,36 @@
                 <div class="col-12">
                     <!-- Testimonial Slides -->
                     <div class="testimonial-slides owl-carousel">
-
+                        @foreach($testimoni as $tst)
                         <!-- Single Testimonial Slide -->
                         <div class="single-testimonial-slide d-flex align-items-center">
                             <!-- Testimonial Thumbnail -->
                             <div class="testimonial-thumbnail">
-                                <img src="/fassets/img/bg-img/7.jpg" alt="">
+                                <img src="/images/{{ $tst->avatar }}" alt="">
                             </div>
                             <!-- Testimonial Content -->
                             <div class="testimonial-content">
-                                <h4>“Colorlib Ltd’s ranking has gone up so much from the great work that your team has done and our brand get organic sales consistently from your efforts. We are happy that the results of your efforts were lasting and profitable.”</h4>
+                                <h4>“{{ $tst->isi_testimoni }}”</h4>
                                 <!-- Ratings -->
                                 <div class="ratings">
-                                    <i class="icon_star"></i>
-                                    <i class="icon_star"></i>
-                                    <i class="icon_star"></i>
-                                    <i class="icon_star"></i>
-                                    <i class="icon_star"></i>
+                                    <span class="fa fa-star {{ ( 1 <= $tst->rating ? 'text-warning' : '') }}"></span>
+                                    <span class="fa fa-star {{ ( 2 <= $tst->rating ? 'text-warning' : '') }}"></span>
+                                    <span class="fa fa-star {{ ( 3 <= $tst->rating ? 'text-warning' : '') }}"></span>
+                                    <span class="fa fa-star {{ ( 4 <= $tst->rating ? 'text-warning' : '') }}"></span>
+                                    <span class="fa fa-star {{ ($tst->rating == 5 ? 'text-warning' : '') }}"></span>
                                 </div>
+                                <span>{{ date('F, d Y', strtotime($tst->created_at)) }}</span>
                                 <!-- Author Info -->
                                 <div class="author-info">
-                                    <h5>Darrell Goodman <span>- CEO colorlib</span></h5>
+                                    <h5>{{ $tst->nama_pelanggan }}</h5>
                                 </div>
                                 <!-- Quote Icon -->
-                                <div class="quote-icon"><img src="/fassets/img/core-img/quote.png" alt=""></div>
+                                <div class="row justify-content-end">
+                                    <div class="quote-icon"><img src="/fassets/img/core-img/quote.png" alt=""></div>
+                                </div>
                             </div>
                         </div>
-
-                        <!-- Single Testimonial Slide -->
-                        <div class="single-testimonial-slide d-flex align-items-center">
-                            <!-- Testimonial Thumbnail -->
-                            <div class="testimonial-thumbnail">
-                                <img src="/fassets/img/bg-img/23.jpg" alt="">
-                            </div>
-                            <!-- Testimonial Content -->
-                            <div class="testimonial-content">
-                                <h4>“Colorlib Ltd’s ranking has gone up so much from the great work that your team has done and our brand get organic sales consistently from your efforts. We are happy that the results of your efforts were lasting and profitable.”</h4>
-                                <!-- Ratings -->
-                                <div class="ratings">
-                                    <i class="icon_star"></i>
-                                    <i class="icon_star"></i>
-                                    <i class="icon_star"></i>
-                                    <i class="icon_star"></i>
-                                    <i class="icon_star"></i>
-                                </div>
-                                <!-- Author Info -->
-                                <div class="author-info">
-                                    <h5>Darrell Goodman <span>- CEO colorlib</span></h5>
-                                </div>
-                                <!-- Quote Icon -->
-                                <div class="quote-icon"><img src="/fassets/img/core-img/quote.png" alt=""></div>
-                            </div>
-                        </div>
-
-                        <!-- Single Testimonial Slide -->
-                        <div class="single-testimonial-slide d-flex align-items-center">
-                            <!-- Testimonial Thumbnail -->
-                            <div class="testimonial-thumbnail">
-                                <img src="/fassets/img/bg-img/24.jpg" alt="">
-                            </div>
-                            <!-- Testimonial Content -->
-                            <div class="testimonial-content">
-                                <h4>“Colorlib Ltd’s ranking has gone up so much from the great work that your team has done and our brand get organic sales consistently from your efforts. We are happy that the results of your efforts were lasting and profitable.”</h4>
-                                <!-- Ratings -->
-                                <div class="ratings">
-                                    <i class="icon_star"></i>
-                                    <i class="icon_star"></i>
-                                    <i class="icon_star"></i>
-                                    <i class="icon_star"></i>
-                                    <i class="icon_star"></i>
-                                </div>
-                                <!-- Author Info -->
-                                <div class="author-info">
-                                    <h5>Darrell Goodman <span>- CEO colorlib</span></h5>
-                                </div>
-                                <!-- Quote Icon -->
-                                <div class="quote-icon"><img src="/fassets/img/core-img/quote.png" alt=""></div>
-                            </div>
-                        </div>
-
+                        @endforeach
                     </div>
                 </div>
             </div>

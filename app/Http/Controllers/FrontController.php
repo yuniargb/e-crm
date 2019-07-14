@@ -10,13 +10,21 @@ use App\Paket;
 use App\Invoice;
 use App\Komplain;
 use App\DetailKomplain;
+use Illuminate\Support\Facades\DB;
 
 class FrontController extends Controller
 {
 
     public function index()
     {
-        return view('frontend.home');
+        $testimoni = DB::table('testimonis')
+            ->join('invoices', 'testimonis.invoice_id', '=', 'invoices.id')
+            ->join('pelanggans', 'invoices.pelanggan_id', '=', 'pelanggans.id')
+            ->where('testimonis.publish', '=', 1)
+            ->select('pelanggans.*', 'invoices.id', 'testimonis.*')
+            ->get();
+        $tours = Paket::take(6)->get();
+        return view('frontend.home', compact('testimoni', 'tours'));
     }
 
     public function tours()
