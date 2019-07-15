@@ -27,6 +27,15 @@ Route::prefix('tours')->group(function () {
     Route::get('/detil/{id}', 'FrontController@detiltours');
 });
 
+// AboutUs
+Route::get('/about', 'FrontController@about');
+
+// Tours
+Route::prefix('promotion')->group(function () {
+    Route::get('/', 'FrontController@promotion');
+    Route::get('/detil/{id}', 'FrontController@detilpromotion');
+});
+
 // Chat
 Route::prefix('chat')->group(function () {
     Route::get('/{id}', 'FrontController@chat');
@@ -39,7 +48,9 @@ Route::prefix('chat')->group(function () {
 Route::prefix('signin')->group(function () {
     Route::get('/', 'Auth\LoginPelangganController@showLoginForm')->name('pelanggan.login');
     Route::post('/', 'Auth\LoginPelangganController@login')->name('pelanggan.login.submit');
+    Route::post('/register', 'Auth\LoginPelangganController@register')->name('pelanggan.register.submit');
 });
+
 
 // Login google
 Route::get('sign/google', 'Auth\LoginPelangganController@redirectToProvider');

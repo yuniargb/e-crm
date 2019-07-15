@@ -95,100 +95,58 @@
 </section>
 <!-- ***** Welcome Area End ***** -->
 
-<!-- ***** About Us Area Start ***** -->
-<section class="uza-about-us-area">
-    <div class="container">
-        <div class="row align-items-center">
-
-            <!-- About Thumbnail -->
-            <div class="col-12 col-md-6">
-                <div class="about-us-thumbnail mb-80">
-                    <img src="/fassets/img/bg-img/2.jpg" alt="">
-                    <!-- Video Area -->
-                    <div class="uza-video-area hi-icon-effect-8">
-                        <a href="https://www.youtube.com/watch?v=sSakBz_eYzQ" class="hi-icon video-play-btn"><i class="fa fa-play" aria-hidden="true"></i></a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- About Us Content -->
-            <div class="col-12 col-md-6">
-                <div class="about-us-content mb-80">
-                    <h2>We're a Agency Team &amp; Digital Marketing</h2>
-                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing esed diam nonumy eirmod tempor invidunt ut labore et dolore magna.</p>
-                    <p>At vero eos et accusam et justo duo dolores et ea rebum. Stet gubergren no sea takimata sanctus est Lorem ipsum dolor sit amet ipsumlor eut consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt labore et dolore magna
-                        liquyam erat.</p>
-                    <a href="#" class="btn uza-btn btn-2 mt-4">Start Exploring</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- About Background Pattern -->
-    <div class="about-bg-pattern">
-        <img src="/fassets/img/core-img/curve-2.png" alt="">
-    </div>
-</section>
-<!-- ***** About Us Area End ***** -->
-
-<!-- ***** Services Area Start ***** -->
-<section class="uza-services-area section-padding-80-0">
+<!-- ***** Portfolio Area Start ***** -->
+<section class="uza-portfolio-area section-padding-80">
     <div class="container">
         <div class="row">
             <!-- Section Heading -->
             <div class="col-12">
                 <div class="section-heading text-center">
-                    <h2>Our Services</h2>
+                    <h2>On Going Promo</h2>
+                    <p>See what interest you on our promo!.</p>
                 </div>
             </div>
-        </div>
-
-        <div class="row">
-
-            <!-- Single Service Area -->
-            <div class="col-12 col-lg-4">
-                <div class="single-service-area mb-80">
-                    <!-- Service Icon -->
-                    <div class="service-icon">
-                        <i class="icon_cone_alt"></i>
-                    </div>
-                    <h5>Business Strategy</h5>
-                    <p>At vero eos et accusam et justo duo dolores et ea rebum. Stet gubergren no sea takimata.</p>
-                </div>
-            </div>
-
-            <!-- Single Service Area -->
-            <div class="col-12 col-lg-4">
-                <div class="single-service-area mb-80">
-                    <!-- Service Icon -->
-                    <div class="service-icon">
-                        <i class="icon_piechart"></i>
-                    </div>
-                    <h5>Market Analytics</h5>
-                    <p>At vero eos et accusam et justo duo dolores et ea rebum. Stet gubergren no sea takimata.</p>
-                </div>
-            </div>
-
-            <!-- Single Service Area -->
-            <div class="col-12 col-lg-4">
-                <div class="single-service-area mb-80">
-                    <!-- Service Icon -->
-                    <div class="service-icon">
-                        <i class="icon_easel"></i>
-                    </div>
-                    <h5>Marketing Social</h5>
-                    <p>At vero eos et accusam et justo duo dolores et ea rebum. Stet gubergren no sea takimata.</p>
-                </div>
-            </div>
-
         </div>
     </div>
-</section>
-<!-- ***** Services Area End ***** -->
 
-<!-- ***** Portfolio Area Start ***** -->
-<section class="uza-portfolio-area section-padding-80">
-    <div class="container">
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Portfolio Slides -->
+            <div class="portfolio-sildes owl-carousel">
+                @foreach($promo as $prm)
+                <!-- Single Portfolio Slide -->
+                <div class="single-portfolio-slide">
+                    <div class="home-tour-wrapper">
+                        <img class="home-tour-img" src="/images/paket/{{ $prm->gambar }}" alt="">
+                    </div>
+                    <!-- Overlay Effect -->
+                    <div class="overlay-effect text-center">
+                        <h2>{{ $prm->nama_paket }}</h2>
+                        <h4 class="text-danger">Sale {{ $prm->diskon }}% <i class="fa fa-tags"></i></h4>
+                        <h4 class="text-danger"><strike>Rp {{ number_format($prm->harga, 0, ',', '.') }}</strike></h4>
+                        @php
+                        $hrg = $prm->harga;
+                        $disc = $prm->diskon;
+                        $bfr = ($hrg*$disc)/100;
+                        $aftr = $hrg - $bfr;
+                        @endphp
+                        <h4>Only Rp {{ number_format($aftr, 0, ',', '.') }}</h4>
+                        <h2 class="text-primary">Available until {{ date('d F Y', strtotime($prm->tgl_selesai)) }}</h2>
+                    </div>
+                    <!-- View More -->
+                    <div class="view-more-btn">
+                        <a href="/tours/detil/{{ $prm->id }}"><i class="arrow_right"></i></a>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <a href="/promotion" class="btn uza-btn btn-2 mt-4">Load More</a>
+        </div>
+    </div>
+
+    <div class="container mt-5">
         <div class="row">
             <!-- Section Heading -->
             <div class="col-12">
@@ -211,9 +169,9 @@
                         <img class="home-tour-img" src="/images/paket/{{ $tr->gambar }}" alt="">
                     </div>
                     <!-- Overlay Effect -->
-                    <div class="overlay-effect">
-                        <h4>{{ $tr->nama_paket }}</h4>
-                        <p>Rp {{ number_format($tr->harga, 0, ',', '.') }}</p>
+                    <div class="overlay-effect text-center">
+                        <h2>{{ $tr->nama_paket }}</h2>
+                        <h3 class="text-primary">Rp {{ number_format($tr->harga, 0, ',', '.') }}</h3>
                     </div>
                     <!-- View More -->
                     <div class="view-more-btn">
@@ -267,6 +225,9 @@
                         @endforeach
                     </div>
                 </div>
+            </div>
+            <div class="row justify-content-center">
+                <a href="/testimonial" class="btn uza-btn btn-2 mt-4">Make your own review</a>
             </div>
         </div>
     </div>

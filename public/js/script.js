@@ -36,6 +36,9 @@ $(document).ready(function () {
             if (chatSesi) {
                 $('#chatMessage').focus();
                 $('#valid').slideToggle('slow');
+                $.get('/chat/' + chatSesi, function (data) {
+                    $('#viewChat').html(data);
+                });
             } else {
                 $('#invalid').show();
                 $('#idInvoice').focus()
@@ -69,6 +72,7 @@ $(document).ready(function () {
     });
 
     chat();
+    setInterval(loadChat, 500);
 
     // Login and register
     $('#SignUpForm').hide();
@@ -130,7 +134,16 @@ $(document).ready(function () {
         $('#star').val(rating);
     });
     // End Testimoni
-})
+});
+
+function loadChat() {
+    let sessionChat = $('#sesi-chat').data('sesichat');
+    if (sessionChat) {
+        $.get('/chat/' + sessionChat, function (data) {
+            $('#viewChat').html(data);
+        });
+    }
+}
 
 function chat() {
     const sesiChat = $('#sesi-chat').data('sesichat');

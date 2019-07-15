@@ -34,27 +34,6 @@
         </div>
     </div>
 
-    <!-- ***** Top Search Area Start ***** -->
-    <div class="top-search-area">
-        <!-- Search Modal -->
-        <div class="modal fade" id="searchModal" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-body">
-                        <!-- Close Button -->
-                        <button type="button" class="btn close-btn" data-dismiss="modal"><i class="fa fa-times"></i></button>
-                        <!-- Form -->
-                        <form action="/" method="post">
-                            <input type="search" name="top-search-bar" class="form-control" placeholder="Search and hit enter...">
-                            <button type="submit">Search</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- ***** Top Search Area End ***** -->
-
     <!-- ***** Header Area Start ***** -->
     <header class="header-area">
         <!-- Main Header Start -->
@@ -79,12 +58,12 @@
                         </div>
 
                         <!-- Nav Start -->
-                        <div class="classynav">
+                        <div class="classynav mr-5">
                             <ul id="nav">
                                 <li><a href="/">Home</a></li>
                                 <li><a href="/tours">Tours</a></li>
-                                <li><a href="./portfolio.html">Promo</a></li>
-                                <li><a href="./about.html">About</a></li>
+                                <li><a href="/promotion">Promo</a></li>
+                                <li><a href="/about">About</a></li>
                                 <li><a href="/testimonial">Testimonial</a></li>
                                 <li><a href="#"><i class="fa fa-user"></i></a>
                                     <ul class="dropdown">
@@ -98,13 +77,7 @@
                                         @endif
                                     </ul>
                                 </li>
-                                <li><a href="./contact.html">Contact</a></li>
                             </ul>
-
-                            <!-- Search Icon -->
-                            <div class="search-icon" data-toggle="modal" data-target="#searchModal">
-                                <i class="icon_search"></i>
-                            </div>
                         </div>
                         <!-- Nav End -->
 
@@ -131,10 +104,10 @@
 
                         <!-- Footer Content -->
                         <div class="footer-content mb-15">
-                            <h3>(+65) 1234 5678</h3>
-                            <p>40 Baria Sreet 13/2 NY City, US <br> hello.colorlib@gmail.com</p>
+                            <h4 class="text-primary">(+62) 21 58908586</h4>
+                            <p>Jl. Ciledug Raya, Petukangan Utara <br> Universitas Budiluhur <br> Jakarta Selatan</p>
                         </div>
-                        <p class="mb-0">Mon - Fri: 9:00 - 19:00 <br>
+                        <p class="mb-0">Mon - Fri: 8:00 - 16:00 <br>
                             Closed on Weekends</p>
                     </div>
                 </div>
@@ -148,11 +121,11 @@
                         <!-- Nav -->
                         <nav>
                             <ul class="our-link">
-                                <li><a href="#">About Us</a></li>
-                                <li><a href="#">Blog</a></li>
-                                <li><a href="#">Contact Us</a></li>
-                                <li><a href="#">Forum Registeration</a></li>
-                                <li><a href="#">Forum Sign In</a></li>
+                                <li><a href="/">Home</a></li>
+                                <li><a href="/tours">Tours</a></li>
+                                <li><a href="/promotion">Promo</a></li>
+                                <li><a href="/about">About</a></li>
+                                <li><a href="/testimonial">Testimonial</a></li>
                             </ul>
                         </nav>
                     </div>
@@ -162,40 +135,12 @@
                 <div class="col-12 col-sm-6 col-lg-3">
                     <div class="single-footer-widget mb-80">
                         <!-- Widget Title -->
-                        <h4 class="widget-title">Resources</h4>
-
-                        <!-- Nav -->
-                        <nav>
-                            <ul class="our-link">
-                                <li><a href="#">Customer Support</a></li>
-                                <li><a href="#">Privacy</a></li>
-                                <li><a href="#">Media &amp; Press</a></li>
-                                <li><a href="#">Our Team</a></li>
-                                <li><a href="#">Contact</a></li>
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-
-                <!-- Single Footer Widget -->
-                <div class="col-12 col-sm-6 col-lg-3">
-                    <div class="single-footer-widget mb-80">
-                        <!-- Widget Title -->
-                        <h4 class="widget-title">About Us</h4>
-                        <p>Integer vehicula mauris libero, at molestie eros imperdiet sit amet.</p>
-
-                        <!-- Copywrite Text -->
-                        <div class="copywrite-text mb-30">
-                            <p>&copy; Copyright 2018 <a href="#">Colorlib</a>.</p>
-                        </div>
+                        <h4 class="widget-title">Follow Us On</h4>
 
                         <!-- Social Info -->
                         <div class="footer-social-info">
-                            <a href="#" class="facebook" data-toggle="tooltip" data-placement="top" title="Facebook"><i class="fa fa-facebook"></i></a>
-                            <a href="#" class="twitter" data-toggle="tooltip" data-placement="top" title="Twitter"><i class="fa fa-twitter"></i></a>
-                            <a href="#" class="pinterest" data-toggle="tooltip" data-placement="top" title="Pinterest"><i class="fa fa-pinterest"></i></a>
-                            <a href="#" class="instagram" data-toggle="tooltip" data-placement="top" title="Instagram"><i class="fa fa-instagram"></i></a>
-                            <a href="#" class="youtube" data-toggle="tooltip" data-placement="top" title="YouTube"><i class="fa fa-youtube-play"></i></a>
+                            <a href="https://www.facebook.com/mikatour.id.7" target="_blank" class="facebook" data-toggle="tooltip" data-placement="top" title="Facebook"><i class="fa fa-facebook"></i></a>
+                            <a href="https://www.instagram.com/mikatour_id/" target="_blank" class="instagram" data-toggle="tooltip" data-placement="top" title="Instagram"><i class="fa fa-instagram"></i></a>
                         </div>
                     </div>
                 </div>
@@ -245,7 +190,7 @@
     <!-- RateYo -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
     <!-- My Script -->
-    <script src="/js/script.js?v=1.1"></script>
+    <script src="/js/script.js?v=1.2"></script>
     <!-- Laravel Javascript Validation -->
     <script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
     {!! JsValidator::formRequest('App\Http\Requests\TestimoniRequest', '#testimoniForm'); !!}

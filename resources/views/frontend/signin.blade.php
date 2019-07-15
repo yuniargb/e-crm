@@ -57,23 +57,27 @@
                 </div>
                 <div id="SignUpForm">
                     <div class="card-body">
-                        <form action="">
+                        <form method="post" action="{{ route('pelanggan.register.submit') }}">
+                            @csrf
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Name">
+                                <input type="text" name="namer" class="form-control" placeholder="Name">
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Email">
+                                <input type="number" name="phone" class="form-control" placeholder="Mobile Number">
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Password">
+                                <input type="text" name="emailr" class="form-control" placeholder="Email">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" name="passwordr" class="form-control" placeholder="Password">
                             </div>
                             <div class="form-group">
                                 <button type="submit" class="btn btn-outline-danger btn-block">Register</button>
                             </div>
-                            <div class="text-center mt-4">
-                                <p>Already have an account? <a href="#" id="LogIn" class="text-primary">Sign-In</a></p>
-                            </div>
                         </form>
+                        <div class="text-center mt-4">
+                            <p>Already have an account? <a href="#" id="LogIn" class="text-primary">Sign-In</a></p>
+                        </div>
                     </div>
                 </div>
             </div>

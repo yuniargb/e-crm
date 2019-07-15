@@ -53,7 +53,7 @@ class BackController extends Controller
             $terjual[] = $pk->jml;
         }
         // dd($pel);
-        return view('backend.konten.dashboard', compact('pel', 'total','terjual','pakets'));
+        return view('backend.konten.dashboard', compact('pel', 'total', 'terjual', 'pakets'));
     }
     // End Dashboard
 
