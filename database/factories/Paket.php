@@ -10,7 +10,7 @@ $factory->define(Paket::class, function (Faker $faker) {
     return [
         'nama_paket' => $faker->state,
         'harga' => $faker->randomNumber(6, false),
-        'gambar' => "gambar.png",
+        'gambar' => $faker->imageUrl('640', '480'),
         'kategori_id' => $faker->randomElement($kategori),
     ];
 });

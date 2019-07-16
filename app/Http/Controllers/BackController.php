@@ -563,7 +563,7 @@ class BackController extends Controller
             'akhir' => $request->akhir,
             'paket' => $ket->nama_paket
         );
-        $plg = Pelanggan::all();
+        $plg = Pelanggan::take(2)->get();
         foreach ($plg as $p) {
             Mail::send('backend.konten.promosi.email', $dis, function ($mail) use ($p) {
                 $mail->to($p->email)
