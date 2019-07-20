@@ -17,12 +17,12 @@
 <div class="bg-cus container-fluid">
     <div class="flash-message" data-title="Thank You" data-flashmessage="{{ Session::get('success') }}"></div>
     <hr>
-    <div class="card-block">
+    <div class="card-body">
         @php $no=1; @endphp
         @foreach($testi as $tst)
-        <div class="row">
+        <div class="row" style="margin-bottom:10px;">
             <div class="col-md-2">
-                <img width="75px;" class="img-fluid img-circle" src="/assets/images/avatar-2.png" alt="User">
+                <img width="85px;" class="img-fluid img-circle" src="/assets/images/avatar-2.png" alt="User">
             </div>
             <div class="col-md-8">
                 <h5>{{ $tst->nama_pelanggan }} (<span>{{ $tst->invoice_id }}</span>)</h5>
@@ -40,23 +40,25 @@
                     <br>
                     <span class="badge {{ ($tst->publish != 0) ? 'badge-success' : 'badge-danger'}}">{{ ($tst->publish != 0) ? 'Published' : 'Not published' }}</span>
                 </div>
-                <div class="dropdown-primary dropdown">
-                    <button class="btn btn-primary dropdown-toggle waves-effect waves-light" type="button" id="dropdown1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="icofont icofont-gear"></i>
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdown1" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
-                        @if($tst->publish != 0)
-                        <a class="dropdown-item waves-light waves-effect btn-del" href="/testimoni/unpublish/{{ $tst->id }}">Unpublish</a>
-                        <a class="dropdown-item waves-light waves-effect btn-del" href="/testimoni/delete/{{ $tst->id }}">Delete</a>
-                        @else
-                        <a class="dropdown-item waves-light waves-effect" href="/testimoni/publish/{{ $tst->id }}">Publish</a>
-                        <a class="dropdown-item waves-light waves-effect btn-del" href="/testimoni/delete/{{ $tst->id }}">Delete</a>
-                        @endif
+                <div class="text-right">
+                    <div style="margin-top:10px;" class="dropdown-primary dropdown">
+                        <button class="btn btn-primary dropdown-toggle waves-effect waves-light" type="button" id="dropdown1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="icofont icofont-gear"></i>
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdown1" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
+                            @if($tst->publish != 0)
+                            <a class="dropdown-item waves-light waves-effect btn-del" href="/testimoni/unpublish/{{ $tst->id }}">Unpublish</a>
+                            <a class="dropdown-item waves-light waves-effect btn-del" href="/testimoni/delete/{{ $tst->id }}">Delete</a>
+                            @else
+                            <a class="dropdown-item waves-light waves-effect" href="/testimoni/publish/{{ $tst->id }}">Publish</a>
+                            <a class="dropdown-item waves-light waves-effect btn-del" href="/testimoni/delete/{{ $tst->id }}">Delete</a>
+                            @endif
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        @endforeach
     </div>
+    @endforeach
 </div>
 @endsection

@@ -7,12 +7,13 @@ use App\Http\Controllers\Controller;
 use Auth;
 use Socialite;
 use App\Pelanggan;
+use Illuminate\Support\Facades\Hash;
 
 class LoginPelangganController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('guest:pelanggan', ['except' => ['logout']]);
+        $this->middleware('guest:pelanggan', ['except' => ['logout', 'register']]);
     }
 
     public function showLoginForm()
@@ -76,6 +77,35 @@ class LoginPelangganController extends Controller
             Auth::guard('pelanggan')->login($newUser, true);
         }
 
+        return redirect('/customer');
+    }
+
+    public function register(Request $request)
+    {
+        $rules = [
+            'namer' => 'required',
+            'phone' => 'required',
+            'emailr' => 'required|email|unique:pelanggans,email',
+            'passwordr' => 'required'
+        ];
+
+        $message = [
+            'required' => 'Please fill this field',
+            'email' => 'Email is invalid',
+            'unique' => 'This email has been used'
+        ];
+
+        $this->validate($request, $rules, $message);
+
+        $user                    = new Pelanggan;
+        $user->nama_pelanggan    = $request->namer;
+        $user->no_telp           = $request->phone;
+        $user->email             = $request->emailr;
+        $user->email_verified_at = now();
+        $user->password          = Hash::make($request->passwordr);
+        $user->save();
+
+        Auth::guard('pelanggan')->login($user, true);
         return redirect('/customer');
     }
 

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+// 
 use Illuminate\Http\Request;
 use App\Testimoni;
 use App\Http\Requests\TestimoniRequest;
@@ -10,26 +10,45 @@ use App\Paket;
 use App\Invoice;
 use App\Komplain;
 use App\DetailKomplain;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Carbon;
+use App\Promo;
 
 class FrontController extends Controller
 {
 
     public function index()
     {
-        return view('frontend.home');
+        $promo = DB::table('promos')
+            ->join('pakets', 'promos.paket_id', '=', 'pakets.id')
+            ->where('promos.tgl_selesai', '>', Carbon::now())
+            ->get();
+        $testimoni = DB::table('testimonis')
+            ->join('invoices', 'testimonis.invoice_id', '=', 'invoices.id')
+            ->join('pelanggans', 'invoices.pelanggan_id', '=', 'pelanggans.id')
+            ->where('testimonis.publish', '=', 1)
+            ->select('pelanggans.*', 'invoices.id', 'testimonis.*')
+            ->get();
+        $tours = Paket::take(6)->get();
+        return view('frontend.home', compact('testimoni', 'tours', 'promo'));
     }
 
     public function tours()
     {
         $tour = Paket::all();
+
         return view('frontend.tour', compact('tour'));
     }
 
     public function detilTours($id)
     {
         $tour = Paket::with('fasilitas')->where('id', $id)->first();
-        $related = Paket::where('id', '!=', $id)->inRandomOrder()->take(4)->get();
-        return view('frontend.detiltour', compact('tour', 'related'));
+        $promo = Promo::with('paket')
+            ->where('paket_id', $id)
+            ->where('tgl_selesai', '>', Carbon::now())
+            ->first();
+        $related = Paket::where('id', '!=', $id)->take(6)->get();
+        return view('frontend.detiltour', compact('tour', 'related', 'promo'));
     }
 
     public function testimonial()
@@ -46,6 +65,20 @@ class FrontController extends Controller
             ];
             return json_encode($data);
         }
+    }
+
+    public function promotion()
+    {
+        $promo = DB::table('promos')
+            ->join('pakets', 'promos.paket_id', '=', 'pakets.id')
+            ->where('promos.tgl_selesai', '>', Carbon::now())
+            ->get();
+        return view('frontend.promo', compact('promo'));
+    }
+
+    public function about()
+    {
+        return view('frontend.about');
     }
 
     public function storeTestimonial(TestimoniRequest $request)
@@ -85,8 +118,9 @@ class FrontController extends Controller
     {
         $komp = Komplain::where('invoice_id', $id)->first();
         $kelId = $komp->id;
+        $invId = $komp->invoice_id;
         $dtl = DetailKomplain::where('komplain_id', $kelId)->get();
-        return view('frontend.chat', compact('dtl'));
+        return view('frontend.chat', compact('dtl', 'invId'));
     }
 
     public function chatSend(Request $request)

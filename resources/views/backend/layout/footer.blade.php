@@ -1,12 +1,12 @@
-<!-- Required Fremwork -->
-<script src="/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
 <!-- Required Jqurey -->
-<script src="/assets/plugins/jquery/dist/jquery.min.js"></script>
+<script src="/js/jquery-3.4.1.min.js"></script>
+<!-- Required Fremwork -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="/assets/plugins/jquery-ui/jquery-ui.min.js"></script>
 <script src="/assets/plugins/tether/dist/js/tether.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/js/select2.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+<script src="/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 
 

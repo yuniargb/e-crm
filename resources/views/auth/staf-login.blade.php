@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Able Pro Responsive Bootstrap 4 Admin Template by Phoenixcoded</title>
+    <title>Mika Tour</title>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -57,7 +57,7 @@
                         <form method="post" action="{{ route('staf.login.submit') }}" class="md-float-material">
                             @csrf
                             <div class="text-center">
-                                <h1>Mika Tour Travel</h1>
+                                <h1>Mika Tour Indonesia</h1>
                             </div>
                             <hr>
                             <h3 class="text-center">

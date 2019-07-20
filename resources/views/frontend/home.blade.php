@@ -18,9 +18,8 @@
                         <!-- Welcome Text -->
                         <div class="col-12 col-md-6">
                             <div class="welcome-text">
-                                <h2 data-animation="fadeInUp" data-delay="100ms">Mika Tour makes your <br> biz <span>greater</span></h2>
-                                <h5 data-animation="fadeInUp" data-delay="400ms">We love to create "cool" things on Digital Platforms</h5>
-                                <a href="#" class="btn uza-btn btn-2" data-animation="fadeInUp" data-delay="700ms">Start Exploring</a>
+                                <h2 data-animation="fadeInUp" data-delay="100ms">Mika Tour have thousands <br> <span>holiday</span> destination</h2>
+                                <a href="/tours" class="btn uza-btn btn-2" data-animation="fadeInUp" data-delay="700ms">Start Exploring</a>
                             </div>
                         </div>
                         <!-- Welcome Thumbnail -->
@@ -48,9 +47,8 @@
                         <!-- Welcome Text -->
                         <div class="col-12 col-md-6">
                             <div class="welcome-text">
-                                <h2 data-animation="fadeInUp" data-delay="100ms">Uza makes your <br> biz <span>greater</span></h2>
-                                <h5 data-animation="fadeInUp" data-delay="400ms">We love to create "cool" things on Digital Platforms</h5>
-                                <a href="#" class="btn uza-btn btn-2" data-animation="fadeInUp" data-delay="700ms">Start Exploring</a>
+                                <h2 data-animation="fadeInUp" data-delay="100ms">Join us<br> to get <span>In Touch</span></h2>
+                                <a href="/signin" class="btn uza-btn btn-2" data-animation="fadeInUp" data-delay="700ms">Start Exploring</a>
                             </div>
                         </div>
                         <!-- Welcome Thumbnail -->
@@ -78,9 +76,8 @@
                         <!-- Welcome Text -->
                         <div class="col-12 col-md-6">
                             <div class="welcome-text">
-                                <h2 data-animation="fadeInUp" data-delay="100ms">Uza makes your <br> biz <span>greater</span></h2>
-                                <h5 data-animation="fadeInUp" data-delay="400ms">We love to create "cool" things on Digital Platforms</h5>
-                                <a href="#" class="btn uza-btn btn-2" data-animation="fadeInUp" data-delay="700ms">Start Exploring</a>
+                                <h2 data-animation="fadeInUp" data-delay="100ms">Already have a trip? <br> <span>Review</span> us to serve you better!</h2>
+                                <a href="/testimonial" class="btn uza-btn btn-2" data-animation="fadeInUp" data-delay="700ms">Start Exploring</a>
                             </div>
                         </div>
                         <!-- Welcome Thumbnail -->
@@ -98,97 +95,6 @@
 </section>
 <!-- ***** Welcome Area End ***** -->
 
-<!-- ***** About Us Area Start ***** -->
-<section class="uza-about-us-area">
-    <div class="container">
-        <div class="row align-items-center">
-
-            <!-- About Thumbnail -->
-            <div class="col-12 col-md-6">
-                <div class="about-us-thumbnail mb-80">
-                    <img src="/fassets/img/bg-img/2.jpg" alt="">
-                    <!-- Video Area -->
-                    <div class="uza-video-area hi-icon-effect-8">
-                        <a href="https://www.youtube.com/watch?v=sSakBz_eYzQ" class="hi-icon video-play-btn"><i class="fa fa-play" aria-hidden="true"></i></a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- About Us Content -->
-            <div class="col-12 col-md-6">
-                <div class="about-us-content mb-80">
-                    <h2>We're a Agency Team &amp; Digital Marketing</h2>
-                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing esed diam nonumy eirmod tempor invidunt ut labore et dolore magna.</p>
-                    <p>At vero eos et accusam et justo duo dolores et ea rebum. Stet gubergren no sea takimata sanctus est Lorem ipsum dolor sit amet ipsumlor eut consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt labore et dolore magna
-                        liquyam erat.</p>
-                    <a href="#" class="btn uza-btn btn-2 mt-4">Start Exploring</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- About Background Pattern -->
-    <div class="about-bg-pattern">
-        <img src="/fassets/img/core-img/curve-2.png" alt="">
-    </div>
-</section>
-<!-- ***** About Us Area End ***** -->
-
-<!-- ***** Services Area Start ***** -->
-<section class="uza-services-area section-padding-80-0">
-    <div class="container">
-        <div class="row">
-            <!-- Section Heading -->
-            <div class="col-12">
-                <div class="section-heading text-center">
-                    <h2>Our Services</h2>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-
-            <!-- Single Service Area -->
-            <div class="col-12 col-lg-4">
-                <div class="single-service-area mb-80">
-                    <!-- Service Icon -->
-                    <div class="service-icon">
-                        <i class="icon_cone_alt"></i>
-                    </div>
-                    <h5>Business Strategy</h5>
-                    <p>At vero eos et accusam et justo duo dolores et ea rebum. Stet gubergren no sea takimata.</p>
-                </div>
-            </div>
-
-            <!-- Single Service Area -->
-            <div class="col-12 col-lg-4">
-                <div class="single-service-area mb-80">
-                    <!-- Service Icon -->
-                    <div class="service-icon">
-                        <i class="icon_piechart"></i>
-                    </div>
-                    <h5>Market Analytics</h5>
-                    <p>At vero eos et accusam et justo duo dolores et ea rebum. Stet gubergren no sea takimata.</p>
-                </div>
-            </div>
-
-            <!-- Single Service Area -->
-            <div class="col-12 col-lg-4">
-                <div class="single-service-area mb-80">
-                    <!-- Service Icon -->
-                    <div class="service-icon">
-                        <i class="icon_easel"></i>
-                    </div>
-                    <h5>Marketing Social</h5>
-                    <p>At vero eos et accusam et justo duo dolores et ea rebum. Stet gubergren no sea takimata.</p>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
-<!-- ***** Services Area End ***** -->
-
 <!-- ***** Portfolio Area Start ***** -->
 <section class="uza-portfolio-area section-padding-80">
     <div class="container">
@@ -196,8 +102,8 @@
             <!-- Section Heading -->
             <div class="col-12">
                 <div class="section-heading text-center">
-                    <h2>Our Portfolio</h2>
-                    <p>We stay on top of our industry by being experts in yours.</p>
+                    <h2>On Going Promo</h2>
+                    <p>See what interest you on our promo!.</p>
                 </div>
             </div>
         </div>
@@ -207,92 +113,76 @@
         <div class="row">
             <!-- Portfolio Slides -->
             <div class="portfolio-sildes owl-carousel">
-
+                @foreach($promo as $prm)
                 <!-- Single Portfolio Slide -->
                 <div class="single-portfolio-slide">
-                    <img src="/fassets/img/bg-img/3.jpg" alt="">
+                    <div class="home-tour-wrapper">
+                        <img class="home-tour-img" src="/images/paket/{{ $prm->gambar }}" alt="">
+                    </div>
                     <!-- Overlay Effect -->
-                    <div class="overlay-effect">
-                        <h4>Digital Marketing</h4>
-                        <p>At vero eos et accusam et justo duo dolores et ea rebum. Stet gubergren no sea takimata sanctus est</p>
+                    <div class="overlay-effect text-center">
+                        <h2>{{ $prm->nama_paket }}</h2>
+                        <h4 class="text-danger">Sale {{ $prm->diskon }}% <i class="fa fa-tags"></i></h4>
+                        <h4 class="text-danger"><strike>Rp {{ number_format($prm->harga, 0, ',', '.') }}</strike></h4>
+                        @php
+                        $hrg = $prm->harga;
+                        $disc = $prm->diskon;
+                        $bfr = ($hrg*$disc)/100;
+                        $aftr = $hrg - $bfr;
+                        @endphp
+                        <h4>Only Rp {{ number_format($aftr, 0, ',', '.') }}</h4>
+                        <h2 class="text-primary">Available until {{ date('d F Y', strtotime($prm->tgl_selesai)) }}</h2>
                     </div>
                     <!-- View More -->
                     <div class="view-more-btn">
-                        <a href="#"><i class="arrow_right"></i></a>
+                        <a href="/tours/detil/{{ $prm->id }}"><i class="arrow_right"></i></a>
                     </div>
                 </div>
-
-                <!-- Single Portfolio Slide -->
-                <div class="single-portfolio-slide">
-                    <img src="/fassets/img/bg-img/4.jpg" alt="">
-                    <!-- Overlay Effect -->
-                    <div class="overlay-effect">
-                        <h4>Digital Marketing</h4>
-                        <p>At vero eos et accusam et justo duo dolores et ea rebum. Stet gubergren no sea takimata sanctus est</p>
-                    </div>
-                    <!-- View More -->
-                    <div class="view-more-btn">
-                        <a href="#"><i class="arrow_right"></i></a>
-                    </div>
-                </div>
-
-                <!-- Single Portfolio Slide -->
-                <div class="single-portfolio-slide">
-                    <img src="/fassets/img/bg-img/5.jpg" alt="">
-                    <!-- Overlay Effect -->
-                    <div class="overlay-effect">
-                        <h4>Digital Marketing</h4>
-                        <p>At vero eos et accusam et justo duo dolores et ea rebum. Stet gubergren no sea takimata sanctus est</p>
-                    </div>
-                    <!-- View More -->
-                    <div class="view-more-btn">
-                        <a href="#"><i class="arrow_right"></i></a>
-                    </div>
-                </div>
-
-                <!-- Single Portfolio Slide -->
-                <div class="single-portfolio-slide">
-                    <img src="/fassets/img/bg-img/6.jpg" alt="">
-                    <!-- Overlay Effect -->
-                    <div class="overlay-effect">
-                        <h4>Digital Marketing</h4>
-                        <p>At vero eos et accusam et justo duo dolores et ea rebum. Stet gubergren no sea takimata sanctus est</p>
-                    </div>
-                    <!-- View More -->
-                    <div class="view-more-btn">
-                        <a href="#"><i class="arrow_right"></i></a>
-                    </div>
-                </div>
-
-                <!-- Single Portfolio Slide -->
-                <div class="single-portfolio-slide">
-                    <img src="/fassets/img/bg-img/5.jpg" alt="">
-                    <!-- Overlay Effect -->
-                    <div class="overlay-effect">
-                        <h4>Digital Marketing</h4>
-                        <p>At vero eos et accusam et justo duo dolores et ea rebum. Stet gubergren no sea takimata sanctus est</p>
-                    </div>
-                    <!-- View More -->
-                    <div class="view-more-btn">
-                        <a href="#"><i class="arrow_right"></i></a>
-                    </div>
-                </div>
-
-                <!-- Single Portfolio Slide -->
-                <div class="single-portfolio-slide">
-                    <img src="/fassets/img/bg-img/6.jpg" alt="">
-                    <!-- Overlay Effect -->
-                    <div class="overlay-effect">
-                        <h4>Digital Marketing</h4>
-                        <p>At vero eos et accusam et justo duo dolores et ea rebum. Stet gubergren no sea takimata sanctus est</p>
-                    </div>
-                    <!-- View More -->
-                    <div class="view-more-btn">
-                        <a href="#"><i class="arrow_right"></i></a>
-                    </div>
-                </div>
-
+                @endforeach
             </div>
+        </div>
+        <div class="row justify-content-center">
+            <a href="/promotion" class="btn uza-btn btn-2 mt-4">Load More</a>
+        </div>
+    </div>
+
+    <div class="container mt-5">
+        <div class="row">
+            <!-- Section Heading -->
+            <div class="col-12">
+                <div class="section-heading text-center">
+                    <h2>Our Tour Packages</h2>
+                    <p>We stay on top of our service by being experts in yours.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Portfolio Slides -->
+            <div class="portfolio-sildes owl-carousel">
+                @foreach($tours as $tr)
+                <!-- Single Portfolio Slide -->
+                <div class="single-portfolio-slide">
+                    <div class="home-tour-wrapper">
+                        <img class="home-tour-img" src="/images/paket/{{ $tr->gambar }}" alt="">
+                    </div>
+                    <!-- Overlay Effect -->
+                    <div class="overlay-effect text-center">
+                        <h2>{{ $tr->nama_paket }}</h2>
+                        <h3 class="text-primary">Rp {{ number_format($tr->harga, 0, ',', '.') }}</h3>
+                    </div>
+                    <!-- View More -->
+                    <div class="view-more-btn">
+                        <a href="/tours/detil/{{ $tr->id }}"><i class="arrow_right"></i></a>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <a href="/tours" class="btn uza-btn btn-2 mt-4">Load More</a>
         </div>
     </div>
 
@@ -303,87 +193,41 @@
                 <div class="col-12">
                     <!-- Testimonial Slides -->
                     <div class="testimonial-slides owl-carousel">
-
+                        @foreach($testimoni as $tst)
                         <!-- Single Testimonial Slide -->
                         <div class="single-testimonial-slide d-flex align-items-center">
                             <!-- Testimonial Thumbnail -->
                             <div class="testimonial-thumbnail">
-                                <img src="/fassets/img/bg-img/7.jpg" alt="">
+                                <img src="/images/{{ $tst->avatar }}" alt="">
                             </div>
                             <!-- Testimonial Content -->
                             <div class="testimonial-content">
-                                <h4>“Colorlib Ltd’s ranking has gone up so much from the great work that your team has done and our brand get organic sales consistently from your efforts. We are happy that the results of your efforts were lasting and profitable.”</h4>
+                                <h4>“{{ $tst->isi_testimoni }}”</h4>
                                 <!-- Ratings -->
                                 <div class="ratings">
-                                    <i class="icon_star"></i>
-                                    <i class="icon_star"></i>
-                                    <i class="icon_star"></i>
-                                    <i class="icon_star"></i>
-                                    <i class="icon_star"></i>
+                                    <span class="fa fa-star {{ ( 1 <= $tst->rating ? 'text-warning' : '') }}"></span>
+                                    <span class="fa fa-star {{ ( 2 <= $tst->rating ? 'text-warning' : '') }}"></span>
+                                    <span class="fa fa-star {{ ( 3 <= $tst->rating ? 'text-warning' : '') }}"></span>
+                                    <span class="fa fa-star {{ ( 4 <= $tst->rating ? 'text-warning' : '') }}"></span>
+                                    <span class="fa fa-star {{ ($tst->rating == 5 ? 'text-warning' : '') }}"></span>
                                 </div>
+                                <span>{{ date('F, d Y', strtotime($tst->created_at)) }}</span>
                                 <!-- Author Info -->
                                 <div class="author-info">
-                                    <h5>Darrell Goodman <span>- CEO colorlib</span></h5>
+                                    <h5>{{ $tst->nama_pelanggan }}</h5>
                                 </div>
                                 <!-- Quote Icon -->
-                                <div class="quote-icon"><img src="/fassets/img/core-img/quote.png" alt=""></div>
+                                <div class="row justify-content-end">
+                                    <div class="quote-icon"><img src="/fassets/img/core-img/quote.png" alt=""></div>
+                                </div>
                             </div>
                         </div>
-
-                        <!-- Single Testimonial Slide -->
-                        <div class="single-testimonial-slide d-flex align-items-center">
-                            <!-- Testimonial Thumbnail -->
-                            <div class="testimonial-thumbnail">
-                                <img src="/fassets/img/bg-img/23.jpg" alt="">
-                            </div>
-                            <!-- Testimonial Content -->
-                            <div class="testimonial-content">
-                                <h4>“Colorlib Ltd’s ranking has gone up so much from the great work that your team has done and our brand get organic sales consistently from your efforts. We are happy that the results of your efforts were lasting and profitable.”</h4>
-                                <!-- Ratings -->
-                                <div class="ratings">
-                                    <i class="icon_star"></i>
-                                    <i class="icon_star"></i>
-                                    <i class="icon_star"></i>
-                                    <i class="icon_star"></i>
-                                    <i class="icon_star"></i>
-                                </div>
-                                <!-- Author Info -->
-                                <div class="author-info">
-                                    <h5>Darrell Goodman <span>- CEO colorlib</span></h5>
-                                </div>
-                                <!-- Quote Icon -->
-                                <div class="quote-icon"><img src="/fassets/img/core-img/quote.png" alt=""></div>
-                            </div>
-                        </div>
-
-                        <!-- Single Testimonial Slide -->
-                        <div class="single-testimonial-slide d-flex align-items-center">
-                            <!-- Testimonial Thumbnail -->
-                            <div class="testimonial-thumbnail">
-                                <img src="/fassets/img/bg-img/24.jpg" alt="">
-                            </div>
-                            <!-- Testimonial Content -->
-                            <div class="testimonial-content">
-                                <h4>“Colorlib Ltd’s ranking has gone up so much from the great work that your team has done and our brand get organic sales consistently from your efforts. We are happy that the results of your efforts were lasting and profitable.”</h4>
-                                <!-- Ratings -->
-                                <div class="ratings">
-                                    <i class="icon_star"></i>
-                                    <i class="icon_star"></i>
-                                    <i class="icon_star"></i>
-                                    <i class="icon_star"></i>
-                                    <i class="icon_star"></i>
-                                </div>
-                                <!-- Author Info -->
-                                <div class="author-info">
-                                    <h5>Darrell Goodman <span>- CEO colorlib</span></h5>
-                                </div>
-                                <!-- Quote Icon -->
-                                <div class="quote-icon"><img src="/fassets/img/core-img/quote.png" alt=""></div>
-                            </div>
-                        </div>
-
+                        @endforeach
                     </div>
                 </div>
+            </div>
+            <div class="row justify-content-center">
+                <a href="/testimonial" class="btn uza-btn btn-2 mt-4">Make your own review</a>
             </div>
         </div>
     </div>
