@@ -46,7 +46,7 @@
                                         <td>{{ number_format($in->total_hrg,0,",",".") }}</td>
                                         <td>{{ $inv->nama_pelanggan }}</td>
                                         <td>
-                                            <a href="/invoice/cetak/{{ $in->id }}" target="_blank" class="btn btn-primary waves-effect" data-toggle="tooltip" data-placement="top" title="print"><i class="fa fa-print"></i>
+                                            <a href="/customer/cetak/{{ $in->id }}" target="_blank" class="btn btn-primary waves-effect" data-toggle="tooltip" data-placement="top" title="print"><i class="fa fa-print"></i>
                                             </a>
                                         </td>
                                         @endforeach

@@ -2,13 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Mika Tour</title>
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-	<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-	<![endif]-->
+    <title>Mika Tour Indonesia</title>
 
 
     <!-- Meta -->
@@ -26,10 +20,7 @@
     <!-- Google font-->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
 
-    <!-- Font Awesome -->
-    <link href="assets/css/font-awesome.min.css" rel="stylesheet" type="/assets/text/css">
-
-    <!--ico Fonts-->
+    <!-- iconfont -->
     <link rel="stylesheet" type="text/css" href="/assets/icon/icofont/css/icofont.css">
 
     <!-- Required Fremwork -->
@@ -47,43 +38,46 @@
 </head>
 
 <body>
+
     <section class="login p-fixed d-flex text-center bg-primary common-img-bg">
-        <!-- Container-fluid starts -->
         <div class="container-fluid">
             <div class="row">
-
-                <div class="col-sm-12">
+                <div class="col-xs-12">
                     <div class="login-card card-block">
-                        <form method="post" action="{{ route('staf.login.submit') }}" class="md-float-material">
-                            @csrf
+                        <form class="md-float-material" method="post" action="/ubahpassword">
                             <div class="text-center">
                                 <h1>Mika Tour Indonesia</h1>
                             </div>
                             <hr>
                             <h3 class="text-center">
-                                Staf login page
+                                Forget Password
                             </h3>
                             @if(Session::get('success'))
                             <div class="alert alert-info">{{ Session::get('success') }}</div>
                             @endif
-                            <div class="md-input-wrapper">
-                                <input type="text" name="username" class="md-form-control" />
-                                <label>Username</label>
-                            </div>
-                            <div class="md-input-wrapper">
-                                <input type="password" name="password" class="md-form-control" />
-                                <label>Password</label>
-                            </div>
-                            <div class="row justify-content-end" style="margin-bottom: 20px;">
-                                <div class="col-sm-12 col-xs-12 forgot-phone text-right">
-                                    <a href="/lupapassword" class="text-right f-w-600"> Forget Password?</a>
+                            @csrf
+                            <div class="md-group">
+                                <div class="md-input-wrapper">
+                                    <input type="hidden" class="md-form-control" name="email" value="{{ $email }}" />
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-xs-10 offset-xs-1">
-                                    <button type="submit" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20">LOGIN</button>
+                            <div class="md-group">
+                                <div class="md-input-wrapper">
+                                    <input type="password" class="md-form-control" name="password" />
+                                    <label>New Password</label>
                                 </div>
                             </div>
+                            <div class="md-group">
+                                <div class="md-input-wrapper">
+                                    <input type="password" class="md-form-control" name="password1" />
+                                    <label>Confirm New Password</label>
+                                </div>
+                            </div>
+                            <div class="btn-forgot">
+                                <button type="submit" class="btn btn-primary btn-md waves-effect waves-light text-center">SEND RESET LINK
+                                </button>
+                            </div>
+                            <!-- end of btn-forgot class-->
                         </form>
                         <!-- end of form -->
                     </div>
@@ -95,16 +89,23 @@
         </div>
         <!-- end of container-fluid -->
     </section>
+    <!-- Warning Section Starts -->
+    <!-- Older IE warning message -->
+    <!--[if lt IE 9]>
 
     <!-- Required Jqurey -->
-    <script src="/assets/plugins/jquery-ui/jquery-ui.min.js"></script>
-    <script src="/assets/plugins/tether/dist/js/tether.min.js"></script>
+    <script src="assets/plugins/jquery-ui/jquery-ui.min.js"></script>
+    <script src="assets/plugins/tether/dist/js/tether.min.js"></script>
+
     <!-- Required Fremwork -->
-    <script src="/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+
     <!-- waves effects.js -->
-    <script src="/assets/plugins/Waves/waves.min.js"></script>
+    <script src="assets/plugins/Waves/waves.min.js"></script>
+
     <!-- Custom js -->
-    <script type="text/javascript" src="/assets/pages/elements.js"></script>
+    <script type="text/javascript" src="assets/pages/elements.js"></script>
+
 </body>
 
 </html>

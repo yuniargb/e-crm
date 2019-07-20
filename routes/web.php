@@ -61,6 +61,7 @@ Route::get('sign/google/callback', 'Auth\LoginPelangganController@handleProvider
 Route::prefix('customer')->group(function () {
     Route::get('/', 'PelangganController@index')->name('pelanggan.dashboard');
     Route::get('/logout', 'Auth\LoginPelangganController@logout')->name('pelanggan.logout');
+    Route::get('/cetak/{id}', 'FrontController@cetakinvoice');
 });
 
 // Admin Login
@@ -147,6 +148,12 @@ Route::post('/cetakpaket', 'BackController@cetakpaket');
 
 // Link Dashboard Admin
 Route::get('/dashboard', 'BackController@index');
+
+//  Link Halaman Lupa Password Admin
+Route::get('/lupapassword', 'lupaPassword@lupastaf');
+Route::post('/lupastaf', 'lupaPassword@lupapasswordstaf');
+Route::get('/resetpassword/{id}', 'lupaPassword@formpasswordstaf');
+Route::post('/ubahpassword', 'lupaPassword@ubahpasswordstaf');
 
 Auth::routes();
 
