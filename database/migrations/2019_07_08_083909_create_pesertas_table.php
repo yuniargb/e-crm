@@ -13,7 +13,7 @@ class CreatePesertasTable extends Migration
      */
     public function up()
     {
-        Schema::create('pesertas', function (Blueprint $table) {
+        Schema::create('detail_invoices', function (Blueprint $table) {
             $table->unsignedBigInteger('paket_id');
             $table->string('invoice_id');
             $table->string('no_dukumen', 30);
