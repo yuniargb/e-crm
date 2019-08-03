@@ -170,3 +170,6 @@ Route::post('/ubahpassword', 'lupaPassword@ubahpasswordstaf');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/abos', 'HomeController@index')->name('home');
+
+// Bissmillah
