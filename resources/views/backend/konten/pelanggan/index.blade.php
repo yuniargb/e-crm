@@ -1,5 +1,6 @@
 @extends('backend.layout.head')
 @section('content')
+<!-- fix -->
 <div class="row">
     <div class="col-sm-12 p-0">
         <div class="main-header">
