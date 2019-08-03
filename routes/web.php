@@ -51,6 +51,18 @@ Route::prefix('signin')->group(function () {
     Route::post('/register', 'Auth\LoginPelangganController@register')->name('pelanggan.register.submit');
 });
 
+Route::prefix('password')->group(function () {
+    Route::get('/forget', 'Auth\PelangganForgotPassword@forget');
+    Route::post('/request', 'Auth\PelangganForgotPassword@request');
+    Route::get('/reset/{id}', 'Auth\PelangganForgotPassword@reset');
+    Route::post('/change/{id}', 'Auth\PelangganForgotPassword@change');
+
+    Route::get('/lupapassword', 'lupaPassword@lupastaf');
+    Route::post('/lupastaf', 'lupaPassword@lupapasswordstaf');
+    Route::get('/resetpassword/{id}', 'lupaPassword@formpasswordstaf');
+    Route::post('/ubahpassword', 'lupaPassword@ubahpasswordstaf');
+});
+
 
 // Login google
 Route::get('sign/google', 'Auth\LoginPelangganController@redirectToProvider');

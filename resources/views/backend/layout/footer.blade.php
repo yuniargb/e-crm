@@ -93,7 +93,6 @@
             var paket = $('#paket').find(':selected').data("paket");
             $("#peserta").val("");
             $("#dokumen").val("");
-            $("#paket").val("");
             $("#tgl").val("");
             console.log(peserta)
             $('#invoce').append(`

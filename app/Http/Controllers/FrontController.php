@@ -147,7 +147,7 @@ class FrontController extends Controller
     {
         $invoice = Invoice::with('pelanggan')->where('id', $id)->first();
         $tgl = Invoice::find($id);
-        $peserta = DB::select("SELECT r.no_dukumen,r.nama_peserta,r.tgl_berangkat,p.harga,p.nama_paket,p.id,ps.diskon from pesertas r inner join invoices i ON i.id=r.invoice_id inner join pakets p on r.paket_id=p.id left join (select * from promos where tgl_selesai >= '" . $tgl->tgl_inv . "' and tgl_mulai <= '" . $tgl->tgl_inv . "') ps ON p.id=ps.paket_id WHERE r.invoice_id='" . $id . "'");
+        $peserta = DB::select("SELECT r.no_dukumen,r.nama_peserta,r.tgl_berangkat,p.harga,p.nama_paket,p.id,ps.diskon from detail_invoices r inner join invoices i ON i.id=r.invoice_id inner join pakets p on r.paket_id=p.id left join (select * from promos where tgl_selesai >= '" . $tgl->tgl_inv . "' and tgl_mulai <= '" . $tgl->tgl_inv . "') ps ON p.id=ps.paket_id WHERE r.invoice_id='" . $id . "'");
         $pdf = PDF::loadView('backend.konten.invoice.cetakinvoice', compact('invoice', 'peserta'));
         return $pdf->stream('kwitansi_invoice_' . date('Y-m-d_H-i-s') . '.pdf');
     }

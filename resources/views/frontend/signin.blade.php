@@ -52,6 +52,9 @@
                             <div class="text-center mt-4">
                                 <p>Want to have an account? <a href="#" id="SignUp" class="text-primary">Register</a></p>
                             </div>
+                            <div class="text-center">
+                                <p><a href="/password/forget" class="text-primary">Forgot your password?</a></p>
+                            </div>
                         </div>
                     </div>
                 </div>

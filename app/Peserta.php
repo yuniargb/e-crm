@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Peserta extends Model
 {
+
+    protected $table = 'detail_invoices';
+
     protected $fillable = ['invoice_id', 'paket_id', 'no_dokumen', 'nama_peserta', 'tgl_berangkat'];
 
     public function invoice()

@@ -119,10 +119,16 @@
     text-decoration: none;
 }
 
+#ResetContent {
+    margin-top: 170px;
+    margin-bottom: 150px;
+}
+
 #SignContent {
     z-index: 1;
     position: relative;
     top: 50px;
+    height: 700px;
 }
 
 #SignIn::after {

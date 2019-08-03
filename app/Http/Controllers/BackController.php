@@ -44,7 +44,7 @@ class BackController extends Controller
             $total[] = $p->jml_invoice;
         }
 
-        $paket = DB::select("SELECT p.id,p.harga,p.nama_paket as paket,count(pe.paket_id) as jml,sum(p.harga) as total FROM pakets p INNER JOIN pesertas pe ON p.id=pe.paket_id INNER JOIN invoices i ON pe.invoice_id=i.id group by p.id,p.nama_paket,p.harga order by jml DESC limit 5");
+        $paket = DB::select("SELECT p.id,p.harga,p.nama_paket as paket,count(pe.paket_id) as jml,sum(p.harga) as total FROM pakets p INNER JOIN detail_invoices pe ON p.id=pe.paket_id INNER JOIN invoices i ON pe.invoice_id=i.id group by p.id,p.nama_paket,p.harga order by jml DESC limit 5");
 
         $terjual = [];
         $pakets = [];
@@ -351,7 +351,7 @@ class BackController extends Controller
         $ktg->nama_paket = $request->nama_paket;
         $ktg->harga = $request->harga;
         if ($request->hasFile('gambar')) {
-            $ktg->gambar = $request->gambar;
+            $ktg->gambar = $newName;
         }
         $ktg->kategori_id = $request->kategori;
         $ktg->save();
@@ -464,7 +464,7 @@ class BackController extends Controller
     {
         $invoice = Invoice::with('pelanggan')->where('id', $id)->first();
         $tgl = Invoice::find($id);
-        $peserta = DB::select("SELECT r.no_dukumen,r.nama_peserta,r.tgl_berangkat,p.harga,p.nama_paket,p.id,ps.diskon from pesertas r inner join invoices i ON i.id=r.invoice_id inner join pakets p on r.paket_id=p.id left join (select * from promos where tgl_selesai >= '" . $tgl->tgl_inv . "' and tgl_mulai <= '" . $tgl->tgl_inv . "') ps ON p.id=ps.paket_id WHERE r.invoice_id='" . $id . "'");
+        $peserta = DB::select("SELECT r.no_dukumen,r.nama_peserta,r.tgl_berangkat,p.harga,p.nama_paket,p.id,ps.diskon from detail_invoices r inner join invoices i ON i.id=r.invoice_id inner join pakets p on r.paket_id=p.id left join (select * from promos where tgl_selesai >= '" . $tgl->tgl_inv . "' and tgl_mulai <= '" . $tgl->tgl_inv . "') ps ON p.id=ps.paket_id WHERE r.invoice_id='" . $id . "'");
         $pdf = PDF::loadView('backend.konten.invoice.cetakinvoice', compact('invoice', 'peserta'));
         return $pdf->stream('kwitansi_invoice_' . date('Y-m-d_H-i-s') . '.pdf');
     }
@@ -561,7 +561,7 @@ class BackController extends Controller
             'akhir' => $request->akhir,
             'paket' => $ket->nama_paket
         );
-        $plg = Pelanggan::take(2)->get();
+        $plg = Pelanggan::get();
         foreach ($plg as $p) {
             Mail::send('backend.konten.promosi.email', $dis, function ($mail) use ($p) {
                 $mail->to($p->email)
@@ -659,7 +659,7 @@ class BackController extends Controller
         from detail_komplains dk 
         INNER JOIN komplains k ON dk.komplain_id=k.id 
         INNER JOIN invoices i ON i.id=k.invoice_id 
-        INNER JOIN Pelanggans p ON p.id=i.pelanggan_id 
+        INNER JOIN pelanggans p ON p.id=i.pelanggan_id 
         WHERE k.staf_id IS null OR k.staf_id='" . $id . "' 
         AND dk.read = false 
         AND dk.sender LIKE '%STD01-%'
@@ -744,7 +744,7 @@ class BackController extends Controller
         $awal = $request->tgl_awal;
         $akhir = $request->tgl_akhir;
         $tgl = date('d-m-Y');
-        $laporan = DB::select("SELECT p.id,p.harga,p.nama_paket as paket,count(pe.paket_id) as jml,sum(p.harga) as total FROM pakets p INNER JOIN pesertas pe ON p.id=pe.paket_id INNER JOIN invoices i ON pe.invoice_id=i.id WHERE i.tgl_inv BETWEEN '" . $awal . "' AND '" . $akhir . "' group by p.id,p.nama_paket,p.harga order by jml DESC limit 5");
+        $laporan = DB::select("SELECT p.id,p.harga,p.nama_paket as paket,count(pe.paket_id) as jml,sum(p.harga) as total FROM pakets p INNER JOIN detail_invoices pe ON p.id=pe.paket_id INNER JOIN invoices i ON pe.invoice_id=i.id WHERE i.tgl_inv BETWEEN '" . $awal . "' AND '" . $akhir . "' group by p.id,p.nama_paket,p.harga order by jml DESC limit 5");
         $pdf = PDF::loadView('backend.konten.laporan.laporanpaket', compact('laporan', 'awal', 'tgl', 'akhir'));
         return $pdf->stream('laporantoppaket_' . date('Y-m-d_H-i-s') . '.pdf');
     }

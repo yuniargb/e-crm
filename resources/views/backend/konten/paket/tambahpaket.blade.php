@@ -40,7 +40,7 @@
                     <label for="username" class="col-xs-2 col-form-label form-control-label">Kategori</label>
                     <div class="col-sm-10">
                         <select class="js-example-basic-single form-control" name="kategori" required>
-                            <option value="" selected>PILIH PAKET</option>
+                            <option value="" selected>PILIH KATEGORI</option>
                             @foreach($kategori as $kat)
                             @if(old('kategori') == $kat->id)
                             <option value="{{ $kat->id }}" selected>{{ $kat->nama_kategori }}</option>
